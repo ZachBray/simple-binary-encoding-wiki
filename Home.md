@@ -1,0 +1,1 @@
+Welcome to the simple-binary-encoding wiki!
