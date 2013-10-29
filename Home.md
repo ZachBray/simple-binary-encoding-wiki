@@ -7,8 +7,11 @@ The SBE tool can be used as a library enabling on-the-fly decoding of messages, 
 
 1. History of SBE
 1. Why the focus on low-latency and high-performance?
-1. Principles behind the design
-1. Quick Start Guide
+1. Principles behind the design of the codecs
+1. How to use the SBE Tool
+1. Java Users Guide
+1. C++ Users Guide
+1. Frequently Asked Questions
 
 ## History of SBE
 
