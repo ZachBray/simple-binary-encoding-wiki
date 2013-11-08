@@ -186,3 +186,19 @@ To decode the flyweight implements Iterable and Iterator allowing for use with t
 **Note**: Groups must be encoded and decoded in total before progressing to the next group or on to variable data.
 
 ## Variable Length Data
+
+To store variable length strings or binary data then the var data fields can be used at the end of the message. These are variable length byte arrays for which optional character encoding can be provided in the schema.
+
+Encoding
+
+    car.putMake(MAKE, srcOffset, MAKE.length);
+    car.putModel(MODEL, srcOffset, MODEL.length);
+
+Decoding
+
+    sb.append("\ncar.make=").append(new String(buffer, 0, car.getMake(buffer, 0, buffer.length), car.makeCharacterEncoding()));
+    sb.append("\ncar.model=").append(new String(buffer, 0, car.getModel(buffer, 0, buffer.length), car.modelCharacterEncoding()));
+
+
+**Note**: Variable data fields must be encoded and decoded in order as defined in the schema.
+
