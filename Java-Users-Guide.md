@@ -1,5 +1,7 @@
 After running the [SbeTool](Sbe-Tool-Guide) a number of Java source files will be created. These files represent the types and messages declared in the schema. For a quick start to SBE look a [this](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/resources/TestSchema.xml) schema and its usage [here](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/java/uk/co/real_logic/sbe/examples/SbeExample.java).
 
+Messages are designed to be read in the sequential order as define in the schema. This ensures a [stream access](Design-Principles) pattern for performance. If groups or variable data are not processed in order then the data may become corrupt.
+
 ### Framing
 
 It is expected that the messages are communicated inside a framing protocol. The frame defines the size of the buffer containing the message header and message itself.
@@ -150,6 +152,37 @@ Decoding
 
 ## Repeating Groups
 
+Repeating groups allow for collections of repeating type which can even be nested. The groups are types represented as a flyweight.
+
+To encode it is necessary to first stage the count of time the group will repeat and then use the next() method to cursor forward while encoding.
+
+    final Car.PerformanceFigures performanceFigures = car.performanceFiguresCount(2);
+    performanceFigures.next()
+        .octaneRating((short)95)
+        .accelerationCount(3)
+            .next().mph(30).seconds(4.0f)
+            .next().mph(60).seconds(7.5f)
+            .next().mph(100).seconds(12.2f);
+    performanceFigures.next()
+        .octaneRating((short)99)
+        .accelerationCount(3)
+            .next().mph(30).seconds(3.8f)
+            .next().mph(60).seconds(7.1f)
+            .next().mph(100).seconds(11.8f);
+
+To decode the flyweight implements Iterable and Iterator allowing for use with the foreach loop pattern.
+
+    for (final Car.PerformanceFigures performanceFigures : car.performanceFigures())
+    {
+        sb.append("\ncar.performanceFigures.octaneRating=").append(performanceFigures.octaneRating());
+
+        for (final Car.PerformanceFigures.Acceleration acceleration : performanceFigures.acceleration())
+        {
+            sb.append("\ncar.performanceFigures.acceleration.mph=").append(acceleration.mph());
+            sb.append("\ncar.performanceFigures.acceleration.seconds=").append(acceleration.seconds());
+        }
+    }
+
+**Note**: Groups must be encoded and decoded in total before progressing to the next group or on to variable data.
 
 ## Variable Length Data
-
