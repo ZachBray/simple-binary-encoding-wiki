@@ -1,4 +1,4 @@
-Welcome to the simple-binary-encoding wiki. Here you will find details of how to use the SBE (Simple Binary Encoding) tool for encoding and decoding SBE messages in binary format based on a schema.
+Welcome to the simple-binary-encoding wiki. Here you will find details of how to use the SBE (Simple Binary Encoding) tool for encoding and decoding SBE messages in binary format based on schemas. Messages are the units of information which get composed via protocols for communication between systems. The systems communicating may be the same system which is communicating with itself by persisting a message from the past for future use.
 
 The SBE tool can be used as a library enabling on-the-fly decoding of messages, or for ultimate performance it can generate compilable stubs to directly encode or decode messages.
 
