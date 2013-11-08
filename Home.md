@@ -2,7 +2,7 @@ Welcome to the simple-binary-encoding wiki. Here you will find details of how to
 
 The SBE tool can be used as a library enabling on-the-fly decoding of messages, or for ultimate performance it can generate compilable stubs to directly encode or decode messages.
 
-## Contents
+### Contents
 
 1. [History of SBE](Home#History-of-SBE)
 1. [Why Low-Latency?](Why-Low-Latency)
@@ -12,7 +12,7 @@ The SBE tool can be used as a library enabling on-the-fly decoding of messages, 
 1. C++ Users Guide
 1. Frequently Asked Questions
 
-## History of SBE
+### History of SBE
 
 SBE originates from the _"High Performance Work Group"_ within the [FIX Protocol Limited (FPL)](http://old.fixprotocol.org/) organisation. The goal was to produce an binary encoding representation suitable for low-latency financial trading. The statement below is from the working group at the outset.
 
