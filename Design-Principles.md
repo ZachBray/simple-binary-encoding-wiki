@@ -16,12 +16,21 @@ By taking a native mapping approach the fields can be accessed for a similar cos
 
 ### Allocation-Free
 
-constant memory footprint
+The allocation of objects can result in CPU cache churn which reduces efficiency. These allocated objects then have to be collected and deleted. For Java the collection is done by the garbage collector which typically has to do this by a stop-the-world pause that happens frequently and of varying duration, thus creating variance. C++ is better but still has issues when memory is returned to central pools that may employ locks that introduce cost and latency variance.
+
+The design of SBE codecs are allocation-free by employing the flyweight pattern. The flyweight windows over the underlying buffer for direct encoding and decoding of messages. The flyweight of the appropriate type is selected based on the message header template id field. If fields form the message need to be retained beyond the scope of processing a message then they must be stored separately.
 
 ### Streaming Access
 
+Modern memory sub-systems have become evermore complex. The [patterns of access](http://mechanical-sympathy.blogspot.co.uk/2012/08/memory-access-patterns-are-important.html) an algorithm makes to memory can greatly dictate performance and consistency. The best performance and most consistent latency is gain by taking a streaming based approach that addresses memory in ascending sequential access pattern.
 
+The SBE codecs are design to encode and decode messages based on a forward progression of the position in the underlying buffer. It is possible to backtrack to a degree within messages but this is highly discouraged from a performance and latency perspective.
 
+## Word Aligned Access
+
+Many CPU architectures exhibit significant performance issues when words are access on a non word size boundary. That is the starting address of a word should be a multiple of its size in bytes. 64-bit integers should only begin on byte address divided by 8 boundaries, 32-bit integers should only begin on byte addresses divided by 4 boundaries, and so on.
+
+SBE schemas support the concept of an offset that defines the starting position of a field within a message. It is assumed the messages are encapsulated within a framing protocol on 8 byte boundaries. To achieve compact and efficient messages the fields should be sorted in order by type and descending size.
 
 
 
