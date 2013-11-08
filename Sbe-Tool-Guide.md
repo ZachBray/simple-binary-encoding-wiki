@@ -7,7 +7,7 @@ The tool will accept options using the system property option format as follows.
     java -jar sbe.jar -Doption=value <message-declarations-file.xml>
 
 The tool supports the following options:
- * <code>sbe.validation.xsd</code>: Use XSD to validate or not.
+ * <code>sbe.validation.xsd</code>: Use XSD to validate or not. XSD filename should be the provided option.
  * <code>sbe.validation.stop.on.error</code>: Should the parser stop on first error encountered? Defaults to false.
  * <code>sbe.validation.warnings.fatal</code>: Are warnings in parsing considered fatal? Defaults to false.
  * <code>sbe.validation.suppress.output</code>: Should the parser suppress output during validation? Defaults to false.
