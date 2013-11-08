@@ -2,6 +2,13 @@ To achieve low-latency with minimal variance it is important to define a set of 
 
 Many design principles come to bear on any implementation. Not all design principles require trade-offs by many do. The following set of design principles are key to the design of SBE and the likely to drive most trade-offs.
 
+1. [Copy-Free](wiki/Design-Principles#Copy-Free)
+1. [Native Type Mapping](wiki/Design-Principles#Native-Type-Mapping)
+1. [Allocation-Free](wiki/Design-Principles#Allocation-Free)
+1. [Streaming Access](wiki/Design-Principles#Streaming-Access)
+1. [Word Aligned Access](wiki/Design-Principles#Word-Aligned-Access)
+1. [Backwards Compatibility](wiki/Design-Principles#Backwards-Compatibility)
+
 ### Copy-Free
 
 Networks and Storage systems deal with buffers in which the messages are encoded and decoded. The principle of copy-free is to not employ any intermediate buffers for the encoding or decoding of messages. If an intermediate buffer is employed then the costs escale due to the copying of bytes multiple times.
@@ -32,4 +39,9 @@ Many CPU architectures exhibit significant performance issues when words are acc
 
 SBE schemas support the concept of an offset that defines the starting position of a field within a message. It is assumed the messages are encapsulated within a framing protocol on 8 byte boundaries. To achieve compact and efficient messages the fields should be sorted in order by type and descending size.
 
+### Backwards Compatibility
+
+In a large enterprise, or across enterprises, it is not always possible to upgrade all systems at the same time. For communication to continue working the message formats have to be backwards compatible, i.e. an older system should be able to read a newer version of the same message and vice versa. 
+
+An extension mechanism is designed into SBE which allows for the introduction of new optional fields within a message that the new systems can use while the older systems ignore them until upgrade. If new mandatory fields are required or a fundamental structural change is required then a message type must be employed because it is no longer a semantic extension of an existing message type.
 
