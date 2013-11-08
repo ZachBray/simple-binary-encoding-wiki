@@ -1,5 +1,7 @@
 To achieve low-latency with minimal variance it is important to define a set of design principles that guide the development. When a trade off must be made then the design principles help guide the decision in choosing between competing alternatives.
 
+The results of applying the following design principles can be seen in the [benchmark results](https://github.com/real-logic/message-codec-bench).
+
 Many design principles come to bear on any implementation. Not all design principles require trade-offs by many do. The following set of design principles are key to the design of SBE and the likely to drive most trade-offs.
 
 1. [Copy-Free](Design-Principles#Copy-Free)
@@ -44,4 +46,3 @@ SBE schemas support the concept of an offset that defines the starting position 
 In a large enterprise, or across enterprises, it is not always possible to upgrade all systems at the same time. For communication to continue working the message formats have to be backwards compatible, i.e. an older system should be able to read a newer version of the same message and vice versa. 
 
 An extension mechanism is designed into SBE which allows for the introduction of new optional fields within a message that the new systems can use while the older systems ignore them until upgrade. If new mandatory fields are required or a fundamental structural change is required then a message type must be employed because it is no longer a semantic extension of an existing message type.
-
