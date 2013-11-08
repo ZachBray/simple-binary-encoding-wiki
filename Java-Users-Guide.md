@@ -110,3 +110,46 @@ Decoding is simply the reverse.
     sb.append("\ncar.available=").append(car.available());
     sb.append("\ncar.code=").append(car.code());
 
+### BitSets
+
+A bitset is multi-value choice that is mapped to the presence or not of particular bits in an integer. The bitset is returned from the flyweight with properties that take true or false arguments for each named bit.
+
+Encoding
+
+    car.extras()
+       .cruiseControl(true)
+       .sportsPack(true)
+       .sunRoof(false);
+
+Decoding
+
+    final OptionalExtras extras = car.extras();
+    sb.append("\ncar.extras.cruiseControl=").append(extras.cruiseControl());
+    sb.append("\ncar.extras.sportsPack=").append(extras.sportsPack());
+    sb.append("\ncar.extras.sunRoof=").append(extras.sunRoof());
+
+### Composite Types
+
+Composite types provide a means of reuse. The map directly to a class as a flyweight pattern in Java.
+
+**Note**: For efficiency it is best to hold onto the reference to the type until all fields in the type have been accessed.
+
+Encoding
+
+    car.engine()
+       .capacity(2000)
+       .numCylinders((short)4)
+       .putManufacturerCode(MANUFACTURER_CODE, srcOffset);
+
+Decoding
+
+    final Engine engine = car.engine();
+    sb.append("\ncar.engine.capacity=").append(engine.capacity());
+    sb.append("\ncar.engine.numCylinders=").append(engine.numCylinders());
+    sb.append("\ncar.engine.maxRpm=").append(engine.maxRpm());
+
+## Repeating Groups
+
+
+## Variable Length Data
+
