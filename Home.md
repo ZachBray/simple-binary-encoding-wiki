@@ -10,7 +10,7 @@ The SBE tool can be used as a library enabling on-the-fly decoding of messages, 
 1. How to use the SBE Tool
 1. Java Users Guide
 1. C++ Users Guide
-1. Frequently Asked Questions
+1. [Frequently Asked Questions](wiki/Frequently-Asked-Questions)
 
 ### History of SBE
 
