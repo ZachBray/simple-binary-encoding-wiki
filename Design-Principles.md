@@ -2,12 +2,12 @@ To achieve low-latency with minimal variance it is important to define a set of 
 
 Many design principles come to bear on any implementation. Not all design principles require trade-offs by many do. The following set of design principles are key to the design of SBE and the likely to drive most trade-offs.
 
-1. [Copy-Free](wiki/Design-Principles#Copy-Free)
-1. [Native Type Mapping](wiki/Design-Principles#Native-Type-Mapping)
-1. [Allocation-Free](wiki/Design-Principles#Allocation-Free)
-1. [Streaming Access](wiki/Design-Principles#Streaming-Access)
-1. [Word Aligned Access](wiki/Design-Principles#Word-Aligned-Access)
-1. [Backwards Compatibility](wiki/Design-Principles#Backwards-Compatibility)
+1. [Copy-Free](Design-Principles#Copy-Free)
+1. [Native Type Mapping](Design-Principles#Native-Type-Mapping)
+1. [Allocation-Free](Design-Principles#Allocation-Free)
+1. [Streaming Access](Design-Principles#Streaming-Access)
+1. [Word Aligned Access](Design-Principles#Word-Aligned-Access)
+1. [Backwards Compatibility](Design-Principles#Backwards-Compatibility)
 
 ### Copy-Free
 
