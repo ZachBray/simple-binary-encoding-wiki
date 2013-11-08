@@ -2,11 +2,10 @@ Welcome to the simple-binary-encoding wiki. Here you will find details of how to
 
 The SBE tool can be used as a library enabling on-the-fly decoding of messages, or for ultimate performance it can generate compilable stubs to directly encode or decode messages.
 
-
 ## Contents
 
 1. [History of SBE](Home#History-of-SBE)
-1. Why the focus on low-latency and high-performance?
+1. [Why Low-Latency?](Why-Low-Latency)
 1. Principles behind the design of the codecs
 1. How to use the SBE Tool
 1. Java Users Guide
