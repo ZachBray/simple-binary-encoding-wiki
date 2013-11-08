@@ -52,21 +52,16 @@ Single fixed fields can be encoded in a fluent style after a message flyweight h
 
     car.resetForEncode(directBuffer, bufferOffset)
        .serialNumber(1234)
-       .modelYear(2013)
-       .available(BooleanType.TRUE)
-       .code(Model.A);
+       .modelYear(2013);
 
 Decoding single fixed fields is simply the reverse.
 
     car.resetForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
 
-    sb.append("\ncar.templateId=").append(car.templateId());
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
-    sb.append("\ncar.available=").append(car.available());
-    sb.append("\ncar.code=").append(car.code());
 
-## Fixed Array Fields
+### Fixed Array Fields
 
 It is possible to encode a fixed length array of primitive value in a field.
 
@@ -85,7 +80,7 @@ Decoding is simply the reverse.
         sb.append(car.someNumbers(i)).append(", ");
     }
 
-## Fixed String Arrays
+### Fixed String Arrays
 
 When encoding things like financial symbols it often beneficial to encode these are fixed length character arrays. SBE characters are single bytes. The default encoding is US-ASCII but it is possible to signify other encodings by using the characterEncoding attribute of the schema. In addition to the fixed array access method the following are provided.
 
@@ -103,3 +98,15 @@ For decoding a get method is define taking destination byte array with an destin
 Constants do not get read from the underlying buffer. Their value as defined in the schema is returned directly by the codec using the same API as non-constant fields.
 
 ### Enumerations
+
+Choice from the message schema directly map to enums in Java. Encoding is as follows.
+
+    car.resetForEncode(directBuffer, bufferOffset)
+       .available(BooleanType.TRUE)
+       .code(Model.A);
+
+Decoding is simply the reverse.
+
+    sb.append("\ncar.available=").append(car.available());
+    sb.append("\ncar.code=").append(car.code());
+
