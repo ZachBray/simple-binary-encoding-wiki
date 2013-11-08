@@ -1,0 +1,1 @@
+To achieve low-latency with minimal variance it is important to define a set of design principles that guide the development.
