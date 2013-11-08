@@ -1,0 +1,1 @@
+In high-frequency trading (HFT) it is almost impossible to not come across numerous discussion about low-latency.
