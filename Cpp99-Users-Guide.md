@@ -42,9 +42,9 @@ The decoder should decode the header and then lookup which template should be us
     // Reset the message header in preparation for decoding a message.
     MessageHeader.reset(buffer, bufferOffset);
 
-    final int templateId = MessageHeader.templateId();
-    final int actingVersion = MessageHeader.version();
-    final int actingBlockLength = MessageHeader.blockLength();
+    int templateId = MessageHeader.templateId();
+    int actingVersion = MessageHeader.version();
+    int actingBlockLength = MessageHeader.blockLength();
 
     // Lookup template for decoding the message
 
