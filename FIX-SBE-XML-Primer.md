@@ -135,3 +135,21 @@ Examples of the use of `<set>` are below:
         <choice name="cruiseControl">2</choice>
     </set>
 
+### <code>message</code> Element
+
+Message elements contain the fields, repeating groups, and variable length data. The order of `<field>`, `<group>`, and `<data>` within each message is very important as it is used to lay the data out in a message.
+A `<message>` element itself has the following attributes:
+
+* `name`: Name of the message.
+* `description`: Description of the message. (optional)
+* `id`: The ID of the message. Aka template ID of the message.
+* `blockLength`: The length of the fixed fields in the messages in bytes.
+* `semanticType`: The semantic type of the message.
+
+An example `<message>` use is below:
+
+    <message name="Car" id="1" description="Description of a basic Car">
+
+### <code>field</code> Element
+
+Field elements designate the 
