@@ -17,11 +17,11 @@ An example `messageSchema` element would be:
                    description="Code generation unit test support"
                    byteOrder="littleEndian">
 
-A `messageSchema` holds two main components. `types` and a list of `message` elements.
+A `messageSchema` holds two main components. a list of `<types>` and a list of `<message>` elements.
 
 ### <code>types</code> Element
 
-The `types` block holds various created types, bit sets, enumerations, and composites.
+The `types` block holds various types created `<type>`, `<set>`, `<enum>`, and `<composite>`.
 
 ### Primitive Types
 
@@ -42,7 +42,7 @@ are the primitive types.
 
 ### <code>type</code> Element
 
-Types can be created by name and by composing a set of builtin primitive types. The `type`
+Types can be created by name and by composing a set of builtin primitive types. The `<type>`
 element has the following attributes.
 
 * `name`: Name of the type.
@@ -53,10 +53,35 @@ element has the following attributes.
 * `length`: Length in primitive type units of the type. Default is 1.
 * `characterEncoding`: Character Encoding of the type.
 
-An few examples of the use of `type` are below:
+An few examples of the use of `<type>` are below:
 
     <type name="ModelYear" primitiveType="uint16" semanticType="ModelYear"/>
     <type name="VehicleCode" primitiveType="char" length="6" semanticType="VehicleCode"/>
     <type name="someNumbers" primitiveType="int32" length="5" semanticType="SomeArray"/>
 
+### <code>composite</code> Element
 
+A `composite` is a structure of encoded types. The encoding is in the order of declaration.
+Some `composite` elements are used for message header declaration as well as variable length field
+encoding and group dimension encoding. The `<composite>` element has the following attributes.
+
+* `name`: Name of the type.
+* `semanticType`: Semantic information about the type. (optional)
+* `description`: Description of the type. (optional)
+
+Examples of the use of `<composite>` are below:
+
+    <composite name="messageHeader" description="Message Header" semanticType="Length">
+        <type name="blockLength" primitiveType="uint16"/>
+        <type name="templateId" primitiveType="uint16"/>
+        <type name="version" primitiveType="uint8"/>
+        <type name="reserved" primitiveType="uint8"/>
+    </composite>
+
+    <composite name="Engine" semanticType="Engine">
+        <type name="capacity" primitiveType="uint16"/>
+        <type name="numCylinders" primitiveType="uint8"/>
+        <type name="maxRpm" primitiveType="uint16" presence="constant">9000</type>
+        <type name="manufacturerCode" primitiveType="char" length="3"/>
+        <type name="fuel" primitiveType="char" presence="constant">Petrol</type>
+    </composite>
