@@ -28,48 +28,49 @@ The message header contains the fields that allows the decoder to identify what 
 
 To encode a message it is necessary to encode the header then the message.
 
-    MESSAGE_HEADER.reset(directBuffer, bufferOffset, messageTemplateVersion)
-                  .blockLength(messageFlyweight.blockLength())
-                  .templateId((int)messageFlyweight.templateId())
-                  .version((short)messageFlyweight.templateVersion());
+    // Encode the header
+    MessageHeader.reset(buffer, bufferOffset)
+                 .blockLength(messageFlyweight.blockLength())
+                 .templateId(messageFlyweight.templateId())
+                 .version(messageFlyweight.templateVersion());
 
     // Then encode the message
-    messageFlyweight.resetForEncode(directBuffer, bufferOffset);
+    messageFlyweight.resetForEncode(buffer, bufferOffset + MessageHeader.size());
 
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
     // Reset the message header in preparation for decoding a message.
-    MESSAGE_HEADER.reset(directBuffer, bufferOffset, messageTemplateVersion);
+    MessageHeader.reset(buffer, bufferOffset);
 
-    final int templateId = MESSAGE_HEADER.templateId();
-    final int actingVersion = MESSAGE_HEADER.version();
-    final int actingBlockLength = MESSAGE_HEADER.blockLength();
+    final int templateId = MessageHeader.templateId();
+    final int actingVersion = MessageHeader.version();
+    final int actingBlockLength = MessageHeader.blockLength();
 
     // Lookup template for decoding the message
 
-    bufferOffset += MESSAGE_HEADER.size();
-    messageFlyweight.resetForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
+    bufferOffset += MessageHeader.size();
+    messageFlyweight.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion);
 
 ### Single Fixed Fields
 
 Single fixed fields can be encoded in a fluent style after a message flyweight has been reset for encoding.
 
-    car.resetForEncode(directBuffer, bufferOffset)
+    car.resetForEncode(buffer, bufferOffset)
        .serialNumber(1234)
        .modelYear(2013);
 
 Decoding single fixed fields is simply the reverse.
 
-    car.resetForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
+    car.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion);
 
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
 
 ### Fixed Array Fields
 
-It is possible to encode a fixed length array of primitive value in a field.
+It is possible to encode a fixed length array of a primitive type in a field.
 
-To encode the the array.
+To encode the array an element at a time
 
     for (int i = 0, size = car.someNumbersLength(); i < size; i++)
     {
@@ -86,28 +87,28 @@ Decoding is simply the reverse.
 
 ### Fixed String Arrays
 
-When encoding things like financial symbols it often beneficial to encode these are fixed length character arrays. SBE characters are single bytes. The default encoding is US-ASCII but it is possible to signify other encodings by using the characterEncoding attribute of the schema. In addition to the fixed array access method the following are provided.
+When encoding things like financial symbols it often beneficial to encode these as fixed length character arrays. SBE characters are single bytes. The default encoding is US-ASCII but it is possible to signify other encodings by using the characterEncoding attribute of the schema. In addition to the fixed array access method the following are provided.
 
-For encoding a put method is defined taking a source byte array with an source offset at which to begin copying. The copy will always be for the size of the field.
+For encoding a put method is defined taking a source pointer at which to begin copying. The copy will always be for the size of the field.
 
-       car.putVehicleCode(VEHICLE_CODE, srcOffset);
+       car.putVehicleCode(VEHICLE_CODE);
 
 For decoding a get method is define taking destination byte array with an destination offset at which copy into to.
 
-        sb.append("\ncar.vehicleCode=")
-          .append(new String(buffer, 0, car.getVehicleCode(buffer, 0, buffer.length), car.vehicleCodeCharacterEncoding()));
+       char tmp[80];
+       car.getVehicleCode(tmp, sizeof(tmp));
 
 ### Constants
 
-Constants do not get read from the underlying buffer. Their value as defined in the schema is returned directly by the codec using the same API as non-constant fields.
+Constants do not get read from the underlying buffer. Their value as defined in the schema are returned directly by the codec using the same API as non-constant fields.
 
 ### Enumerations
 
-Choice from the message schema directly map to enums in Java. Encoding is as follows.
+Choice from the message schema directly map to enums in C++. Encoding is as follows.
 
-    car.resetForEncode(directBuffer, bufferOffset)
-       .available(BooleanType.TRUE)
-       .code(Model.A);
+    car.resetForEncode(buffer, bufferOffset)
+       .available(BooleanType::TRUE)
+       .code(Model::A);
 
 Decoding is simply the reverse.
 
@@ -127,14 +128,14 @@ Encoding
 
 Decoding
 
-    final OptionalExtras extras = car.extras();
+    OptionalExtras &extras = car.extras();
     sb.append("\ncar.extras.cruiseControl=").append(extras.cruiseControl());
     sb.append("\ncar.extras.sportsPack=").append(extras.sportsPack());
     sb.append("\ncar.extras.sunRoof=").append(extras.sunRoof());
 
 ### Composite Types
 
-Composite types provide a means of reuse. The map directly to a class as a flyweight pattern in Java.
+Composite types provide a means of reuse. The map directly to a class as a flyweight pattern in C++.
 
 **Note**: For efficiency it is best to hold onto the reference to the type until all fields in the type have been accessed.
 
@@ -143,11 +144,11 @@ Encoding
     car.engine()
        .capacity(2000)
        .numCylinders((short)4)
-       .putManufacturerCode(MANUFACTURER_CODE, srcOffset);
+       .putManufacturerCode(MANUFACTURER_CODE);
 
 Decoding
 
-    final Engine engine = car.engine();
+    Engine &engine = car.engine();
     sb.append("\ncar.engine.capacity=").append(engine.capacity());
     sb.append("\ncar.engine.numCylinders=").append(engine.numCylinders());
     sb.append("\ncar.engine.maxRpm=").append(engine.maxRpm());
@@ -158,7 +159,7 @@ Repeating groups allow for collections of repeating type which can even be neste
 
 To encode it is necessary to first stage the count of time the group will repeat and then use the next() method to cursor forward while encoding.
 
-    final Car.PerformanceFigures performanceFigures = car.performanceFiguresCount(2);
+    Car::PerformanceFigures &performanceFigures = car.performanceFiguresCount(2);
     performanceFigures.next()
         .octaneRating((short)95)
         .accelerationCount(3)
@@ -172,14 +173,18 @@ To encode it is necessary to first stage the count of time the group will repeat
             .next().mph(60).seconds(7.1f)
             .next().mph(100).seconds(11.8f);
 
-To decode the flyweight implements Iterable and Iterator allowing for use with the foreach loop pattern.
+To decode the flyweight implements an iterator type interface allowing for use with looping constructs.
 
-    for (final Car.PerformanceFigures performanceFigures : car.performanceFigures())
+    Car::PerformanceFigures &performanceFigures = car.performanceFigures();
+    while (performanceFigures.hasNext())
     {
+        performanceFigures.next();
         sb.append("\ncar.performanceFigures.octaneRating=").append(performanceFigures.octaneRating());
 
-        for (final Car.PerformanceFigures.Acceleration acceleration : performanceFigures.acceleration())
+        Car::PerformanceFigures::Acceleration &acceleration = performanceFigures.acceleration();
+        while (acceleration.hasNext())
         {
+            acceleration.next();
             sb.append("\ncar.performanceFigures.acceleration.mph=").append(acceleration.mph());
             sb.append("\ncar.performanceFigures.acceleration.seconds=").append(acceleration.seconds());
         }
@@ -193,13 +198,18 @@ To store variable length strings or binary data then the var data fields can be 
 
 Encoding
 
-    car.putMake(MAKE, srcOffset, MAKE.length);
-    car.putModel(MODEL, srcOffset, MODEL.length);
+    car.putMake(MAKE, strlen(MAKE));
+    car.putModel(MODEL, strlen(MODEL));
 
 Decoding
 
-    sb.append("\ncar.make=").append(new String(buffer, 0, car.getMake(buffer, 0, buffer.length), car.makeCharacterEncoding()));
-    sb.append("\ncar.model=").append(new String(buffer, 0, car.getModel(buffer, 0, buffer.length), car.modelCharacterEncoding()));
+    char tmp[80];
+    bytesCopied = car.getMake(tmp, sizeof(tmp));
+    sb.append("\ncar.make=").append(tmp, bytesCopied);
+    sb.append("\ncar.makeCharacterEncoding=").append(car.makeCharacterEncoding());
+    bytesCopied = car.getModel(tmp, sizeof(tmp));
+    sb.append("\ncar.model=").append(tmp, bytesCopied);
+    sb.append("\ncar.modelCharacterEncoding=").append(car.modelCharacterEncoding());
 
 
 **Note**: Variable data fields must be encoded and decoded in order as defined in the schema.
