@@ -85,3 +85,53 @@ Examples of the use of `<composite>` are below:
         <type name="manufacturerCode" primitiveType="char" length="3"/>
         <type name="fuel" primitiveType="char" presence="constant">Petrol</type>
     </composite>
+
+The `messageHeader` composite is treated as the header for all messages included in the message schema.
+
+### <code>enum</code> Element
+
+Enumerations use the `<enum>` element. This element contains the valid values for the enum. The element
+has the following attributes:
+
+* `name`: Name of the enumeration.
+* `presence`: One of `constant`, `required`, or `optional`. Default is `required`.
+* `semanticType`: Semantic information about the type. (optional)
+* `description`: Description of the type. (optional)
+* `encodingType`: Primitive Type of the encoding type. Must be `char` or `uint8`.
+
+`<validValue>` elements are contained within the `<enum>` to hold the information about the values. Each element has the following attributes: `name` and `description`. The contents of the `<validValue>` element contains the value itself.
+
+Examples of the use of `<enum>` are below:
+
+    <enum name="BooleanType" encodingType="uint8" semanticType="Boolean">
+        <validValue name="FALSE">0</validValue>
+        <validValue name="TRUE">1</validValue>
+    </enum>
+
+    <enum name="Model" encodingType="char" semanticType="Model">
+        <validValue name="A">A</validValue>
+        <validValue name="B">B</validValue>
+        <validValue name="C">C</validValue>
+    </enum>
+
+### <code>set</code> Element
+
+Bit sets use the `<set>` element. This element contains the choice values for the bit set. The element
+has the following attributes:
+
+* `name`: Name of the bit set.
+* `presence`: One of `constant`, `required`, or `optional`. Default is `required`.
+* `semanticType`: Semantic information about the type. (optional)
+* `description`: Description of the type. (optional)
+* `encodingType`: Primitive Type of the encoding type. Must be `uint8`, `uint16`, `uint32`, or `uint64`.
+
+`<choice>` elements are contained within the `<set>` to hold the information about the values. Each element has the following attributes: `name` and `description`. The contents of the `<choice>` element contains the bit position of that choice. I.e. 0 means bit position 0, 1 means bit position 1, etc.
+
+Examples of the use of `<set>` are below:
+
+    <set name="OptionalExtras" encodingType="uint8" semanticType="Extras">
+        <choice name="sunRoof">0</choice>
+        <choice name="sportsPack">1</choice>
+        <choice name="cruiseControl">2</choice>
+    </set>
+
