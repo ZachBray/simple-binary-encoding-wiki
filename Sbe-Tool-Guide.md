@@ -14,3 +14,4 @@ The tool supports the following options:
  * <code>sbe.should.generate</code>: Generate or not. Defaults to true
  * <code>sbe.target.language</code>: Target language for code generation, defaults to Java.
  * <code>sbe.output.dir</code>: Target directory for code generation, defaults to current directory.
+ * <code>sbe.ir.filename</code>: Filename to serialize IR to within the target directory.
