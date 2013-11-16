@@ -2,7 +2,7 @@ FIX/SBE uses an XML format to specify messages, headers, and other elements. The
 
 ### <code>messageSchema</code> Element
 
-The `messageSchema` element is the root document in XML. It contains primarily all types and messages specified. This element has the following fields:
+The `messageSchema` element is the root document in XML. It contains primarily all types and messages specified. This element has the following attributes:
 
 * `package`: Package. This is the namespace for C++ and package name for Java.
 * `version`: Version number of the attached messages and types. Defaults to 0.
