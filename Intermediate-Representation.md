@@ -18,7 +18,15 @@ Therefore it is possible to use serialized IR as a means to pass around "compile
 
 ### Structure of Serialized IR
 
+IR is serialized via SBE itself. The schema for SBE IR is show [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/resources/sbe-ir.xml)
+
+    +------------------------------+----------------------------------+
+    |  Header (List<Token>)        |   Messages (List<Token>)         |
+    +------------------------------+----------------------------------+
 <table>
-<td> Header <td> Footer <tr>
+<tr>
+  <td>Header (List of Tokens)</td>
+  <td>Message(s) (List of Tokens)</td>
+</tr>
 </table>
 
