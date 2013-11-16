@@ -18,11 +18,10 @@ Therefore it is possible to use serialized IR as a means to pass around "compile
 
 ### Structure of Serialized IR
 
-IR is serialized via SBE itself. The schema for SBE IR is show [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/resources/sbe-ir.xml)
+IR is serialized via SBE itself. The schema for SBE IR is [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/resources/sbe-ir.xml).
 
-    +------------------------------+----------------------------------+
-    |  Header (List<Token>)        |   Messages (List<Token>)         |
-    +------------------------------+----------------------------------+
+The format of a serialized IR file is a simple sequence, or list, of "Tokens". Each Token is one of the `SerializedToken` messages in the schema above. The first sequence of Tokens in the file is the message header for the messages. This is a composite, usually with the name `messageHeader` that holds the following three encodings: `blockLength`, `templateId`, and `version`.
+
 <table>
 <tr>
   <td>Header (List of Tokens)</td>
@@ -30,3 +29,4 @@ IR is serialized via SBE itself. The schema for SBE IR is show [here](https://gi
 </tr>
 </table>
 
+Careful readers may realize that it is simple to add more messages to an IR file by concatenation. Just concat the list of Tokens to the end of the file. This is intentional.
