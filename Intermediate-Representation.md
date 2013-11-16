@@ -36,9 +36,9 @@ The header would be expanded to look something like below.
 <table>
 <tr>
   <td align="center">BEGIN_COMPOSITE<br>name="messageHeader"</td>
-  <td align="center">ENCODING<br>name="blockLength"<br>type=uint16</td>
-  <td align="center">ENCODING<br>name="templateId"<br>type=uint16</td>
-  <td align="center">ENCODING<br>name="version"<br>type=uint8</td>
+  <td align="center">ENCODING<br>name="blockLength"<br>type=uint16<br>size=2<br>offset=0</td>
+  <td align="center">ENCODING<br>name="templateId"<br>type=uint16<br>size=2<br>offset=2</td>
+  <td align="center">ENCODING<br>name="version"<br>type=uint8<br>size=1<br>offset=4</td>
   <td align="center">END_COMPOSITE<br>name="messageHeader"</td>
 </tr>
 </table>
