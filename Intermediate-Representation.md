@@ -29,6 +29,20 @@ The format of a serialized IR file is a simple sequence, or list, of "Tokens". E
 </tr>
 </table>
 
+Each Token has several fields, one of which is the `Signal`. See [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/ir/Token.java) and [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/ir/Signal.java) for more
+detail on the Token elements.
+The header would be expanded to look something like below.
 
+<table>
+<tr>
+  <td align="center">BEGIN_COMPOSITE<br>name="messageHeader"</td>
+  <td align="center">ENCODING<br>name="blockLength"<br>type=uint16</td>
+  <td align="center">ENCODING<br>name="templateId"<br>type=uint16</td>
+  <td align="center">ENCODING<br>name="version"<br>type=uint8</td>
+  <td align="center">END_COMPOSITE<br>name="messageHeader"</td>
+</tr>
+</table>
 
-Careful readers may realize that it is simple to add more messages to an IR file by concatenation. Just concat the list of Tokens to the end of the file. This is intentional.
+Each message is similar in that it is started with `BEGIN_MESSAGE` and ended with `END_MESSAGE`.
+
+Careful readers may realize that it is simple to add more messages to an IR file by concatenation. Just concatenate a list of Tokens to the end of the file. This is intentional and provides a simple mechanism for composition.
