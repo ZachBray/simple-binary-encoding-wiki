@@ -137,7 +137,7 @@ Examples of the use of `<set>` are below:
 
 ### <code>message</code> Element
 
-Message elements contain the fields, repeating groups, and variable length data. The order of `<field>`, `<group>`, and `<data>` within each message is very important as it is used to lay the data out in a message.
+Message elements contain the fields, repeating groups, and variable length data. The order of `<field>`, `<group>`, and `<data>` within each message is very important as it is used to lay the data out in a message. All `<field>` declarations must precede all `<group>` and `<data>` elements. All `<group>` elements must precede all `<data>` elements. This ordering ensures that all fixed length fields are at the front of the message. Followed by repeating groups and then followed by variable length data.
 A `<message>` element itself has the following attributes:
 
 * `name`: Name of the message.
@@ -152,4 +152,78 @@ An example `<message>` use is below:
 
 ### <code>field</code> Element
 
-Field elements designate the 
+Field elements designate the fixed size fields of a message. A `<field>` element has the following attributes:
+
+* `name`: Name of the field.
+* `description`: Description of the field. (optional)
+* `id`: The ID of the field. Aka the schema ID. For FIX, this is the Tag.
+* `semanticType`: The semantic type of the field.
+* `type`: The type of the field. This can be any primitive type, `<type>`, `<composite>`, `<enum>`, or `<set>`.
+* `offset`: Offset in bytes of this field from the start of the `<message>` or `<group>`. (optional)
+* `sinceVersion`: The version where this field was added. Defaults to 0.
+
+Examples of the use of `<field>` are below:
+
+    <field name="serialNumber" id="1" type="uint32" semanticType="SerialNumber"/>
+    <field name="modelYear" id="2" type="ModelYear"/>
+    <field name="available" id="3" type="BooleanType"/>
+    <field name="code" id="4" type="Model"/>
+    <field name="someNumbers" id="5" type="someNumbers"/>
+    <field name="vehicleCode" id="6" type="VehicleCode"/>
+    <field name="extras" id="7" type="OptionalExtras"/>
+    <field name="engine" id="8" type="Engine"/>
+
+### <code>group</code> Element
+
+Group elements designate a repeating group in a message. Each group contains one or more `<field>` elements. In addition, the group dimensions must have been declared as a composite type. `<group>` elements may be nested arbitrarily deep. A `<group>` element has the following attributes:
+
+* `name`: Name of the group.
+* `description`: Description of the group. (optional)
+* `id`: The ID of the group. Aka the schema ID.
+* `dimensionType`: The composite type that is used to hold the group dimensions. This must be composed of a `numInGroup` type as well as a `blockLength` type. This defaults to "groupSizeEncoding".
+* `blockLength`: The length of the fixed fields in the group in bytes.
+
+Examples of the use of `<field>` are below:
+
+    <composite name="groupSizeEncoding" description="Repeating group dimensions" >
+         <type name="blockLength" primitiveType="uint16"/>
+         <type name="numInGroup" primitiveType="uint8" semanticType="NumInGroup"/>
+    </composite>
+
+    <group name="fuelFigures" id="9" dimensionType="groupSizeEncoding">
+         <field name="speed" id="10" type="uint16"  semanticType="int"/>
+         <field name="mpg" id="11" type="float" semanticType="int"/>
+    </group>
+
+A nested repeating group example is below:
+
+    <group name="performanceFigures" id="12" dimensionType="groupSizeEncoding">
+        <field name="octaneRating" id="13" type="uint8" semanticType="RON"/>
+        <group name="acceleration" id="14" dimensionType="groupSizeEncoding">
+             <field name="mph" id="15" type="uint16"  semanticType="int"/>
+             <field name="seconds" id="16" type="float" semanticType="int"/>
+        </group>
+    </group>
+
+### <code>data</code> Element
+
+Data elements designate the variable length fields of a message. 
+The data is encoded as a `length` followed by the variable data. This type must have been declared as a composite type in a specific way.
+A `<data>` element has the following attributes:
+
+* `name`: Name of the variable data field.
+* `description`: Description of the field. (optional)
+* `id`: The ID of the field. Aka the schema ID. For FIX, this is the Tag.
+* `semanticType`: The semantic type of the field.
+* `type`: The composite type of the field. This must be composed of a `length` part and a `varData` part.
+* `sinceVersion`: The version where this field was added. Defaults to 0.
+
+Examples of the use of `<data>` are below:
+
+    <composite name="varDataEncoding">
+        <type name="length" primitiveType="uint8" semanticType="Length"/>
+        <type name="varData" primitiveType="uint8" length="0" characterEncoding="UTF-8" semanticType="data"/>
+    </composite>
+
+    <data name="make" id="17" type="varDataEncoding" semanticType="Make"/>
+    <data name="model" id="18" type="varDataEncoding" semanticType="Model"/>
