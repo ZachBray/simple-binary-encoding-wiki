@@ -14,6 +14,11 @@ Serialized IR can act as input to the SBE Tool for code generation. This is done
 
     $ java -jar sbe.jar <message-declarations-file.sbeir>
 
-Therefore it is possible to use Serialized IR as a means to pass around "compiled" representations.
+Therefore it is possible to use serialized IR as a means to pass around "compiled" representations.
 
 ### Structure of Serialized IR
+
+<table>
+<td> Header <td> Footer <tr>
+</table>
+
