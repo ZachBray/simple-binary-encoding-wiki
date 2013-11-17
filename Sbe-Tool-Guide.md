@@ -1,8 +1,8 @@
-The SBE tool is a command line utility that can be used to generate codecs and validate message declaration schemas. The tool is written in Java and can run as a executable JAR file.
+The SBE tool is a command line utility that can be used to generate codecs and validate message declaration schemas. The tool is written in Java and can run as an executable JAR file, e.g:
 
     java -jar sbe.jar <message-declarations-file.xml>
 
-The tool will accept options using the system property option format as follows.
+The tool will accept options using the system property option format as follows:
 
     java -jar sbe.jar -Doption=value <message-declarations-file.xml>
 
