@@ -15,7 +15,7 @@ Many design principles come to bear on any implementation. Not all design princi
 
 Networks and Storage systems deal with buffers in which the messages are encoded and decoded. The principle of copy-free is to not employ any intermediate buffers for the encoding or decoding of messages. If an intermediate buffer is employed then the costs escalate due to the copying of bytes multiple times.
 
-SBE codecs take the approach of encoding and decoding directly to/from the underlying buffer. This has the limitation that messages greater in size than the transfer buffers are not directly supported. For messages larger than the transfer buffer size then a fragmentation protocol is required to fragment and reassemble large messages.
+SBE codecs take the approach of encoding and decoding directly to/from the underlying buffer. This has the limitation that messages greater in size than the transfer buffers are not directly supported. For messages larger than the transfer buffer size a fragmentation protocol is required to fragment and reassemble large messages.
 
 ### Native Type Mapping
 
@@ -25,19 +25,19 @@ By taking a native mapping approach the fields can be accessed for a similar cos
 
 ### Allocation-Free
 
-The allocation of objects can result in CPU cache churn which reduces efficiency. These allocated objects then have to be collected and deleted. For Java the collection is done by the garbage collector which typically has to do this by a stop-the-world pause that happens frequently but with varying duration, thus creating variance. C++ is better but still has issues when memory is returned to central pools that may employ locks that introduce cost and latency variance.
+The allocation of objects can result in CPU cache churn which reduces efficiency. These allocated objects then have to be collected and deleted. For Java the collection is done by the garbage collector which typically has to do this by a stop-the-world pause (for young generation. an exception is the C4 garbage collector which is concurrent even for young generation) that happens frequently but with varying duration, thus creating variance. C++ is better but still has issues when memory is returned to central pools that may employ locks that introduce cost and latency variance.
 
-The design of SBE codecs are allocation-free by employing the flyweight pattern. The flyweight windows over the underlying buffer for direct encoding and decoding of messages. The flyweight of the appropriate type is selected based on the message header template id field. If fields form the message need to be retained beyond the scope of processing a message then they must be stored separately.
+The design of SBE codecs are allocation-free by employing the flyweight pattern. The flyweight windows over the underlying buffer for direct encoding and decoding of messages. The flyweight of the appropriate type is selected based on the message header template id field. If fields form the message need to be retained beyond the scope of processing a message then they must be stored separately (i.e copied out).
 
 ### Streaming Access
 
-Modern memory sub-systems have become evermore complex. The [patterns of access](http://mechanical-sympathy.blogspot.co.uk/2012/08/memory-access-patterns-are-important.html) an algorithm makes to memory can greatly dictate performance and consistency. The best performance, and most consistent latency, is gained by taking a streaming based approach that addresses memory in a ascending sequential access pattern.
+Modern memory sub-systems have become evermore complex. The [patterns of access](http://mechanical-sympathy.blogspot.co.uk/2012/08/memory-access-patterns-are-important.html) an algorithm makes to memory can greatly dictate performance and consistency. The best performance, and most consistent latency, is gained by taking a streaming based approach that addresses memory in an ascending sequential access pattern.
 
 The SBE codecs are designed to encode and decode messages based on a forward progression of the position in the underlying buffer. It is possible to backtrack to a degree within messages but this is highly discouraged from a performance and latency perspective.
 
 ### Word Aligned Access
 
-Many CPU architectures exhibit significant performance issues when words are accessed on non word sized boundaries. That is the starting address of a word should be a multiple of its size in bytes. 64-bit integers should only begin on byte address divided by 8, 32-bit integers should only begin on byte addresses divided by 4, and so on.
+Many CPU architectures exhibit significant performance issues when words are accessed on non word sized boundaries. That is the starting address of a word should be a multiple of its size in bytes. 64-bit integers should only begin on byte address divisible by 8, 32-bit integers should only begin on byte addresses divisible by 4, and so on.
 
 SBE schemas support the concept of an offset that defines the starting position of a field within a message. It is assumed the messages are encapsulated within a framing protocol on 8 byte boundaries. To achieve compact and efficient messages the fields should be sorted in order by type and descending size.
 
@@ -45,4 +45,4 @@ SBE schemas support the concept of an offset that defines the starting position 
 
 In a large enterprise, or across enterprises, it is not always possible to upgrade all systems at the same time. For communication to continue working the message formats have to be backwards compatible, i.e. an older system should be able to read a newer version of the same message and vice versa. 
 
-An extension mechanism is designed into SBE which allows for the introduction of new optional fields within a message that the new systems can use while the older systems ignore them until upgrade. If new mandatory fields are required or a fundamental structural change is required then a message type must be employed because it is no longer a semantic extension of an existing message type.
+An extension mechanism is designed into SBE which allows for the introduction of new optional fields within a message that the new systems can use while the older systems ignore them until upgrade. If new mandatory fields are required or a fundamental structural change is required then a new message type must be employed because it is no longer a semantic extension of an existing message type.
