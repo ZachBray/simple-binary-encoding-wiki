@@ -86,13 +86,13 @@ Decoding is simply the reverse.
 
 ### Fixed String Arrays
 
-When encoding things like financial symbols it often beneficial to encode these are fixed length character arrays. SBE characters are single bytes. The default encoding is US-ASCII but it is possible to signify other encodings by using the characterEncoding attribute of the schema. In addition to the fixed array access method the following are provided.
+When encoding things like financial symbols it often beneficial to encode these as fixed length character arrays. SBE characters are single bytes. The default encoding is US-ASCII but it is possible to signify other encodings by using the characterEncoding attribute of the schema. In addition to the fixed array access method the following are provided.
 
 For encoding a put method is defined taking a source byte array with an source offset at which to begin copying. The copy will always be for the size of the field.
 
        car.putVehicleCode(VEHICLE_CODE, srcOffset);
 
-For decoding a get method is define taking destination byte array with an destination offset at which copy into to.
+For decoding a get method is defined taking destination byte array with a destination offset at which to copy into.
 
         sb.append("\ncar.vehicleCode=")
           .append(new String(buffer, 0, car.getVehicleCode(buffer, 0, buffer.length), car.vehicleCodeCharacterEncoding()));
@@ -134,7 +134,7 @@ Decoding
 
 ### Composite Types
 
-Composite types provide a means of reuse. The map directly to a class as a flyweight pattern in Java.
+Composite types provide a means of reuse. They map directly to a class as a flyweight pattern in Java.
 
 **Note**: For efficiency it is best to hold onto the reference to the type until all fields in the type have been accessed.
 
@@ -156,7 +156,7 @@ Decoding
 
 Repeating groups allow for collections of repeating type which can even be nested. The groups are types represented as a flyweight.
 
-To encode it is necessary to first stage the count of time the group will repeat and then use the next() method to cursor forward while encoding.
+To encode it is necessary to first stage the count of times the group will repeat and then use the next() method to cursor forward while encoding.
 
     final Car.PerformanceFigures performanceFigures = car.performanceFiguresCount(2);
     performanceFigures.next()
@@ -189,7 +189,7 @@ To decode the flyweight implements Iterable and Iterator allowing for use with t
 
 ## Variable Length Data
 
-To store variable length strings or binary data then the var data fields can be used at the end of the message. These are variable length byte arrays for which optional character encoding can be provided in the schema.
+To store variable length strings or binary data the var data fields can be used at the end of the message. These are variable length byte arrays for which optional character encoding can be provided in the schema.
 
 Encoding
 
