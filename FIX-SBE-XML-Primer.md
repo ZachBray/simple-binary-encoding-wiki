@@ -97,7 +97,7 @@ has the following attributes:
 * `presence`: One of `constant`, `required`, or `optional`. Default is `required`.
 * `semanticType`: Semantic information about the type. (optional)
 * `description`: Description of the type. (optional)
-* `encodingType`: Primitive Type of the encoding type. Must be `char` or `uint8`.
+* `encodingType`: Primitive Type of the encoding type. Must be `char` or `uint8` or be a named type that uses one of those `primitiveType`s.
 
 `<validValue>` elements are contained within the `<enum>` to hold the information about the values. Each element has the following attributes: `name` and `description`. The contents of the `<validValue>` element contains the value itself.
 
@@ -123,7 +123,7 @@ has the following attributes:
 * `presence`: One of `constant`, `required`, or `optional`. Default is `required`.
 * `semanticType`: Semantic information about the type. (optional)
 * `description`: Description of the type. (optional)
-* `encodingType`: Primitive Type of the encoding type. Must be `uint8`, `uint16`, `uint32`, or `uint64`.
+* `encodingType`: Primitive Type of the encoding type. Must be `uint8`, `uint16`, `uint32`, or `uint64` or be a named type that uses one of those `primitiveType`s.
 
 `<choice>` elements are contained within the `<set>` to hold the information about the values. Each element has the following attributes: `name` and `description`. The contents of the `<choice>` element contains the bit position of that choice. I.e. 0 means bit position 0, 1 means bit position 1, etc.
 
