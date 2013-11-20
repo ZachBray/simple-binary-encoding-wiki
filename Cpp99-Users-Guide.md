@@ -213,3 +213,7 @@ Decoding
 
 
 **Note**: Variable data fields must be encoded and decoded in order as defined in the schema.
+
+### Versioning
+
+There are some methods generated to help with versioning changes. In general, a field will return a "null" value (according to the SBE schema) for any field not present in that version. For example, if version 3 of a schema is the current codec and the acting version is set to 1, any fields added since version 2 or 3 will return values equivalent to "null" for the type or set by the schema. In addition, each field has two additional methods to help applications. They are `int <field name>SinceVersion(void)` and `bool <field name>InActingVersion(void)`.
