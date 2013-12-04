@@ -117,11 +117,11 @@ Decoding is simply the reverse.
 
 ### BitSets
 
-A bitset is multi-value choice that is mapped to the presence or not of particular bits in an integer. The bitset is returned from the flyweight with properties that take true or false arguments for each named bit.
+A bitset is multi-value choice that is mapped to the presence or not of particular bits in an integer. The bitset is returned from the flyweight with properties that take true or false arguments for each named bit. A `clear()` method is provided to reset the flags and should be used to initialize for encoding.
 
 Encoding
 
-    car.extras()
+    car.extras().clear()
        .cruiseControl(true)
        .sportsPack(true)
        .sunRoof(false);
