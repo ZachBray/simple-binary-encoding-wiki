@@ -11,7 +11,8 @@ There are a number of ant targets for C++ that use cpptask for compilation. The 
  * `cpp:doc`: generate Doxygen doc for OTF decoder
  * `cpp:dist`: generate Doxygen doc for OTF decoder and package into zip
 
-* `cpp:examples:gen`: compile and run cpp99 example
-* `cpp:examples:otf`: compile and run cpp99 OTF decoder example
+* `cpp:examples`: compiles and runs generated and OTF decoder examples
+ * `cpp:examples:gen`: compile and run cpp99 example
+ * `cpp:examples:otf`: compile and run cpp99 OTF decoder example
 
 NOTE: Doxygen is required. If you don't have it, the `cpp` target will not succeed. But `cpp:test` should still work.
