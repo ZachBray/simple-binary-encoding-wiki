@@ -143,7 +143,7 @@ A `<message>` element itself has the following attributes:
 * `name`: Name of the message.
 * `description`: Description of the message. (optional)
 * `id`: The ID of the message. Aka template ID of the message.
-* `blockLength`: The length of the fixed fields in the messages in bytes.
+* `blockLength`: The length in bytes of the fixed fields block at the beginning of messages until the first repeating group or variable data field.
 * `semanticType`: The semantic type of the message.
 
 An example `<message>` use is below:
