@@ -4,7 +4,7 @@ The SBE tool is a command line utility that can be used to generate codecs and v
 
 The tool will accept options using the system property option format as follows:
 
-    java -jar sbe.jar -Doption=value <message-declarations-file.xml>
+    java -Doption=value -jar sbe.jar <message-declarations-file.xml>
 
 The tool supports the following options:
  * <code>sbe.validation.xsd</code>: Use XSD to validate or not. XSD filename should be the provided option.
