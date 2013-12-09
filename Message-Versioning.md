@@ -6,7 +6,7 @@ Messages are organised into blocks to allow for variable length encoding. The fi
 
 Groups are blocks of fields that repeat for a given count. Both messages and repeating groups have a header with a block header that encodes the block length.
 
-It is possible to add fields at the end of either the root block of a messages or the block of fields making up a repeating group.
+It is possible to add fields at the end of either the root block of a messages or the block of fields making up a repeating ```group```.
 
 It is **not** possible to add fields to a ```composite``` type without creating a new message template and schema version.
 
