@@ -1,4 +1,4 @@
-FIX/SBE uses an XML format to specify messages, headers, and other elements. The system is typed and users can create new types from primitives. In this section, we will discuss the practical aspects of the XML specification. For details, please see the FIX/SBE specification. An example schema can be found [here](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/resources/TestSchema.xml).
+FIX/SBE uses an XML format to specify messages, headers, and other elements. The system is typed and users can create new types from primitives. In this section, we will discuss the practical aspects of the XML specification. For details, please see the FIX/SBE specification. An example schema can be found [here](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/resources/TestSchema.xml). An XSD for SBE specifications can be found [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/resources/fpl/SimpleBinary1-0.xsd).
 
 ### <code>messageSchema</code> Element
 
