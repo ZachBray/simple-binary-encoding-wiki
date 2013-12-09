@@ -12,7 +12,7 @@ It is **not** possible to add fields to a ```composite``` type without creating 
 
 ### Adding a new Field
 
-A new field can be added by creating a new ```messageSchema``` and increasing the ```version``` number of the schema, versions start at 0. The new field can then be added at the end of the root block in the ```message``` or the end of a block in a '''group'''. The new field should have its ```sinceVersion``` attribute set to be the version number that has been used for the new schema and its ```presence=optional``` attribute set.
+A new field can be added by creating a new ```messageSchema``` and increasing the ```version``` number of the schema, versions start at 0. The new field can then be added at the end of the root block in the ```message``` or the end of a block in a ```group```. The new field should have its ```sinceVersion``` attribute set to be the version number that has been used for the new schema and its ```presence=optional``` attribute set.
 
     <messageSchema package="extension"
                    version="1"
