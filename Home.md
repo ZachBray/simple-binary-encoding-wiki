@@ -17,7 +17,8 @@ The SBE tool can be used as a library enabling on-the-fly decoding of messages, 
 
 ### History of SBE
 
-SBE originates from the _"High Performance Work Group"_ within the [FIX Protocol Limited (FPL)](http://old.fixprotocol.org/) organisation. The goal was to produce a binary encoding representation suitable for low-latency financial trading. The statement below is from the working group at the outset.
+[SBE](http://www.fixtradingcommunity.org/pg/file/fplpo/read/46939/simple-binary-encoding-specification
+) originates from the _"High Performance Work Group"_ within the [FIX Protocol Limited (FPL)](http://old.fixprotocol.org/) organisation. The goal was to produce a binary encoding representation suitable for low-latency financial trading. The statement below is from the working group at the outset.
 
 > Date	2013-06-03 13:21
 
