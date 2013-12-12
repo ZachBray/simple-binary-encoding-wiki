@@ -120,10 +120,10 @@ A bitset is multi-value choice that is mapped to the presence or not of particul
 
 Encoding
 
-    car.extras()
-       .cruiseControl(true)
-       .sportsPack(true)
-       .sunRoof(false);
+    car.extras().clear()
+                .cruiseControl(true)
+                .sportsPack(true)
+                .sunRoof(false);
 
 Decoding
 
