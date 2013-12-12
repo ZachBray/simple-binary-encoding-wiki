@@ -122,9 +122,9 @@ A bitset is multi-value choice that is mapped to the presence or not of particul
 Encoding
 
     car.extras().clear()
-       .cruiseControl(true)
-       .sportsPack(true)
-       .sunRoof(false);
+                .cruiseControl(true)
+                .sportsPack(true)
+                .sunRoof(false);
 
 Decoding
 
@@ -141,10 +141,9 @@ Composite types provide a means of reuse. The map directly to a class as a flywe
 
 Encoding
 
-    car.engine()
-       .capacity(2000)
-       .numCylinders((short)4)
-       .putManufacturerCode(MANUFACTURER_CODE);
+    car.engine().capacity(2000)
+                .numCylinders((short)4)
+                .putManufacturerCode(MANUFACTURER_CODE);
 
 Decoding
 
