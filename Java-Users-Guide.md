@@ -140,10 +140,9 @@ Composite types provide a means of reuse. They map directly to a class as a flyw
 
 Encoding
 
-    car.engine()
-       .capacity(2000)
-       .numCylinders((short)4)
-       .putManufacturerCode(MANUFACTURER_CODE, srcOffset);
+    car.engine().capacity(2000)
+                .numCylinders((short)4)
+                .putManufacturerCode(MANUFACTURER_CODE, srcOffset);
 
 Decoding
 
@@ -159,18 +158,16 @@ Repeating groups allow for collections of repeating type which can even be neste
 To encode it is necessary to first stage the count of times the group will repeat and then use the next() method to cursor forward while encoding.
 
     final Car.PerformanceFigures performanceFigures = car.performanceFiguresCount(2);
-    performanceFigures.next()
-        .octaneRating((short)95)
-        .accelerationCount(3)
-            .next().mph(30).seconds(4.0f)
-            .next().mph(60).seconds(7.5f)
-            .next().mph(100).seconds(12.2f);
-    performanceFigures.next()
-        .octaneRating((short)99)
-        .accelerationCount(3)
-            .next().mph(30).seconds(3.8f)
-            .next().mph(60).seconds(7.1f)
-            .next().mph(100).seconds(11.8f);
+    performanceFigures.next().octaneRating((short)95)
+                             .accelerationCount(3)
+                             .next().mph(30).seconds(4.0f)
+                             .next().mph(60).seconds(7.5f)
+                             .next().mph(100).seconds(12.2f);
+    performanceFigures.next().octaneRating((short)99)
+                             .accelerationCount(3)
+                             .next().mph(30).seconds(3.8f)
+                             .next().mph(60).seconds(7.1f)
+                             .next().mph(100).seconds(11.8f);
 
 To decode the flyweight implements Iterable and Iterator allowing for use with the foreach loop pattern.
 
