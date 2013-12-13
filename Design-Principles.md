@@ -19,15 +19,15 @@ SBE codecs take the approach of encoding and decoding directly to/from the under
 
 ### Native Type Mapping
 
-A copy-free design is greatly benefited by encoding the data as native types in the underlying buffer. For example, a 64-bit integer can be encoded directly to the underlying buffer as a single x86_64 MOV assembly instruction. If the [byte order](http://www.ietf.org/rfc/ien/ien137.txt) of the types is defined to be that of another CPU architecture then the bytes can be swapped in a register before being stored to the underlying buffer by the x86 BSWAP instruction.
+A copy-free design is greatly benefited by encoding the data as native types in the underlying buffer. For example, a 64-bit integer can be encoded directly to the underlying buffer as a single x86_64 ```MOV``` assembly instruction. If the [byte order](http://www.ietf.org/rfc/ien/ien137.txt) of the types is defined to be that of another CPU architecture then the bytes can be swapped in a register before being stored to the underlying buffer by the x86 ```BSWAP``` instruction.
 
 By taking a native mapping approach the fields can be accessed for a similar cost to class or struct fields in a high-level language such as C++ or Java.
 
 ### Allocation-Free
 
-The allocation of objects can result in CPU cache churn which reduces efficiency. These allocated objects then have to be collected and deleted. For Java the collection is done by the garbage collector which typically has to do this by a stop-the-world pause (for young generation. an exception is the C4 garbage collector which is concurrent even for young generation) that happens frequently but with varying duration, thus creating variance. C++ is better but still has issues when memory is returned to central pools that may employ locks that introduce cost and latency variance.
+The allocation of objects can result in CPU cache churn which reduces efficiency. These allocated objects then have to be collected and deleted. For Java the collection is done by the garbage collector which typically has to do this by a stop-the-world pause (for young generation, an exception is the C4 garbage collector which is concurrent even for young generation) that happens frequently but with varying duration, thus creating variance. C++ is better but still has issues when memory is returned to central pools that may employ locks that introduce cost and latency variance.
 
-The design of SBE codecs are allocation-free by employing the flyweight pattern. The flyweight windows over the underlying buffer for direct encoding and decoding of messages. The flyweight of the appropriate type is selected based on the message header template id field. If fields form the message need to be retained beyond the scope of processing a message then they must be stored separately (i.e copied out).
+The design of SBE codecs are allocation-free by employing the flyweight pattern. The flyweight windows over the underlying buffer for direct encoding and decoding of messages. The flyweight of the appropriate type is selected based on the message header template id field. If fields from the message need to be retained beyond the scope of processing a message then they must be stored separately (i.e. copied out).
 
 ### Streaming Access
 
