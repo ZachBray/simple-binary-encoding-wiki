@@ -1,4 +1,4 @@
-Some applications, such as network sniffers, need to decode messages dynamically and thus have to use the [Intermediate Representation](Intermediate-Representation) to decode the messages on-the-fly (OTF). An example of using the OTF API can be found [here](https://github.com/real-logic/simple-binary-encoding/tree/master/examples/java/uk/co/real_logic/sbe/examples/).
+Some applications, such as network sniffers, need to process messages dynamically and thus have to use the [Intermediate Representation](Intermediate-Representation) to decode the messages on-the-fly (OTF). An example of using the OTF API can be found [here](https://github.com/real-logic/simple-binary-encoding/tree/master/examples/java/uk/co/real_logic/sbe/examples/).
 
 The Java OTF decoder follows the [design principles](Design-Principles) of the generated codecs and is thread safe to be reused concurrently across multiple threads for memory efficiency.
 
