@@ -203,7 +203,7 @@ Fields can be semantically bound into a repeating group. On the wire the repeati
 
 **Note**: Repeating groups can nest so it is necessary to be prepared to handle this scope recursively.
 
-### Variable Data Encoding
+### Decoding Variable Length Data
 
 At the end of a message it is possible to encode variable length strings or binary blobs. Strings are binary data that uses the schema defined character encoding to decode them.
 
