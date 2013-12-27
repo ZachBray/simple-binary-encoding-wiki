@@ -13,6 +13,7 @@ The SBE tool can be used as a library enabling on-the-fly decoding of messages, 
 1. [FIX/SBE XML Primer](wiki/FIX-SBE-XML-Primer)
 1. [Message Extension/Versioning](wiki/Message-Versioning)
 1. [Intermediate Representation](wiki/Intermediate-Representation)
+1. [Java OTF User Guide](wiki/Java-OTF-User-Guide)
 1. [Frequently Asked Questions](wiki/Frequently-Asked-Questions)
 
 ### History of SBE
