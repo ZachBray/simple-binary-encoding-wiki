@@ -48,7 +48,7 @@ Once you have decoded the header you can lookup the message template IR and begi
                                          msgTokens,
                                          new ExampleTokenListener(new PrintWriter(System.out, true)));
 
-The eagle eyed with have noticed the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/otf/TokenListener.java). If you are wondering what this is then wonder no longer and read on.
+The eagle eyed will have noticed the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/otf/TokenListener.java). If you are wondering what this is then wonder no longer and read on.
 
 ## Decoding Messages
 
