@@ -23,7 +23,7 @@ Once the IR is decoded you can then create the OTF decoders for the message head
         = new OtfMessageDecoder(new OtfGroupSizeDecoder(ir.getType(OtfGroupSizeDecoder.GROUP_SIZE_ENCODING_NAME)), 
                                 new OtfVarDataDecoder(ir.getType(OtfVarDataDecoder.VAR_DATA_ENCODING_NAME)));
 
-You are now ready to decode messages as they arrive. This can be done by first reading the message header then looking up the appropriate template.
+You are now ready to decode messages as they arrive. This can be done by first reading the message header then looking up the appropriate template to decode the message body.
 
     // Now we have IR we can read the message header
     int bufferOffset = 0;
@@ -37,7 +37,7 @@ You are now ready to decode messages as they arrive. This can be done by first r
 
 **Note**: Don't forget to increment the `bufferOffset` to account for the message header size!
 
-Once you have decoded the header you can lookup the message template IR and begin decoding.
+Once you have decoded the header you can lookup the IR for the appropriate message body then begin decoding.
 
     final List<Token> msgTokens = ir.getMessage(templateId);
 
@@ -56,7 +56,7 @@ As messages are decoded a number of callback events will be generated as the str
 
 ### Decoding Primitive Fields
 
-Primitive fields are the most data element to be decoded. These are simple types such as integers, floating point numbers, or characters. Primitive field encodings can be a single value or a fixed size array of the same type. To receive primitive values override the following method.
+Primitive fields are the most common data element to be decoded. These are simple types such as integers, floating point numbers, or characters. Primitive field encodings can be a single value or a fixed length array of the same type. To receive primitive values override the following method:
 
     public void onEncoding(final Token fieldToken,
                            final DirectBuffer buffer,
@@ -116,7 +116,7 @@ The above code will output the values as strings to the console.
 
 ### Decoding Enums
 
-Enums are encoded on the wire as simple integers or characters. It is necessary to lookup the encoded representation in the metadata to understand the wire encoded value.
+Enums are encoded on the wire as simple integers or characters. It is necessary to lookup the encoded representation via the metadata tokens to understand the wire encoded value.
 
     public void onEnum(final Token fieldToken,
                        final DirectBuffer buffer, final int bufferIndex,
@@ -171,11 +171,11 @@ BitSets are represented on the wire as an integer with a bit set in the position
         out.println();
     }
 
-To determine if the choice has been set requires a little bitwise manipulation as in the above.
+A little bitwise manipulation is required to determine if a each choice is true or false as in the example above.
 
 ### Decoding Composites
 
-A composite is a reusable collection of fields to simplify the assembly of messages. The collection of fields usually has a semantic significance. Fields within the composite are decoded just like normal fields. Composites also come with callbacks to indicate the beginning and end of the composite. In the example the begin and end are captured to scope fields by adding the scope to a stack.
+A composite is a reusable collection of fields to simplify the assembly of messages. The collection of fields usually has a semantic significance. Fields within a composite are decoded just like normal fields. Composites are signalled via callbacks to indicate the beginning and end of the composite. In the example, the begin and end are captured to scope fields by adding the scope to a stack in the example `TokenListener`.
 
     public void onBeginComposite(final Token fieldToken, final List<Token> tokens, final int fromIndex, final int toIndex)
     {
@@ -189,7 +189,7 @@ A composite is a reusable collection of fields to simplify the assembly of messa
 
 ### Decoding Repeating Groups
 
-Fields can be semantically bound into a repeating group. On the wire the repeating group has a header that defines the size in bytes of the block of fields in bytes and a count of how many times the block will repeat. Repeating groups provide callback to indicate the beginning and end of block of fields with counter details for the iteration count and the number of times it will repeat in total.
+Fields can be semantically bound into a repeating group. On the wire the repeating group has a header that defines the size in bytes of the block of fields and a count of how many times the block will repeat. Repeating groups are signalled by callbacks to indicate the beginning and end of block of fields with counter details for the iteration count and the number of times it will repeat in total.
 
     public void onBeginGroup(final Token token, final int groupIndex, final int numInGroup)
     {
@@ -205,7 +205,7 @@ Fields can be semantically bound into a repeating group. On the wire the repeati
 
 ### Decoding Variable Length Data
 
-At the end of a message it is possible to encode variable length strings or binary blobs. Strings are binary data that uses the schema defined character encoding to decode them.
+At the end of a message it is possible to encode variable length strings or binary blobs. Strings are binary data that uses a schema defined character encoding.
 
     public void onVarData(final Token fieldToken, final DirectBuffer buffer, final int bufferIndex, final int length, final Token typeToken)
     {
