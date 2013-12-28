@@ -17,7 +17,7 @@ Before messages can be decoded it is necessary to retrieve the IR for the schema
 
 Once the IR is decoded you can then create the OTF decoder for the message header:
 
-    // From the IR we can create OTF decoders for messages.
+    // From the IR we can create OTF decoder for message headers.
     final OtfHeaderDecoder headerDecoder = new OtfHeaderDecoder(ir.headerStructure());
 
 You are now ready to decode messages as they arrive. This can be done by first reading the message header then looking up the appropriate template to decode the message body.
