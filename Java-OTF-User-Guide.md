@@ -15,13 +15,10 @@ Before messages can be decoded it is necessary to retrieve the IR for the schema
         return irDecoder.decode();
     }
 
-Once the IR is decoded you can then create the OTF decoders for the message header, groups, variable data, and messages as follows:
+Once the IR is decoded you can then create the OTF decoder for the message header:
 
     // From the IR we can create OTF decoders for messages.
     final OtfHeaderDecoder headerDecoder = new OtfHeaderDecoder(ir.headerStructure());
-    final OtfMessageDecoder messageDecoder 
-        = new OtfMessageDecoder(new OtfGroupSizeDecoder(ir.getType(OtfGroupSizeDecoder.GROUP_SIZE_ENCODING_NAME)), 
-                                new OtfVarDataDecoder(ir.getType(OtfVarDataDecoder.VAR_DATA_ENCODING_NAME)));
 
 You are now ready to decode messages as they arrive. This can be done by first reading the message header then looking up the appropriate template to decode the message body.
 
@@ -41,12 +38,12 @@ Once you have decoded the header you can lookup the IR for the appropriate messa
 
     final List<Token> msgTokens = ir.getMessage(templateId);
 
-    bufferOffset = messageDecoder.decode(buffer,
-                                         bufferOffset,
-                                         actingVersion,
-                                         blockLength,
-                                         msgTokens,
-                                         new ExampleTokenListener(new PrintWriter(System.out, true)));
+    bufferOffset = OtfMessageDecoder.decode(buffer,
+                                            bufferOffset,
+                                            actingVersion,
+                                            blockLength,
+                                            msgTokens,
+                                            new ExampleTokenListener(new PrintWriter(System.out, true)));
 
 The eagle eyed will have noticed the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/otf/TokenListener.java). If you are wondering what this is then wonder no longer and read on.
 
