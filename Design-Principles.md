@@ -4,12 +4,12 @@ The results of applying the following design principles can be seen in the [benc
 
 Many design principles come to bear on any implementation. Not all design principles require trade-offs but many do. The following set of design principles are key to the design of SBE and the likely to drive most trade-offs.
 
-1. [Copy-Free](Design-Principles#Copy-Free)
-1. [Native Type Mapping](Design-Principles#Native-Type-Mapping)
-1. [Allocation-Free](Design-Principles#Allocation-Free)
-1. [Streaming Access](Design-Principles#Streaming-Access)
-1. [Word Aligned Access](Design-Principles#Word-Aligned-Access)
-1. [Backwards Compatibility](Design-Principles#Backwards-Compatibility)
+1. [Copy-Free](Design-Principles#copy-free)
+1. [Native Type Mapping](Design-Principles#native-type-mapping)
+1. [Allocation-Free](Design-Principles#allocation-free)
+1. [Streaming Access](Design-Principles#streaming-access)
+1. [Word Aligned Access](Design-Principles#word-aligned-access)
+1. [Backwards Compatibility](Design-Principles#backwards-compatibility)
 
 ### Copy-Free
 
