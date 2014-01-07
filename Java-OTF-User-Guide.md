@@ -8,12 +8,14 @@ The Java OTF decoder follows the [design principles](Design-Principles) of the g
 
 Before messages can be decoded it is necessary to retrieve the IR for the schema describing the messages and types. This can be down by reading the encoded IR into a `ByteBuffer` and then decoding it using the provided `IrDecoder`.
 
+```Java
     private static IntermediateRepresentation decodeIr(final ByteBuffer buffer)
         throws IOException
     {
         final IrDecoder irDecoder = new IrDecoder(buffer);
         return irDecoder.decode();
     }
+```
 
 Once the IR is decoded you can then create the OTF decoder for the message header:
 
