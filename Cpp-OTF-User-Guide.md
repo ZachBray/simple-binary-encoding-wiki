@@ -52,17 +52,283 @@ Decoding multiple messages in a single buffer is straight forward. Simply bump t
          .subscribe(...);                                   // go ahead and decode single message header plus message and return     
 ```
 
+As fields and repeating groups are encountered in a message, the callbacks passed into `Listener::subscribe(OnNext *, OnError *, OnCompleted *)` will be called. Fields will be seen via the `OnNext::onNext(const Field &)` method. Group event, such as group start and end, will be seen via the `OnNext::onNext(const Group &)` method. Errors that occur will be seen via the `OnError::onError(const Error &)` method. Errors stop decoding of the current message. If a message is successfully completed, then a completion event will be seen via the `OnCompleted::onCompleted(void)` method. For `Listener::subscribe`, the `OnError` and `OnCompleted` arguments are optional and default to `NULL`. Below is a simple example.
+
+```c++
+class ExampleCallback : public OnNext, OnError, OnCompleted
+{
+    virtual int onNext(const Field &f)
+    {
+        ...         // handle Fields
+        return 0;   // 0 for success and -1 for failure
+    }
+
+    virtual int onNext(const Group &g)
+    {
+        ...         // handle Group event
+        return 0;   // 0 for success and -1 for failure
+    }
+
+    virtual int onError(const Error &e)
+    {
+        ...         // handle error
+        return 0;   // 0 for success and -1 for failure
+    }
+
+    virtual int onCompleted(void)
+    {
+        ...         // handle completion event
+        return 0;   // 0 for success and -1 for failure
+    }
+};
+
+...
+ExampleCallback cbs;
+// set up listener and kick off decoding with subscribe
+listener.dispatchMessageByHeader(...)
+        .resetForDecode(...)
+        .subscribe(&cbs, &cbs, &cbs);
+```
+
 ## Fields
 
 During decoding a Listener will call `OnNext::onNext(const Field &)` and pass encountered fields to the application. These fields may be of varying types, including composites (or structs), enumerations, bit sets, or variable length data. All of these types may be accessed via the `Field` class.
+
+For details of the `Field` class, see the header file [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/cpp/otf_api/Field.h) or the doxygen doc. Below is an example of accessing various field methods, types, etc. from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp).
+
+```c++
+class CarCallbacks : public OnNext
+{
+public:
+    // callback for when a field is encountered
+    virtual int onNext(const Field &f)
+    {
+        std::cout << "Field name=\"" << f.fieldName() << "\" id=" << f.schemaId();
+
+        if (f.isComposite())
+        {
+            std::cout << ", composite name=\"" << f.compositeName() << "\"";
+        }
+        std::cout << std::endl;
+
+        if (f.isEnum())
+        {
+            std::cout << " Enum [" << f.validValue() << "]";
+            printEncoding(f, 0); // print the encoding. Index is 0.
+        }
+        else if (f.isSet())
+        {
+            std::cout << " Set ";
+            // print the various names for the bits that are set
+            for (std::vector<std::string>::iterator it = ((std::vector<std::string>&)f.choices()).begin(); it != f.choices().end(); ++it)
+            {
+                std::cout << "[" << *it << "]";
+            }
+
+            printEncoding(f, 0); // print the encoding. Index is 0.
+        }
+        else if (f.isVariableData())
+        {
+            // index 0 is the length field type, value, etc.
+            // index 1 is the actual variable length data
+
+            std::cout << " Variable Data length=" << f.length(1);
+
+            char tmp[256];
+            f.getArray(1, tmp, 0, f.length(1));  // copy the data
+            std::cout << " value=\"" << std::string(tmp, f.length(1)) << "\"";
+
+            std::cout << " presence=" << presenceStr(f.presence(1));
+            std::cout << std::endl;
+        }
+        else // if not enum, set, or var data, then just normal encodings, but could be composite
+        {
+            for (int i = 0, size = f.numEncodings(); i < size; i++)
+            {
+                printEncoding(f, i);
+            }
+        }
+
+        return 0;
+    };
+
+protected:
+
+    // print out details of an encoding
+    void printEncoding(const Field &f, int index)
+    {
+        std::cout << " name=\"" << f.encodingName(index) << "\" length=" << f.length(index);
+        switch (f.primitiveType(index))
+        {
+            case Ir::CHAR:
+                if (f.length(index) == 1)
+                {
+                    std::cout << " type=CHAR value=\"" << (char)f.getUInt(index) << "\"";
+                }
+                else
+                {
+                    char tmp[1024];
+
+                    // copy data to temp array and print it out.
+                    f.getArray(index, tmp, 0, f.length(index));
+                    std::cout << " type=CHAR value=\"" << std::string(tmp, f.length(index)) << "\"";
+                }
+                break;
+            case Ir::INT8:
+                std::cout << " type=INT8 value=\"" << f.getInt(index) << "\"";
+                break;
+            case Ir::INT16:
+                std::cout << " type=INT16 value=\"" << f.getInt(index) << "\"";
+                break;
+            case Ir::INT32:
+                if (f.length() == 1)
+                {
+                    std::cout << " type=INT32 value=\"" << f.getInt(index) << "\"";
+                }
+                else
+                {
+                    char tmp[1024];
+
+                    // copy data to temp array and print it out.
+                    f.getArray(index, tmp, 0, f.length(index));
+                    std::cout << " type=INT32 value=";
+                    for (int i = 0, size = f.length(index); i < size; i++)
+                    {
+                        std::cout << "{" << *((int32_t *)(tmp + (sizeof(int32_t) * i))) << "}";
+                    }
+                }
+                break;
+            case Ir::INT64:
+                std::cout << " type=INT64 value=\"" << f.getInt(index) << "\"";
+                break;
+            case Ir::UINT8:
+                std::cout << " type=UINT8 value=\"" << f.getUInt(index) << "\"";
+                break;
+            case Ir::UINT16:
+                std::cout << " type=UINT16 value=\"" << f.getUInt(index) << "\"";
+                break;
+            case Ir::UINT32:
+                std::cout << " type=UINT32 value=\"" << f.getUInt(index) << "\"";
+                break;
+            case Ir::UINT64:
+                std::cout << " type=UINT64 value=\"" << f.getUInt(index) << "\"";
+                break;
+            case Ir::FLOAT:
+                std::cout << " type=FLOAT value=\"" << f.getDouble(index) << "\"";
+                break;
+            case Ir::DOUBLE:
+                std::cout << " type=DOUBLE value=\"" << f.getDouble(index) << "\"";
+                break;
+            default:
+                break;
+        }
+        std::cout << " presence=" << presenceStr(f.presence(index));
+        std::cout << std::endl;
+    }
+
+    // print presence
+    const char *presenceStr(Ir::TokenPresence presence)
+    {
+        switch (presence)
+        {
+            case Ir::REQUIRED:
+                return "REQUIRED";
+                break;
+
+            case Ir::OPTIONAL:
+                return "OPTIONAL";
+                break;
+
+            case Ir::CONSTANT:
+                return "CONSTANT";
+                break;
+
+            default:
+                return "UNKNOWN";
+                break;
+
+        }
+    }
+};
+```
 
 ## Groups
 
 Groups are markers in the event sequence of calls to `OnNext::onNext`. Groups contain fields. When a group starts, `OnNext::onNext(const Group &)` is called with a `Group::Event` type of `Group::START`, the name of the group, the iteration number (starting at 0), and the expected number of iterations. After that, a set of calls to `OnNext(const Field &)` should occur. A group is ended by a call to `OnNext::onNext(const Group &)`
 with a `Group::Event` type of `Group::END`. Nested repeating groups are handled as one would expect with `Group::START` and `Group::END` within an existing Group sequence.
 
-## Error Handling
+For details of the `Group` class, see the header file [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/cpp/otf_api/Group.h) or the doxygen doc. Below is an example of usage from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp).
 
-## Message Completion
+```c++
+class CarCallbacks : public OnNext
+{
+public:
+    // save reference to listener for printing offset
+    CarCallbacks(Listener &listener) : listener_(listener) , indent_(0) {};
+
+    // callback for when a group is encountered
+    virtual int onNext(const Group &g)
+    {
+        // group started
+        if (g.event() == Group::START)
+        {
+            std::cout << "Group name=\"" << g.name() << "\" id=\"" << g.schemaId() << "\" start (";
+            std::cout << g.iteration() << "/" << g.numInGroup() - 1 << "):" << "\n";
+
+            if (g.iteration() == 1)
+            {
+                indent_++;
+            }
+        }
+        else if (g.event() == Group::END)  // group ended
+        {
+            std::cout << "Group name=\"" << g.name() << "\" id=\"" << g.schemaId() << "\" end (";
+            std::cout << g.iteration() << "/" << g.numInGroup() - 1 << "):" << "\n";
+
+            if (g.iteration() == g.numInGroup() - 1)
+            {
+                indent_--;
+            }
+        }
+        return 0;
+    }
+
+private:
+    Listener &listener_;
+    int indent_;
+};
+```
+
+## Error Handling & Message Completion
+
+Decoding of a message stops when an error is encountered, such as the length of the buffer being too short,
+or the message is completed successfully. The former is signaled via the `OnError::onError` method. And the latter is signaled via the `OnCompleted::onCompleted` method. An example of usage taken from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp) is below.
+
+```c++
+class CarCallbacks : public OnError, public OnCompleted
+{
+public:
+    // save reference to listener for printing offset
+    CarCallbacks(Listener &listener) : listener_(listener) , indent_(0) {};
+
+    // callback for when an error is encountered
+    virtual int onError(const Error &e)
+    {
+        std::cout << "Error " << e.message() << " at offset " << listener_.bufferOffset() << "\n";
+        return 0;
+    };
+
+    // callback for when decoding is completed
+    virtual int onCompleted()
+    {
+        std::cout << "Completed" << "\n";
+        return 0;
+    };
+
+private:
+    Listener &listener_;
+    int indent_;
+};
+```
 
 ## Ir Collections
