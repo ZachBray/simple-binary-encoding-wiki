@@ -331,4 +331,45 @@ private:
 };
 ```
 
-## Ir Collections
+## IR Collections
+
+A convenience collection object for IR is provided via the `IrCollection` class. This class can read in a serialized IR file, created via `SbeTool` and provides it ready to go for decoding automatically. An example of usage is below. For more details, please see the [header](https://github.com/real-logic/simple-binary-encoding/blob/master/main/cpp/otf_api/IrCollection.h) or the doxygen documentation.
+
+```c++
+// class to encapsulate Ir repository as well as Ir callback for dispatch
+class IrRepo : public IrCollection, public Ir::Callback
+{
+public:
+    // save a reference to the Listener so we can print out the offset
+    IrRepo(Listener &listener) : listener_(listener) {};
+
+    virtual Ir *irForTemplateId(const int templateId, const int templateVersion)
+    {
+        std::cout << "Message lookup id=" << templateId << " version " << templateVersion << " offset " << listener_.bufferOffset() << std::endl;
+
+        // lookup in IrCollection the IR for the template ID and version
+        return (Ir *)IrCollection::message(templateId, templateVersion);
+    };
+
+private:
+    Listener &listener_;
+};
+
+Listener listener;
+IrRepo repo(listener);
+CarCallbacks carCbs(listener);
+
+// load IR from .sbeir file
+if (repo.loadFromFile(irFilename) < 0)
+{
+    std::cout << "could not load IR" << std::endl;
+    exit(-1);
+}
+
+// load data for header + message into a buffer
+
+// set up listener and kick off decoding with subscribe
+listener.dispatchMessageByHeader(repo.header(), &repo)
+        .resetForDecode(buffer, length)
+        .subscribe(&carCbs, &carCbs, &carCbs);
+```
