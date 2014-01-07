@@ -10,10 +10,10 @@ The C++ OTF decoder for SBE is concerned with being able to take a piece of data
 
 ## Listener - Encapsulation of a Decoding Engine
 
-Instances of this class may be reused for different buffers as well as different Ir. The methods use a fluent style for composition.
+Instances of the `Listener` class may be reused for different buffers as well as different Ir. The methods use a fluent style for composition.
 
 The basic usage pattern is:
-- Instantiate a `Listener`
+- Instantiate a `Listener`. This can be on the stack or via `new`, etc.
 - Set the `Ir` to use for the decoding that describes the data format
 - Pass in a pointer to the start of the data along with the length of the data in bytes
 - Subscribe callbacks for `Field`, `Group`, `Error`, and `OnCompleted` events. When called, `Listener::subscribe` initiates the decoding of the message. Thus all callbacks come from the calling thread.
@@ -38,5 +38,5 @@ A more advanced usage pattern is when a header is used to dispatch to a set of d
          .subscribe(...);
 ```
 
-### Decoding Multiple Messages in a Buffer
+Decoding multiple messages in a single buffer is straight forward.
 
