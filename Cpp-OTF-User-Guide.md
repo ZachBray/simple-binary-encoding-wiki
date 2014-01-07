@@ -1,4 +1,4 @@
-Some applications, such as network sniffers, need to process messages dynamically and thus have to use the [Intermediate Representation](Intermediate-Representation) to decode the messages on-the-fly (OTF). An example of using the OTF API can be found [here](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp).
+Some applications, such as network sniffers, need to process messages dynamically and thus have to use the [Intermediate Representation](Intermediate-Representation) to decode the messages on-the-fly (OTF). An example of using the OTF API can be found [here](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp). Doxygen documentation for the C++ OTF API can be found in the header files [here](https://github.com/real-logic/simple-binary-encoding/tree/master/main/cpp/otf_api). You will need to have doxygen installed to build the doc.
 
 The C++ OTF decoder follows the [design principles](Design-Principles) of the generated codec stubs.
 
@@ -38,5 +38,31 @@ A more advanced usage pattern is when a header is used to dispatch to a set of d
          .subscribe(...);
 ```
 
-Decoding multiple messages in a single buffer is straight forward.
+Decoding multiple messages in a single buffer is straight forward. Simply bump the pointer to the data by the offset of the `Listener` after it is done and reuse the decoder. The `Listener` keeps track of its current offset within the buffer and this offset can be retrieved via `Listener::bufferOffset`.
 
+```c++
+ Listener listener();
+ Ir headerIr(headerIrBuffer, headerIrLen);
+ listener.resetForDecode(buffer, len)
+         .dispatchByMessageHeader(headerIr, irCallback)
+         .subscribe(...);                                   // go ahead and decode single message header plus message and return
+
+ listener.resetForDecode(buffer + listener.bufferOffset(), len - listener.bufferOffset())
+         .dispatchByMessageHeader(headerIr, irCallback)
+         .subscribe(...);                                   // go ahead and decode single message header plus message and return     
+```
+
+## Fields
+
+During decoding a Listener will call `OnNext::onNext(const Field &)` and pass encountered fields to the application. These fields may be of varying types, including composites (or structs), enumerations, bit sets, or variable length data. All of these types may be accessed via the `Field` class.
+
+## Groups
+
+Groups are markers in the event sequence of calls to `OnNext::onNext`. Groups contain fields. When a group starts, `OnNext::onNext(const Group &)` is called with a `Group::Event` type of `Group::START`, the name of the group, the iteration number (starting at 0), and the expected number of iterations. After that, a set of calls to `OnNext(const Field &)` should occur. A group is ended by a call to `OnNext::onNext(const Group &)`
+with a `Group::Event` type of `Group::END`. Nested repeating groups are handled as one would expect with `Group::START` and `Group::END` within an existing Group sequence.
+
+## Error Handling
+
+## Message Completion
+
+## Ir Collections
