@@ -15,3 +15,4 @@ The tool supports the following options:
  * <code>sbe.target.language</code>: Target language for code generation, defaults to Java(also supports).
  * <code>sbe.output.dir</code>: Target directory for code generation, defaults to current directory.
  * <code>sbe.ir.filename</code>: Filename to serialize IR(Intermediate-Representation) to within the target directory.
+ * <code>sbe.target.namespace</code>: Namespace to be used for generated code. Equates package for Java. If not provided then the `package` attribute from the schema will be used.
