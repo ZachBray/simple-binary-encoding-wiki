@@ -2,7 +2,7 @@ After running the [SbeTool](Sbe-Tool-Guide) a number of Java source files will b
 
 Messages are designed to be read in the sequential order as define in the schema. This ensures a [stream access](Design-Principles) pattern for performance. If groups or variable data are not processed in order then the data may become corrupt. Conceptually a message is encoded as a series of blocks. The blocks are the root fields, followed by each iteration of repeating groups, and finally followed by one or more variable data fields.
 
-Due to the streaming nature of the codec the size of the message cannot be determined until encoding or decoding is complete. The method <code>MessageFlyweight.position()</code> will return the index in the underlying buffer at which the next block will commence, and the <code>MessageFlyweight.size()</code> method will return the current encoded size depending on how far it has progressed.
+Due to the streaming nature of the codec the size of the message cannot be determined until encoding or decoding is complete. The method <code>MessageFlyweight.limit()</code> will return the index in the underlying buffer at which the next block will commence, and the <code>MessageFlyweight.size()</code> method will return the current encoded size depending on how far it has progressed.
 
 ### Framing
 
