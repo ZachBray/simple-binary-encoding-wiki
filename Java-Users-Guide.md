@@ -18,7 +18,7 @@ The frame may contain session or transport level fields that belong to different
 
 ### Message Header
 
-The message header contains the fields that allows the decoder to identify what codec should be used for as the template for a message.
+The message header contains the fields that allows the decoder to identify what codec should be used as the template for a message.
 
 1. **blockLength**: The length of the message root block before repeating groups or variable data commences.
 1. **templateId**: The identifier for the template type of the message that is to follow.
