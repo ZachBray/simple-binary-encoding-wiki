@@ -50,7 +50,7 @@ The decoder should decode the header and then lookup which template should be us
     bufferOffset += MESSAGE_HEADER.size();
     messageFlyweight.resetForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
 
-### Single Fixed Fields
+### Single Fixed Size Fields
 
 Single fixed fields can be encoded in a fluent style after a message flyweight has been reset for encoding.
 
@@ -65,7 +65,7 @@ Decoding single fixed fields is simply the reverse.
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
 
-### Fixed Array Fields
+### Fixed Size Array Fields
 
 It is possible to encode a fixed length array of primitive value in a field.
 
@@ -84,7 +84,7 @@ Decoding is simply the reverse.
         sb.append(car.someNumbers(i)).append(", ");
     }
 
-### Fixed String Arrays
+### Fixed Size String Arrays
 
 When encoding things like financial symbols it often beneficial to encode these as fixed length character arrays. SBE characters are single bytes. The default encoding is US-ASCII but it is possible to signify other encodings by using the characterEncoding attribute of the schema. In addition to the fixed array access method the following are provided.
 
