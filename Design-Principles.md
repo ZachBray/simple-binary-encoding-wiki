@@ -1,6 +1,6 @@
 To achieve low-latency with minimal variance it is important to define a set of design principles that guide the development. When a trade off must be made then the design principles help guide the decision in choosing between competing alternatives.
 
-The results of applying the following design principles can be seen in the [benchmark results](https://github.com/real-logic/message-codec-bench).
+The results of applying the following design principles can be seen in the [benchmarks](https://github.com/real-logic/simple-binary-encoding/tree/master/perf).
 
 Many design principles come to bear on any implementation. Not all design principles require trade-offs but many do. The following set of design principles are key to the design of SBE and the likely to drive most trade-offs.
 
