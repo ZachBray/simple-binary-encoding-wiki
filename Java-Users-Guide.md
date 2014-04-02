@@ -22,16 +22,18 @@ The message header contains the fields that allows the decoder to identify what 
 
 1. **blockLength**: The length of the message root block before repeating groups or variable data commences.
 1. **templateId**: The identifier for the template type of the message that is to follow.
+1. **schemaId***: The identifier for the schema the message belongs to.
 1. **version**: The version of the template allowing for extension.
 
 **Note**: A new message header type can be defined with different sizes of integers for the template and version according to needs.
 
 To encode a message it is necessary to encode the header then the message.
 
-    MESSAGE_HEADER.reset(directBuffer, bufferOffset, messageTemplateVersion)
-                  .blockLength(messageFlyweight.blockLength())
-                  .templateId((int)messageFlyweight.templateId())
-                  .version((short)messageFlyweight.templateVersion());
+        MESSAGE_HEADER.wrap(directBuffer, bufferOffset, messageTemplateVersion)
+                      .blockLength(CAR.sbeBlockLength())
+                      .templateId(CAR.sbeTemplateId())
+                      .schemaId(CAR.sbeSchemaId())
+                      .version(CAR.sbeSchemaVersion());
 
     // Then encode the message
     messageFlyweight.resetForEncode(directBuffer, bufferOffset);
@@ -39,11 +41,11 @@ To encode a message it is necessary to encode the header then the message.
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
     // Reset the message header in preparation for decoding a message.
-    MESSAGE_HEADER.reset(directBuffer, bufferOffset, messageTemplateVersion);
+    MESSAGE_HEADER.wrap(directBuffer, bufferOffset, messageTemplateVersion);
 
-    final int templateId = MESSAGE_HEADER.templateId();
-    final int actingVersion = MESSAGE_HEADER.version();
     final int actingBlockLength = MESSAGE_HEADER.blockLength();
+    final int schemaId = MESSAGE_HEADER.schemaId();
+    final int actingVersion = MESSAGE_HEADER.version();
 
     // Lookup template for decoding the message
 
@@ -71,7 +73,7 @@ It is possible to encode a fixed length array of primitive value in a field.
 
 To encode the the array.
 
-    for (int i = 0, size = car.someNumbersLength(); i < size; i++)
+    for (int i = 0, size = Car.someNumbersLength(); i < size; i++)
     {
         car.someNumbers(i, i);
     }
@@ -79,7 +81,7 @@ To encode the the array.
 Decoding is simply the reverse.
 
     sb.append("\ncar.someNumbers=");
-    for (int i = 0, size = car.someNumbersLength(); i < size; i++)
+    for (int i = 0, size = Car.someNumbersLength(); i < size; i++)
     {
         sb.append(car.someNumbers(i)).append(", ");
     }
@@ -195,8 +197,8 @@ Encoding
 
 Decoding
 
-    sb.append("\ncar.make=").append(new String(buffer, 0, car.getMake(buffer, 0, buffer.length), car.makeCharacterEncoding()));
-    sb.append("\ncar.model=").append(new String(buffer, 0, car.getModel(buffer, 0, buffer.length), car.modelCharacterEncoding()));
+    sb.append("\ncar.make=").append(new String(buffer, 0, car.getMake(buffer, 0, buffer.length), Car.makeCharacterEncoding()));
+    sb.append("\ncar.model=").append(new String(buffer, 0, car.getModel(buffer, 0, buffer.length), Car.modelCharacterEncoding()));
 
 
 **Note**: Variable data fields must be encoded and decoded in order as defined in the schema.
