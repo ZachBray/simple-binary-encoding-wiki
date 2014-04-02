@@ -5,6 +5,7 @@ FIX/SBE uses an XML format to specify messages, headers, and other elements. The
 The `messageSchema` element is the root document in XML. It contains primarily all types and messages specified. This element has the following attributes:
 
 * `package`: Package. This is the namespace for C++ and package name for Java.
+* `id`: Unique identifier for the schema.
 * `version`: Version number of the attached messages and types. Defaults to 0.
 * `semanticVersion`: Semantic version information as a string.
 * `description`: Description of the entire message schema. (optional)
@@ -13,6 +14,7 @@ The `messageSchema` element is the root document in XML. It contains primarily a
 An example `messageSchema` element would be:
 
     <messageSchema package="uk.co.real_logic.sbe.examples"
+                   id="777"
                    semanticVersion="5.2"
                    description="Code generation unit test support"
                    byteOrder="littleEndian">
@@ -71,11 +73,11 @@ encoding and group dimension encoding. The `<composite>` element has the followi
 
 Examples of the use of `<composite>` are below:
 
-    <composite name="messageHeader" description="Message Header" semanticType="Length">
+    <composite name="messageHeader" description="Message identifiers and length of message root">
         <type name="blockLength" primitiveType="uint16"/>
         <type name="templateId" primitiveType="uint16"/>
-        <type name="version" primitiveType="uint8"/>
-        <type name="reserved" primitiveType="uint8"/>
+        <type name="schemaId" primitiveType="uint16"/>
+        <type name="version" primitiveType="uint16"/>
     </composite>
 
     <composite name="Engine" semanticType="Engine">
