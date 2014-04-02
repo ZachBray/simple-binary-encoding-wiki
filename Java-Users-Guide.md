@@ -23,17 +23,17 @@ The message header contains the fields that allows the decoder to identify what 
 1. **blockLength**: The length of the message root block before repeating groups or variable data commences.
 1. **templateId**: The identifier for the template type of the message that is to follow.
 1. **schemaId**: The identifier for the schema the message belongs to.
-1. **version**: The version of the template allowing for extension.
+1. **version**: The version of the schema allowing for extension.
 
 **Note**: A new message header type can be defined with different sizes of integers for the template and version according to needs.
 
 To encode a message it is necessary to encode the header then the message.
 
-        MESSAGE_HEADER.wrap(directBuffer, bufferOffset, messageTemplateVersion)
-                      .blockLength(CAR.sbeBlockLength())
-                      .templateId(CAR.sbeTemplateId())
-                      .schemaId(CAR.sbeSchemaId())
-                      .version(CAR.sbeSchemaVersion());
+    MESSAGE_HEADER.wrap(directBuffer, bufferOffset, messageTemplateVersion)
+                  .blockLength(CAR.sbeBlockLength())
+                  .templateId(CAR.sbeTemplateId())
+                  .schemaId(CAR.sbeSchemaId())
+                  .version(CAR.sbeSchemaVersion());
 
     // Then encode the message
     messageFlyweight.resetForEncode(directBuffer, bufferOffset);
@@ -41,7 +41,7 @@ To encode a message it is necessary to encode the header then the message.
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
     // Reset the message header in preparation for decoding a message.
-    MESSAGE_HEADER.wrap(directBuffer, bufferOffset, messageTemplateVersion);
+    MESSAGE_HEADER.wrap(directBuffer, bufferOffset, messageSchemaVersion);
 
     final int actingBlockLength = MESSAGE_HEADER.blockLength();
     final int schemaId = MESSAGE_HEADER.schemaId();
