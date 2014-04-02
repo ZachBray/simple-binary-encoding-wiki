@@ -97,7 +97,7 @@ For encoding a put method is defined taking a source byte array with an source o
 For decoding a get method is defined taking destination byte array with a destination offset at which to copy into.
 
     sb.append("\ncar.vehicleCode=")
-      .append(new String(buffer, 0, car.getVehicleCode(buffer, 0, buffer.length), car.vehicleCodeCharacterEncoding()));
+      .append(new String(buffer, 0, car.getVehicleCode(buffer, 0, buffer.length), Car.vehicleCodeCharacterEncoding()));
 
 ### Constants
 
