@@ -42,15 +42,15 @@ To encode a message it is necessary to encode the header then the message.
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
     // Reset the message header in preparation for decoding a message.
-    MessageHeader.wrap(buffer, bufferOffset);
+    hdr.wrap(buffer, bufferOffset);
 
-    int templateId = MessageHeader.templateId();
-    int actingVersion = MessageHeader.version();
-    int actingBlockLength = MessageHeader.blockLength();
+    int templateId = hdr.templateId();
+    int actingVersion = hdr.version();
+    int actingBlockLength = hdr.blockLength();
 
     // Lookup template for decoding the message
 
-    bufferOffset += MessageHeader.size();
+    bufferOffset += hdr.size();
     messageFlyweight.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion);
 
 ### Single Fixed Fields
