@@ -22,7 +22,7 @@ The message header contains the fields that allows the decoder to identify what 
 
 1. **blockLength**: The length of the message root block before repeating groups or variable data commences.
 1. **templateId**: The identifier for the template type of the message that is to follow.
-1. **schemaId***: The identifier for the schema the message belongs to.
+1. **schemaId**: The identifier for the schema the message belongs to.
 1. **version**: The version of the template allowing for extension.
 
 **Note**: A new message header type can be defined with different sizes of integers for the template and version according to needs.
