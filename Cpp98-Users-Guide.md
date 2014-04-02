@@ -30,10 +30,11 @@ The message header contains the fields that allows the decoder to identify what 
 To encode a message it is necessary to encode the header then the message.
 
     // Encode the header
-    MessageHeader.reset(buffer, bufferOffset)
-                 .blockLength(messageFlyweight.blockLength())
-                 .templateId(messageFlyweight.templateId())
-                 .version(messageFlyweight.templateVersion());
+    hdr.wrap(buffer, offset, messageHeaderVersion)
+       .blockLength(Car::sbeBlockLength())
+       .templateId(Car::sbeTemplateId())
+       .schemaId(Car::sbeSchemaId())
+       .version(Car::sbeSchemaVersion());
 
     // Then encode the message
     messageFlyweight.resetForEncode(buffer, bufferOffset + MessageHeader.size());
@@ -41,7 +42,7 @@ To encode a message it is necessary to encode the header then the message.
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
     // Reset the message header in preparation for decoding a message.
-    MessageHeader.reset(buffer, bufferOffset);
+    MessageHeader.wrap(buffer, bufferOffset);
 
     int templateId = MessageHeader.templateId();
     int actingVersion = MessageHeader.version();
