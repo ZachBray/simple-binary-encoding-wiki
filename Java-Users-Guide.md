@@ -92,12 +92,12 @@ When encoding things like financial symbols it often beneficial to encode these 
 
 For encoding a put method is defined taking a source byte array with an source offset at which to begin copying. The copy will always be for the size of the field.
 
-       car.putVehicleCode(VEHICLE_CODE, srcOffset);
+    car.putVehicleCode(VEHICLE_CODE, srcOffset);
 
 For decoding a get method is defined taking destination byte array with a destination offset at which to copy into.
 
-        sb.append("\ncar.vehicleCode=")
-          .append(new String(buffer, 0, car.getVehicleCode(buffer, 0, buffer.length), car.vehicleCodeCharacterEncoding()));
+    sb.append("\ncar.vehicleCode=")
+       .append(new String(buffer, 0, car.getVehicleCode(buffer, 0, buffer.length), car.vehicleCodeCharacterEncoding()));
 
 ### Constants
 
