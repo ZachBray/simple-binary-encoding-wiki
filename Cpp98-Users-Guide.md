@@ -30,19 +30,19 @@ The message header contains the fields that allows the decoder to identify what 
 To encode a message it is necessary to encode the header then the message.
 
     // Encode the header
-    hdr.wrap(buffer, offset, messageHeaderVersion)
+    hdr.wrap(buffer, offset, messageHeaderVersion, bufferLength)
        .blockLength(Car::sbeBlockLength())
        .templateId(Car::sbeTemplateId())
        .schemaId(Car::sbeSchemaId())
        .version(Car::sbeSchemaVersion());
 
     // Then encode the message
-    messageFlyweight.resetForEncode(buffer, bufferOffset + MessageHeader.size());
+    messageFlyweight.resetForEncode(buffer, bufferOffset + MessageHeader.size(), bufferLength);
 
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
     // Reset the message header in preparation for decoding a message.
-    hdr.wrap(buffer, bufferOffset);
+    hdr.wrap(buffer, bufferOffset, bufferLength);
 
     int templateId = hdr.templateId();
     int actingVersion = hdr.version();
@@ -51,19 +51,19 @@ The decoder should decode the header and then lookup which template should be us
     // Lookup template for decoding the message
 
     bufferOffset += hdr.size();
-    messageFlyweight.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion);
+    messageFlyweight.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
 
 ### Single Fixed Fields
 
 Single fixed fields can be encoded in a fluent style after a message flyweight has been reset for encoding.
 
-    car.resetForEncode(buffer, bufferOffset)
+    car.resetForEncode(buffer, bufferOffset, bufferLength)
        .serialNumber(1234)
        .modelYear(2013);
 
 Decoding single fixed fields is simply the reverse.
 
-    car.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion);
+    car.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
 
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
