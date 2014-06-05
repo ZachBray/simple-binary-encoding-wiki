@@ -13,6 +13,6 @@ The tool supports the following options:
  * <code>sbe.validation.suppress.output</code>: Should the parser suppress output during validation? Defaults to false.
  * <code>sbe.generate.stubs</code>: Generate stubs or not. Defaults to true.
  * <code>sbe.generate.ir</code>: Generate IR or not. Defaults to false.
- * <code>sbe.target.language</code>: Target language for code generation, defaults to Java(also supports).
+ * <code>sbe.target.language</code>: Target language for code generation, defaults to Java (also supports Cpp98 and CSharp).
  * <code>sbe.output.dir</code>: Target directory for output generation, defaults to current directory.
  * <code>sbe.target.namespace</code>: Namespace to be used for generated code. Equates package for Java. If not provided then the `package` attribute from the schema will be used.
