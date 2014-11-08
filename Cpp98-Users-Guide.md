@@ -29,6 +29,7 @@ The message header contains the fields that allows the decoder to identify what 
 
 To encode a message it is necessary to encode the header then the message.
 
+```cpp
     // Encode the header
     hdr.wrap(buffer, offset, messageHeaderVersion, bufferLength)
        .blockLength(Car::sbeBlockLength())
@@ -38,9 +39,11 @@ To encode a message it is necessary to encode the header then the message.
 
     // Then encode the message
     messageFlyweight.resetForEncode(buffer, bufferOffset + MessageHeader.size(), bufferLength);
+```
 
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
+```cpp
     // Reset the message header in preparation for decoding a message.
     hdr.wrap(buffer, bufferOffset, bufferLength);
 
@@ -52,21 +55,26 @@ The decoder should decode the header and then lookup which template should be us
 
     bufferOffset += hdr.size();
     messageFlyweight.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
+```
 
 ### Single Fixed Fields
 
 Single fixed fields can be encoded in a fluent style after a message flyweight has been reset for encoding.
 
+```cpp
     car.resetForEncode(buffer, bufferOffset, bufferLength)
        .serialNumber(1234)
        .modelYear(2013);
+```
 
 Decoding single fixed fields is simply the reverse.
 
+```cpp
     car.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
 
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
+```
 
 ### Fixed Array Fields
 
@@ -74,18 +82,22 @@ It is possible to encode a fixed length array of a primitive type in a field.
 
 To encode the array an element at a time
 
+```cpp
     for (int i = 0, size = car.someNumbersLength(); i < size; i++)
     {
         car.someNumbers(i, i);
     }
+```
 
 Decoding is simply the reverse.
 
+```cpp
     sb.append("\ncar.someNumbers=");
     for (int i = 0, size = car.someNumbersLength(); i < size; i++)
     {
         sb.append(car.someNumbers(i)).append(", ");
     }
+```
 
 ### Fixed String Arrays
 
@@ -93,12 +105,16 @@ When encoding things like financial symbols it often beneficial to encode these 
 
 For encoding a put method is defined taking a source pointer at which to begin copying. The copy will always be for the size of the field.
 
+```cpp
        car.putVehicleCode(VEHICLE_CODE);
+```
 
 For decoding a get method is define taking destination byte array with an destination offset at which copy into to.
 
+```cpp
        char tmp[80];
        car.getVehicleCode(tmp, sizeof(tmp));
+```
 
 ### Constants
 
@@ -108,14 +124,18 @@ Constants do not get read from the underlying buffer. Their value as defined in 
 
 Choice from the message schema directly map to enums in C++. Encoding is as follows.
 
+```cpp
     car.resetForEncode(buffer, bufferOffset)
        .available(BooleanType::TRUE)
        .code(Model::A);
+```
 
 Decoding is simply the reverse.
 
+```cpp
     sb.append("\ncar.available=").append(car.available());
     sb.append("\ncar.code=").append(car.code());
+```
 
 ### BitSets
 
@@ -123,17 +143,21 @@ A bitset is multi-value choice that is mapped to the presence or not of particul
 
 Encoding
 
+```cpp
     car.extras().clear()
                 .cruiseControl(true)
                 .sportsPack(true)
                 .sunRoof(false);
+```
 
 Decoding
 
+```cpp
     OptionalExtras &extras = car.extras();
     sb.append("\ncar.extras.cruiseControl=").append(extras.cruiseControl());
     sb.append("\ncar.extras.sportsPack=").append(extras.sportsPack());
     sb.append("\ncar.extras.sunRoof=").append(extras.sunRoof());
+```
 
 ### Composite Types
 
@@ -143,16 +167,20 @@ Composite types provide a means of reuse. The map directly to a class as a flywe
 
 Encoding
 
+```cpp
     car.engine().capacity(2000)
                 .numCylinders((short)4)
                 .putManufacturerCode(MANUFACTURER_CODE);
+```
 
 Decoding
 
+```cpp
     Engine &engine = car.engine();
     sb.append("\ncar.engine.capacity=").append(engine.capacity());
     sb.append("\ncar.engine.numCylinders=").append(engine.numCylinders());
     sb.append("\ncar.engine.maxRpm=").append(engine.maxRpm());
+```
 
 ## Repeating Groups
 
@@ -160,6 +188,7 @@ Repeating groups allow for collections of repeating type which can even be neste
 
 To encode it is necessary to first stage the count of time the group will repeat and then use the next() method to cursor forward while encoding.
 
+```cpp
     Car::PerformanceFigures &performanceFigures = car.performanceFiguresCount(2);
     performanceFigures.next()
         .octaneRating((short)95)
@@ -173,9 +202,11 @@ To encode it is necessary to first stage the count of time the group will repeat
             .next().mph(30).seconds(3.8f)
             .next().mph(60).seconds(7.1f)
             .next().mph(100).seconds(11.8f);
+```
 
 To decode the flyweight implements an iterator type interface allowing for use with looping constructs.
 
+```cpp
     Car::PerformanceFigures &performanceFigures = car.performanceFigures();
     while (performanceFigures.hasNext())
     {
@@ -190,6 +221,7 @@ To decode the flyweight implements an iterator type interface allowing for use w
             sb.append("\ncar.performanceFigures.acceleration.seconds=").append(acceleration.seconds());
         }
     }
+```
 
 **Note**: Groups must be encoded and decoded in total before progressing to the next group or on to variable data.
 
@@ -199,11 +231,14 @@ To store variable length strings or binary data then the var data fields can be 
 
 Encoding
 
+```cpp
     car.putMake(MAKE, strlen(MAKE));
     car.putModel(MODEL, strlen(MODEL));
+```
 
 Decoding
 
+```cpp
     char tmp[80];
     bytesCopied = car.getMake(tmp, sizeof(tmp));
     sb.append("\ncar.make=").append(tmp, bytesCopied);
@@ -211,7 +246,7 @@ Decoding
     bytesCopied = car.getModel(tmp, sizeof(tmp));
     sb.append("\ncar.model=").append(tmp, bytesCopied);
     sb.append("\ncar.modelCharacterEncoding=").append(car.modelCharacterEncoding());
-
+```
 
 **Note**: Variable data fields must be encoded and decoded in order as defined in the schema.
 
