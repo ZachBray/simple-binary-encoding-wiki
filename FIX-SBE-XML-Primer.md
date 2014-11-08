@@ -13,11 +13,13 @@ The `messageSchema` element is the root document in XML. It contains primarily a
 
 An example `messageSchema` element would be:
 
+```xml
     <messageSchema package="uk.co.real_logic.sbe.examples"
                    id="777"
                    semanticVersion="5.2"
                    description="Code generation unit test support"
                    byteOrder="littleEndian">
+```
 
 A `messageSchema` holds two main components. a list of `<types>` and a list of `<message>` elements.
 
@@ -57,9 +59,11 @@ element has the following attributes.
 
 An few examples of the use of `<type>` are below:
 
+```xml
     <type name="ModelYear" primitiveType="uint16" semanticType="ModelYear"/>
     <type name="VehicleCode" primitiveType="char" length="6" semanticType="VehicleCode"/>
     <type name="someNumbers" primitiveType="int32" length="5" semanticType="SomeArray"/>
+```
 
 ### <code>composite</code> Element
 
@@ -73,6 +77,7 @@ encoding and group dimension encoding. The `<composite>` element has the followi
 
 Examples of the use of `<composite>` are below:
 
+```xml
     <composite name="messageHeader" description="Message identifiers and length of message root">
         <type name="blockLength" primitiveType="uint16"/>
         <type name="templateId" primitiveType="uint16"/>
@@ -87,6 +92,7 @@ Examples of the use of `<composite>` are below:
         <type name="manufacturerCode" primitiveType="char" length="3"/>
         <type name="fuel" primitiveType="char" presence="constant">Petrol</type>
     </composite>
+```
 
 The `messageHeader` composite is treated as the header for all messages included in the message schema.
 
@@ -105,6 +111,7 @@ has the following attributes:
 
 Examples of the use of `<enum>` are below:
 
+```xml
     <enum name="BooleanType" encodingType="uint8" semanticType="Boolean">
         <validValue name="FALSE">0</validValue>
         <validValue name="TRUE">1</validValue>
@@ -115,6 +122,7 @@ Examples of the use of `<enum>` are below:
         <validValue name="B">B</validValue>
         <validValue name="C">C</validValue>
     </enum>
+```
 
 ### <code>set</code> Element
 
@@ -131,11 +139,13 @@ has the following attributes:
 
 Examples of the use of `<set>` are below:
 
+```xml
     <set name="OptionalExtras" encodingType="uint8" semanticType="Extras">
         <choice name="sunRoof">0</choice>
         <choice name="sportsPack">1</choice>
         <choice name="cruiseControl">2</choice>
     </set>
+```
 
 ### <code>message</code> Element
 
@@ -150,7 +160,9 @@ A `<message>` element itself has the following attributes:
 
 An example `<message>` use is below:
 
+```xml
     <message name="Car" id="1" description="Description of a basic Car">
+```
 
 ### <code>field</code> Element
 
@@ -166,6 +178,7 @@ Field elements designate the fixed size fields of a message. A `<field>` element
 
 Examples of the use of `<field>` are below:
 
+```xml
     <field name="serialNumber" id="1" type="uint32" semanticType="SerialNumber"/>
     <field name="modelYear" id="2" type="ModelYear"/>
     <field name="available" id="3" type="BooleanType"/>
@@ -174,6 +187,7 @@ Examples of the use of `<field>` are below:
     <field name="vehicleCode" id="6" type="VehicleCode"/>
     <field name="extras" id="7" type="OptionalExtras"/>
     <field name="engine" id="8" type="Engine"/>
+```
 
 ### <code>group</code> Element
 
@@ -187,6 +201,7 @@ Group elements designate a repeating group in a message. Each group contains one
 
 Examples of the use of `<field>` are below:
 
+```xml
     <composite name="groupSizeEncoding" description="Repeating group dimensions" >
          <type name="blockLength" primitiveType="uint16"/>
          <type name="numInGroup" primitiveType="uint8" semanticType="NumInGroup"/>
@@ -196,9 +211,11 @@ Examples of the use of `<field>` are below:
          <field name="speed" id="10" type="uint16"  semanticType="int"/>
          <field name="mpg" id="11" type="float" semanticType="int"/>
     </group>
+```
 
 A nested repeating group example is below:
 
+```xml
     <group name="performanceFigures" id="12" dimensionType="groupSizeEncoding">
         <field name="octaneRating" id="13" type="uint8" semanticType="RON"/>
         <group name="acceleration" id="14" dimensionType="groupSizeEncoding">
@@ -206,6 +223,7 @@ A nested repeating group example is below:
              <field name="seconds" id="16" type="float" semanticType="int"/>
         </group>
     </group>
+```
 
 ### <code>data</code> Element
 
@@ -222,6 +240,7 @@ A `<data>` element has the following attributes:
 
 Examples of the use of `<data>` are below:
 
+```xml
     <composite name="varDataEncoding">
         <type name="length" primitiveType="uint8" semanticType="Length"/>
         <type name="varData" primitiveType="uint8" length="0" characterEncoding="UTF-8" semanticType="data"/>
@@ -229,3 +248,4 @@ Examples of the use of `<data>` are below:
 
     <data name="make" id="17" type="varDataEncoding" semanticType="Make"/>
     <data name="model" id="18" type="varDataEncoding" semanticType="Model"/>
+```
