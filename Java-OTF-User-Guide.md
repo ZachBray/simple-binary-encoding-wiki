@@ -19,11 +19,14 @@ Before messages can be decoded it is necessary to retrieve the IR for the schema
 
 Once the IR is decoded you can then create the OTF decoder for the message header:
 
+```java
     // From the IR we can create OTF decoder for message headers.
     final OtfHeaderDecoder headerDecoder = new OtfHeaderDecoder(ir.headerStructure());
+```
 
 You are now ready to decode messages as they arrive. This can be done by first reading the message header then looking up the appropriate template to decode the message body.
 
+```java
     // Now we have IR we can read the message header
     int bufferOffset = 0;
     final DirectBuffer buffer = new DirectBuffer(encodedMsgBuffer);
@@ -33,11 +36,13 @@ You are now ready to decode messages as they arrive. This can be done by first r
     final int blockLength = headerDecoder.getBlockLength(buffer, bufferOffset);
 
     bufferOffset += headerDecoder.size();
+```
 
 **Note**: Don't forget to increment the `bufferOffset` to account for the message header size!
 
 Once you have decoded the header you can lookup the IR for the appropriate message body then begin decoding.
 
+```java
     final List<Token> msgTokens = ir.getMessage(templateId);
 
     bufferOffset = OtfMessageDecoder.decode(buffer,
@@ -46,6 +51,7 @@ Once you have decoded the header you can lookup the IR for the appropriate messa
                                             blockLength,
                                             msgTokens,
                                             new ExampleTokenListener(new PrintWriter(System.out, true)));
+```
 
 The eagle eyed will have noticed the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/otf/TokenListener.java). If you are wondering what this is then wonder no longer and read on.
 
@@ -57,6 +63,7 @@ As messages are decoded a number of callback events will be generated as the str
 
 Primitive fields are the most common data element to be decoded. These are simple types such as integers, floating point numbers, or characters. Primitive field encodings can be a single value or a fixed length array of the same type. To receive primitive values override the following method:
 
+```java
     public void onEncoding(final Token fieldToken,
                            final DirectBuffer buffer,
                            final int index,
@@ -108,6 +115,7 @@ Primitive fields are the most common data element to be decoded. These are simpl
 
         return getLong(buffer, bufferIndex, typeToken.encoding());
     }
+```
 
 The above code will output the values as strings to the console.
 
@@ -117,6 +125,7 @@ The above code will output the values as strings to the console.
 
 Enums are encoded on the wire as simple integers or characters. It is necessary to lookup the encoded representation via the metadata tokens to understand the wire encoded value.
 
+```java
     public void onEnum(final Token fieldToken,
                        final DirectBuffer buffer, final int bufferIndex,
                        final List<Token> tokens, final int beginIndex, final int endIndex,
@@ -141,11 +150,13 @@ Enums are encoded on the wire as simple integers or characters. It is necessary 
            .append(value)
            .println();
     }
+```
 
 ### Decoding BitSets
 
 BitSets are represented on the wire as an integer with a bit set in the position indicating true or false for the choice value.
 
+```java
     public void onBitSet(final Token fieldToken,
                          final DirectBuffer buffer, final int bufferIndex,
                          final List<Token> tokens, final int beginIndex, final int endIndex,
@@ -169,6 +180,7 @@ BitSets are represented on the wire as an integer with a bit set in the position
 
         out.println();
     }
+```
 
 A little bitwise manipulation is required to determine if a each choice is true or false as in the example above.
 
@@ -176,6 +188,7 @@ A little bitwise manipulation is required to determine if a each choice is true 
 
 A composite is a reusable collection of fields to simplify the assembly of messages. The collection of fields usually has a semantic significance. Fields within a composite are decoded just like normal fields. Composites are signalled via callbacks to indicate the beginning and end of the composite. In the example, the begin and end are captured to scope fields by adding the scope to a stack in the example `TokenListener`.
 
+```java
     public void onBeginComposite(final Token fieldToken, final List<Token> tokens, final int fromIndex, final int toIndex)
     {
         namedScope.push(fieldToken.name() + ".");
@@ -185,11 +198,13 @@ A composite is a reusable collection of fields to simplify the assembly of messa
     {
         namedScope.pop();
     }
+```
 
 ### Decoding Repeating Groups
 
 Fields can be semantically bound into a repeating group. On the wire the repeating group has a header that defines the size in bytes of the block of fields and a count of how many times the block will repeat. Repeating groups are signalled by callbacks to indicate the beginning and end of block of fields with counter details for the iteration count and the number of times it will repeat in total.
 
+```java
     public void onBeginGroup(final Token token, final int groupIndex, final int numInGroup)
     {
         namedScope.push(token.name() + ".");
@@ -199,6 +214,7 @@ Fields can be semantically bound into a repeating group. On the wire the repeati
     {
         namedScope.pop();
     }
+```
 
 **Note**: Repeating groups can nest so it is necessary to be prepared to handle this scope recursively.
 
@@ -206,6 +222,7 @@ Fields can be semantically bound into a repeating group. On the wire the repeati
 
 At the end of a message it is possible to encode variable length strings or binary blobs. Strings are binary data that uses a schema defined character encoding.
 
+```java
     public void onVarData(final Token fieldToken, final DirectBuffer buffer, final int bufferIndex, final int length, final Token typeToken)
     {
         final String value;
@@ -225,3 +242,4 @@ At the end of a message it is possible to encode variable length strings or bina
            .append(value)
            .println();
     }
+```
