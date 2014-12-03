@@ -36,6 +36,9 @@ To encode a message it is necessary to encode the header then the message.
 	              .schemaId(CAR.sbeSchemaId())
 	              .version(CAR.sbeSchemaVersion());
 
+
+	bufferOffset += MESSAGE_HEADER.size();
+
 	// Then encode the message
 	messageFlyweight.resetForEncode(directBuffer, bufferOffset);
 ```
