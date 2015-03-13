@@ -1,5 +1,6 @@
 The SBE Tool currently does not have a dedicated Maven plugin, however it is possible to run SBE builds using the code-haus exec-maven-plugin.
 
+## Overview
 This allows you to use all of the functionality of the SBE tool as part of your Maven Build:
 
 This works as follows
@@ -94,8 +95,8 @@ In your build section add the following:
 			</resource>
 		</resources>
 	</build>
-`
-Add your SBE Tool schema file in the file: src/main/resources/schema.xml
+
+## Additional Parameters
 
 Additional SBE parameters can be added in the System Properties section: 
 	<systemProperty>
