@@ -10,6 +10,7 @@ To build using the SBE Tool with Maven include the following in your POM depende
 `
 
 In your build section add the following: 
+`
 <build>
 		<plugins>
 			<plugin>
@@ -78,7 +79,7 @@ In your build section add the following:
 			</resource>
 		</resources>
 	</build>
-
+`
 Add your SBE Tool schema file in the file: src/main/resources/schema.xml
 
 Additional SBE parameters can be added in the System Properties section: 
