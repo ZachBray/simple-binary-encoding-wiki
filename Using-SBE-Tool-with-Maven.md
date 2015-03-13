@@ -1,3 +1,14 @@
+The SBE Tool currently does not have a dedicated Maven plugin, however it is possible to run SBE builds using the code-haus exec-maven-plugin.
+
+This allows you to use all of the functionality of the SBE tool as part of your Maven Build:
+
+This works as follows
+1. Include SBE as a Dependency for the Project
+2. Invoke SBE Build tool using Exec Plugin 
+3. Include SBE Source Outputs to be compile via Maven 
+4. Put your SBE Tool schema file in the location: src/main/resources/schema.xml
+5. build i.e. mvn clean install 
+
 To build using the SBE Tool with Maven include the following in your POM dependencies: 
 	<dependencies>
 		<dependency>
@@ -8,7 +19,6 @@ To build using the SBE Tool with Maven include the following in your POM depende
 	</dependencies>
 
 In your build section add the following: 
-
 
     <build>
 		<plugins>
@@ -82,4 +92,10 @@ In your build section add the following:
 Add your SBE Tool schema file in the file: src/main/resources/schema.xml
 
 Additional SBE parameters can be added in the System Properties section: 
-<systemProperty>
+	<systemProperty>
+		<key>sbe.output.dir</key>
+		<value>${project.build.directory}/generated-sources</value>
+	</systemProperty>
+
+The SBE tool parameters are documented here:
+https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Guide
