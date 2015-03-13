@@ -11,7 +11,8 @@ To build using the SBE Tool with Maven include the following in your POM depende
 
 In your build section add the following: 
 
-`<build>`
+
+    `<build>`
 
 		`<plugins>`
 
