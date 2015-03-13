@@ -2,9 +2,7 @@ The SBE Tool currently does not have a dedicated Maven plugin; it is possible to
 using the code-haus plugins <code>exec-maven-plugin</code> and <code>build-helper-maven-plugin</code>
 
 ## Overview
-This allows you to use all of the functionality of the SBE tool as part of your Maven Build:
-
-This works as follows
+To use the SBE tool as part of your Maven Build, you need to do the following:
 
 1. Include SBE as a Dependency for the Project
 
