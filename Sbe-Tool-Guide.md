@@ -18,4 +18,4 @@ The tool supports the following options:
  * <code>sbe.target.namespace</code>: Namespace to be used for generated code. Equates package for Java. If not provided then the `package` attribute from the schema will be used.
 
 The SBE tool can be used with Maven
-[see](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Guide)
+[see](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Maven)
