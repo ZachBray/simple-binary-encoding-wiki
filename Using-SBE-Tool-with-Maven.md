@@ -3,6 +3,7 @@ The SBE Tool currently does not have a dedicated Maven plugin, however it is pos
 This allows you to use all of the functionality of the SBE tool as part of your Maven Build:
 
 This works as follows
+
 1. Include SBE as a Dependency for the Project
 
 1. Invoke SBE Build tool using Exec Plugin 
