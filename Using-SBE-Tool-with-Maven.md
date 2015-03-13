@@ -99,6 +99,7 @@ In your build section add the following:
 ## Additional Parameters
 
 Additional SBE parameters can be added in the System Properties section: 
+
 	<systemProperty>
 		<key>sbe.output.dir</key>
 		<value>${project.build.directory}/generated-sources</value>
