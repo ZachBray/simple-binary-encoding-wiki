@@ -15,6 +15,7 @@ This works as follows
 1. build i.e. mvn clean install 
 
 To build using the SBE Tool with Maven include the following in your POM dependencies: 
+
 	<dependencies>
 		<dependency>
 			<groupId>uk.co.real-logic</groupId>
