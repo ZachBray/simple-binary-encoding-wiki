@@ -100,7 +100,7 @@ Add the following to your build section
 	src/main/resources/schema.xml 	
 	target/classes (compiled SBE classes)
 	target/generated-sources (generated SBE Sources)
-	sbe-output-1.0-SNAPSHOT.JAR (Final Output)
+	target/sbe-output-1.0-SNAPSHOT.JAR (Final Output)
 
 ## to build 
 mvn clean install
