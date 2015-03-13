@@ -95,6 +95,20 @@ Add the following to your build section
 		</resources>
 	</build>
 
+## Directory Structure
+	pom.xml
+	src/main/resources/schema.xml 	
+	target/classes (compiled SBE classes)
+	target/generated-sources (generated SBE Sources)
+	sbe-output-1.0-SNAPSHOT.JAR (Final Output)
+
+## to build 
+mvn clean install
+
+if successful there will be no output in the console log for the tasks, but the files will generated to your target/generated-sources. 
+
+SBE Schema errors will be displayed in the console and will cause the project build to fail. 
+
 ## Additional Parameters
 
 Additional SBE parameters can be added in the System Properties section: 
