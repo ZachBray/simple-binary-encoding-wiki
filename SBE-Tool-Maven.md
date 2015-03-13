@@ -14,7 +14,7 @@ To use the SBE tool as part of your Maven Build, you need to do the following:
 
 1. build i.e. mvn clean install 
 
-To build using the SBE Tool with Maven include the following in your POM dependencies: 
+Add the following to your POM dependencies: 
 
 	<dependencies>
 		<dependency>
@@ -24,7 +24,7 @@ To build using the SBE Tool with Maven include the following in your POM depende
 		</dependency>
 	</dependencies>
 
-In your build section add the following: 
+Add the following to your build section 
 
     <build>
 		<plugins>
