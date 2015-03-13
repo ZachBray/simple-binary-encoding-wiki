@@ -4,10 +4,10 @@ This allows you to use all of the functionality of the SBE tool as part of your 
 
 This works as follows
 1. Include SBE as a Dependency for the Project
-2. Invoke SBE Build tool using Exec Plugin 
-3. Include SBE Source Outputs to be compile via Maven 
-4. Put your SBE Tool schema file in the location: src/main/resources/schema.xml
-5. build i.e. mvn clean install 
+1. Invoke SBE Build tool using Exec Plugin 
+1. Include SBE Source Outputs to be compile via Maven 
+1. Put your SBE Tool schema file in the location: src/main/resources/schema.xml
+1. build i.e. mvn clean install 
 
 To build using the SBE Tool with Maven include the following in your POM dependencies: 
 	<dependencies>
