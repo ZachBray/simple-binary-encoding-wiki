@@ -1,13 +1,11 @@
 To build using the SBE Tool with Maven include the following in your POM dependencies: 
-`
-<dependencies>
-<dependency>
-<groupId>uk.co.real-logic</groupId>
-<artifactId>sbe</artifactId>
-<version>1.0-RC2</version>
-</dependency>
-</dependencies>
-`
+	<dependencies>
+		<dependency>
+			<groupId>uk.co.real-logic</groupId>
+			<artifactId>sbe</artifactId>
+			<version>1.0-RC2</version>
+		</dependency>
+	</dependencies>
 
 In your build section add the following: 
 
