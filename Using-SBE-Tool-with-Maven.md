@@ -12,8 +12,11 @@ To build using the SBE Tool with Maven include the following in your POM depende
 In your build section add the following: 
 
 `<build>`
+
 		`<plugins>`
+
 			`<plugin>`
+
 				`<groupId>org.codehaus.mojo</groupId>`
 				`<artifactId>build-helper-maven-plugin</artifactId>`
 				`<version>1.1</version>`
