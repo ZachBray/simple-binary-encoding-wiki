@@ -19,4 +19,4 @@ The tool supports the following options:
 
 The SBE tool can be used with Maven: 
 /wiki/SBE-Tool-Maven
-[here](/wiki/SBE-Tool-Maven)
+[here](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Guide)
