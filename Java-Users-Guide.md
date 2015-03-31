@@ -40,7 +40,7 @@ To encode a message it is necessary to encode the header then the message.
 	bufferOffset += MESSAGE_HEADER.size();
 
 	// Then encode the message
-	messageFlyweight.resetForEncode(directBuffer, bufferOffset);
+	messageFlyweight.wrapForEncode(directBuffer, bufferOffset);
 ```
 
 The decoder should decode the header and then lookup which template should be used to decode the message body.
@@ -56,7 +56,7 @@ The decoder should decode the header and then lookup which template should be us
     // Lookup template for decoding the message
 
     bufferOffset += MESSAGE_HEADER.size();
-    messageFlyweight.resetForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
+    messageFlyweight.wrapForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
 ```
 
 ### Single Fixed Size Fields
@@ -72,7 +72,7 @@ Single fixed fields can be encoded in a fluent style after a message flyweight h
 Decoding single fixed fields is simply the reverse.
 
 ``` java
-    car.resetForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
+    car.wrapForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
 
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
@@ -127,7 +127,7 @@ Constants do not get read from the underlying buffer. Their value as defined in 
 Choice from the message schema directly map to enums in Java. Encoding is as follows.
 
 ``` java
-    car.resetForEncode(directBuffer, bufferOffset)
+    car.wrapForEncode(directBuffer, bufferOffset)
        .available(BooleanType.TRUE)
        .code(Model.A);
 ```
