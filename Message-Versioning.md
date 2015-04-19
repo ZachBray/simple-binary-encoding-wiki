@@ -2,7 +2,7 @@ SBE supports the extension of messages via versioned templates. To be backwards 
 
 ### Message Blocks
 
-Messages are organised into blocks to allow for variable length encoding. The fields of message before groups are considered a the root block and their total size is the ```blockLength``` as encoded in the ```messageHeader```.
+Messages are organised into blocks to allow for variable length encoding. The fields of message before groups are considered the root block and their total size is the ```blockLength``` as encoded in the ```messageHeader```.
 
 Groups are blocks of fields that repeat for a given count. Both messages and repeating groups have a header with a block header that encodes the block length.
 
