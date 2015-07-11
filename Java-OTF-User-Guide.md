@@ -78,11 +78,12 @@ As messages are decoded a number of callback events will be generated as the str
 Primitive fields are the most common data element to be decoded. These are simple types such as integers, floating point numbers, or characters. Primitive field encodings can be a single value or a fixed length array of the same type. To receive primitive values override the following method:
 
 ```java
-    public void onEncoding(final Token fieldToken,
-                           final DirectBuffer buffer,
-                           final int index,
-                           final Token typeToken,
-                           final int actingVersion)
+    public void onEncoding(
+        final Token fieldToken,
+        final DirectBuffer buffer,
+        final int index,
+        final Token typeToken,
+        final int actingVersion)
     {
         final CharSequence value = readEncodingAsString(buffer, index, typeToken, actingVersion);
 
@@ -91,12 +92,10 @@ Primitive fields are the most common data element to be decoded. These are simpl
            .append('=')
            .append(value)
            .println();
-    }
+    }}
 
-    private static CharSequence readEncodingAsString(final DirectBuffer buffer,
-                                                     final int index,
-                                                     final Token typeToken,
-                                                     final int actingVersion)
+    private static CharSequence readEncodingAsString(
+        final DirectBuffer buffer, final int index, final Token typeToken, final int actingVersion)
     {
         final PrimitiveValue constOrNotPresentValue = constOrNotPresentValue(typeToken, actingVersion);
         if (null != constOrNotPresentValue)
@@ -119,7 +118,8 @@ Primitive fields are the most common data element to be decoded. These are simpl
         return sb;
     }
 
-    private long readEncodingAsLong(final DirectBuffer buffer, final int bufferIndex, final Token typeToken, final int actingVersion)
+    private long readEncodingAsLong(
+        final DirectBuffer buffer, final int bufferIndex, final Token typeToken, final int actingVersion)
     {
         final PrimitiveValue constOrNotPresentValue = constOrNotPresentValue(typeToken, actingVersion);
         if (null != constOrNotPresentValue)
@@ -140,10 +140,14 @@ The above code will output the values as strings to the console.
 Enums are encoded on the wire as simple integers or characters. It is necessary to lookup the encoded representation via the metadata tokens to understand the wire encoded value.
 
 ```java
-    public void onEnum(final Token fieldToken,
-                       final DirectBuffer buffer, final int bufferIndex,
-                       final List<Token> tokens, final int beginIndex, final int endIndex,
-                       final int actingVersion)
+    public void onEnum(
+        final Token fieldToken,
+        final DirectBuffer buffer,
+        final int bufferIndex,
+        final List<Token> tokens,
+        final int beginIndex,
+        final int endIndex,
+        final int actingVersion)
     {
         final Token typeToken = tokens.get(beginIndex + 1);
         final long encodedValue = readEncodingAsLong(buffer, bufferIndex, typeToken, actingVersion);
@@ -151,7 +155,7 @@ Enums are encoded on the wire as simple integers or characters. It is necessary 
         String value = null;
         for (int i = beginIndex + 1; i < endIndex; i++)
         {
-            if (encodedValue == tokens.get(i).encoding().constVal().longValue())
+            if (encodedValue == tokens.get(i).encoding().constValue().longValue())
             {
                 value = tokens.get(i).name();
                 break;
@@ -171,10 +175,14 @@ Enums are encoded on the wire as simple integers or characters. It is necessary 
 BitSets are represented on the wire as an integer with a bit set in the position indicating true or false for the choice value.
 
 ```java
-    public void onBitSet(final Token fieldToken,
-                         final DirectBuffer buffer, final int bufferIndex,
-                         final List<Token> tokens, final int beginIndex, final int endIndex,
-                         final int actingVersion)
+    public void onBitSet(
+        final Token fieldToken,
+        final DirectBuffer buffer,
+        final int bufferIndex,
+        final List<Token> tokens,
+        final int beginIndex,
+        final int endIndex,
+        final int actingVersion)
     {
         final Token typeToken = tokens.get(beginIndex + 1);
         final long encodedValue = readEncodingAsLong(buffer, bufferIndex, typeToken, actingVersion);
@@ -186,7 +194,7 @@ BitSets are represented on the wire as an integer with a bit set in the position
         {
             out.append(' ').append(tokens.get(i).name()).append('=');
 
-            final long bitPosition = tokens.get(i).encoding().constVal().longValue();
+            final long bitPosition = tokens.get(i).encoding().constValue().longValue();
             final boolean flag = (encodedValue & (1L << bitPosition)) != 0;
 
             out.append(Boolean.toString(flag));
