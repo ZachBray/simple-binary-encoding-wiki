@@ -16,6 +16,8 @@ The tool supports the following options:
  * <code>sbe.target.language</code>: Target language for code generation, defaults to Java (also supports Cpp98 and CSharp).
  * <code>sbe.output.dir</code>: Target directory for output generation, defaults to current directory.
  * <code>sbe.target.namespace</code>: Namespace to be used for generated code. Equates package for Java. If not provided then the `package` attribute from the schema will be used.
+ * <code>sbe.java.encoding.buffer.type</code>: Buffer type to be used for the encoder stubs. This type needs to mutate the underlying buffer.
+ * <code>sbe.java.decoding.buffer.type</code>: Buffer type to be used for the decoder stubs. This type only reads the underlying buffer.
 
 The SBE tool can be used with Maven
 [see](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Maven)
