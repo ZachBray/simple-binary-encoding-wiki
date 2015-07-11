@@ -43,14 +43,28 @@ You are now ready to decode messages as they arrive. This can be done by first r
 Once you have decoded the header you can lookup the IR for the appropriate message body then begin decoding.
 
 ```java
+    int bufferOffset = 0;
+    final UnsafeBuffer buffer = new UnsafeBuffer(encodedMsgBuffer);
+
+    final int templateId = headerDecoder.getTemplateId(buffer, bufferOffset);
+    final int schemaId = headerDecoder.getSchemaId(buffer, bufferOffset);
+    final int actingVersion = headerDecoder.getSchemaVersion(buffer, bufferOffset);
+    final int blockLength = headerDecoder.getBlockLength(buffer, bufferOffset);
+
+    bufferOffset += headerDecoder.encodedLength();
+
+    // Given the header information we can select the appropriate message template to do the decode.
+    // The OTF Java classes are thread safe so the same instances can be reused across multiple threads.
+
     final List<Token> msgTokens = ir.getMessage(templateId);
 
-    bufferOffset = OtfMessageDecoder.decode(buffer,
-                                            bufferOffset,
-                                            actingVersion,
-                                            blockLength,
-                                            msgTokens,
-                                            new ExampleTokenListener(new PrintWriter(System.out, true)));
+    bufferOffset = OtfMessageDecoder.decode(
+        buffer,
+        bufferOffset,
+        actingVersion,
+        blockLength,
+        msgTokens,
+        new ExampleTokenListener(new PrintWriter(System.out, true)));
 ```
 
 The eagle eyed will have noticed the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/otf/TokenListener.java). If you are wondering what this is then wonder no longer and read on.
