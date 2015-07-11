@@ -29,13 +29,13 @@ You are now ready to decode messages as they arrive. This can be done by first r
 ```java
     // Now we have IR we can read the message header
     int bufferOffset = 0;
-    final DirectBuffer buffer = new DirectBuffer(encodedMsgBuffer);
+    final UnsafeBuffer buffer = new UnsafeBuffer(encodedMsgBuffer);
 
     final int templateId = headerDecoder.getTemplateId(buffer, bufferOffset);
     final int actingVersion = headerDecoder.getTemplateVersion(buffer, bufferOffset);
     final int blockLength = headerDecoder.getBlockLength(buffer, bufferOffset);
 
-    bufferOffset += headerDecoder.size();
+    bufferOffset += headerDecoder.encodedLength();
 ```
 
 **Note**: Don't forget to increment the `bufferOffset` to account for the message header size!
