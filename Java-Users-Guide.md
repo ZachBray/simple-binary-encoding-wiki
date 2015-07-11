@@ -1,8 +1,8 @@
 After running the [SbeTool](Sbe-Tool-Guide) a number of Java source files will be created. These files represent the types and messages declared in the schema. For a quick start to SBE look at [this](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/resources/example-schema.xml) schema and its usage [here](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/java/uk/co/real_logic/sbe/examples/).
 
-Messages are designed to be read in the sequential order as defined in the schema. This ensures a [stream access](Design-Principles) pattern for performance. If groups or variable data are not processed in order then the data may become corrupt. Conceptually a message is encoded as a series of blocks. The blocks are the root fields, followed by each iteration of repeating groups, and finally followed by one or more variable data fields.
+Messages are designed to be read in the sequential order as defined in the schema. This ensures a [stream access](Design-Principles) pattern for performance. If groups, or variable data, are not processed in order then the data may become corrupt. Conceptually a message is encoded as a series of blocks. The blocks are the root fields, followed by each iteration of repeating groups, and finally followed by one or more variable data fields.
 
-Due to the streaming nature of the codec the size of the message cannot be determined until encoding or decoding is complete. The method <code>MessageFlyweight.limit()</code> will return the index in the underlying buffer at which the next block will commence, and the <code>MessageFlyweight.size()</code> method will return the current encoded size depending on how far it has progressed.
+Due to the streaming nature of the codec the encoded length of the message cannot be determined until encoding or decoding is complete. The method <code>MessageFlyweight.limit()</code> will return the index in the underlying buffer at which the next block will commence, and the <code>MessageFlyweight.encodedLength()</code> method will return the current encoded length in bytes depending on how far it has progressed.
 
 ### Framing
 
@@ -30,33 +30,34 @@ The message header contains the fields that allows the decoder to identify what 
 To encode a message it is necessary to encode the header then the message.
 
 ``` java
-	MESSAGE_HEADER.wrap(directBuffer, bufferOffset, messageTemplateVersion)
-	              .blockLength(CAR.sbeBlockLength())
-	              .templateId(CAR.sbeTemplateId())
-	              .schemaId(CAR.sbeSchemaId())
-	              .version(CAR.sbeSchemaVersion());
+    MESSAGE_HEADER_ENCODER
+        .wrap(directBuffer, bufferOffset)
+        .blockLength(CAR_ENCODER.sbeBlockLength())
+        .templateId(CAR_ENCODER.sbeTemplateId())
+        .schemaId(CAR_ENCODER.sbeSchemaId())
+        .version(CAR_ENCODER.sbeSchemaVersion());
 
 
-	bufferOffset += MESSAGE_HEADER.size();
+    bufferOffset += MESSAGE_HEADER_ENCODER.encodedLength();
 
-	// Then encode the message
-	messageFlyweight.wrapForEncode(directBuffer, bufferOffset);
+    // Then encode the message
+    messageFlyweight.wrap(directBuffer, bufferOffset);
 ```
 
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
 ``` java
-    // Reset the message header in preparation for decoding a message.
-    MESSAGE_HEADER.wrap(directBuffer, bufferOffset, messageSchemaVersion);
+    // Reset the message header decoder in preparation for decoding a message.
+    MESSAGE_HEADER_DECODER.wrap(directBuffer, bufferOffset);
 
-    final int actingBlockLength = MESSAGE_HEADER.blockLength();
-    final int schemaId = MESSAGE_HEADER.schemaId();
-    final int actingVersion = MESSAGE_HEADER.version();
+    final int actingBlockLength = MESSAGE_HEADER_DECODER.blockLength();
+    final int schemaId = MESSAGE_HEADER_DECODER.schemaId();
+    final int actingVersion = MESSAGE_HEADER_DECODER.version();
 
     // Lookup template for decoding the message
 
-    bufferOffset += MESSAGE_HEADER.size();
-    messageFlyweight.wrapForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
+    bufferOffset += MESSAGE_HEADER.encodedLength();
+    messageFlyweight.wrap(directBuffer, bufferOffset, actingBlockLength, actingVersion);
 ```
 
 ### Single Fixed Size Fields
@@ -64,15 +65,17 @@ The decoder should decode the header and then lookup which template should be us
 Single fixed fields can be encoded in a fluent style after a message flyweight has been reset for encoding.
 
 ``` java
-    car.resetForEncode(directBuffer, bufferOffset)
-       .serialNumber(1234)
-       .modelYear(2013);
+    car.wrap(directBuffer, bufferOffset)
+        .serialNumber(1234)
+        .modelYear(2013)
+        .available(BooleanType.TRUE)
+        .code(Model.A);
 ```
 
 Decoding single fixed fields is simply the reverse.
 
 ``` java
-    car.wrapForDecode(directBuffer, bufferOffset, actingBlockLength, actingVersion);
+    car.wrap(directBuffer, bufferOffset, actingBlockLength, actingVersion);
 
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
@@ -85,7 +88,7 @@ It is possible to encode a fixed length array of primitive value in a field.
 To encode the the array.
 
 ``` java
-    for (int i = 0, size = Car.someNumbersLength(); i < size; i++)
+    for (int i = 0, size = CarEncoder.someNumbersLength(); i < size; i++)
     {
         car.someNumbers(i, i);
     }
@@ -95,7 +98,7 @@ Decoding is simply the reverse.
 
 ``` java
     sb.append("\ncar.someNumbers=");
-    for (int i = 0, size = Car.someNumbersLength(); i < size; i++)
+    for (int i = 0, size = CarEncoder.someNumbersLength(); i < size; i++)
     {
         sb.append(car.someNumbers(i)).append(", ");
     }
@@ -115,7 +118,7 @@ For decoding a get method is defined taking destination byte array with a destin
 
 ``` java
     sb.append("\ncar.vehicleCode=")
-      .append(new String(buffer, 0, car.getVehicleCode(buffer, 0, buffer.length), Car.vehicleCodeCharacterEncoding()));
+      .append(new String(buffer, 0, car.getVehicleCode(buffer, 0, buffer.length), CarDecoder.vehicleCodeCharacterEncoding()));
 ```
 
 ### Constants
@@ -127,7 +130,7 @@ Constants do not get read from the underlying buffer. Their value as defined in 
 Choice from the message schema directly map to enums in Java. Encoding is as follows.
 
 ``` java
-    car.wrapForEncode(directBuffer, bufferOffset)
+    car.wrap(directBuffer, bufferOffset)
        .available(BooleanType.TRUE)
        .code(Model.A);
 ```
@@ -146,16 +149,17 @@ A bitset is multi-value choice that is mapped to the presence or not of particul
 Encoding
 
 ``` java
-    car.extras().clear()
-                .cruiseControl(true)
-                .sportsPack(true)
-                .sunRoof(false);
+    car.extras()
+        .clear()
+        .cruiseControl(true)
+        .sportsPack(true)
+        .sunRoof(false);
 ```
 
 Decoding
 
 ``` java
-    final OptionalExtras extras = car.extras();
+    final OptionalExtrasDecoder extras = car.extras();
     sb.append("\ncar.extras.cruiseControl=").append(extras.cruiseControl());
     sb.append("\ncar.extras.sportsPack=").append(extras.sportsPack());
     sb.append("\ncar.extras.sunRoof=").append(extras.sunRoof());
@@ -170,15 +174,16 @@ Composite types provide a means of reuse. They map directly to a class as a flyw
 Encoding
 
 ``` java
-    car.engine().capacity(2000)
-                .numCylinders((short)4)
-                .putManufacturerCode(MANUFACTURER_CODE, srcOffset);
+    car.engine()
+        .capacity(2000)
+        .numCylinders((short)4)
+        .putManufacturerCode(MANUFACTURER_CODE, srcOffset);
 ```
 
 Decoding
 
 ``` java
-    final Engine engine = car.engine();
+    final EngineDecoder engine = car.engine();
     sb.append("\ncar.engine.capacity=").append(engine.capacity());
     sb.append("\ncar.engine.numCylinders=").append(engine.numCylinders());
     sb.append("\ncar.engine.maxRpm=").append(engine.maxRpm());
@@ -191,27 +196,29 @@ Repeating groups allow for collections of repeating type which can even be neste
 To encode it is necessary to first stage the count of times the group will repeat and then use the next() method to cursor forward while encoding.
 
 ``` java
-    final Car.PerformanceFigures performanceFigures = car.performanceFiguresCount(2);
-    performanceFigures.next().octaneRating((short)95)
-                             .accelerationCount(3)
-                             .next().mph(30).seconds(4.0f)
-                             .next().mph(60).seconds(7.5f)
-                             .next().mph(100).seconds(12.2f);
-    performanceFigures.next().octaneRating((short)99)
-                             .accelerationCount(3)
-                             .next().mph(30).seconds(3.8f)
-                             .next().mph(60).seconds(7.1f)
-                             .next().mph(100).seconds(11.8f);
+    final CarEncoder.PerformanceFiguresEncoder perfFigures = car.performanceFiguresCount(2);
+    perfFigures.next()
+        .octaneRating((short)95)
+        .accelerationCount(3)
+        .next().mph(30).seconds(4.0f)
+        .next().mph(60).seconds(7.5f)
+        .next().mph(100).seconds(12.2f);
+    perfFigures.next()
+        .octaneRating((short)99)
+        .accelerationCount(3)
+        .next().mph(30).seconds(3.8f)
+        .next().mph(60).seconds(7.1f)
+        .next().mph(100).seconds(11.8f);
 ```
 
 To decode the flyweight implements Iterable and Iterator allowing for use with the foreach loop pattern.
 
 ``` java
-    for (final Car.PerformanceFigures performanceFigures : car.performanceFigures())
+    for (final CarDecoder.PerformanceFiguresDecoder performanceFigures : car.performanceFigures())
     {
         sb.append("\ncar.performanceFigures.octaneRating=").append(performanceFigures.octaneRating());
 
-        for (final Car.PerformanceFigures.Acceleration acceleration : performanceFigures.acceleration())
+        for (final AccelerationDecoder acceleration : performanceFigures.acceleration())
         {
             sb.append("\ncar.performanceFigures.acceleration.mph=").append(acceleration.mph());
             sb.append("\ncar.performanceFigures.acceleration.seconds=").append(acceleration.seconds());
@@ -223,20 +230,29 @@ To decode the flyweight implements Iterable and Iterator allowing for use with t
 
 ## Variable Length Data
 
-To store variable length strings or binary data the var data fields can be used at the end of the message. These are variable length byte arrays for which optional character encoding can be provided in the schema.
+To store variable length strings or binary data the var data fields can be used at the end of the message. These are variable length byte arrays for which optional character encoding can be provided in the schema. Three variants of the API are provided for convenience. 
 
 Encoding
 
 ``` java
-    car.putMake(MAKE, srcOffset, MAKE.length);
-    car.putModel(MODEL, srcOffset, MODEL.length);
+        car.make(new String(MAKE));
+        car.putModel(MODEL, srcOffset, MODEL.length);
 ```
 
 Decoding
 
 ``` java
-    sb.append("\ncar.make=").append(new String(buffer, 0, car.getMake(buffer, 0, buffer.length), Car.makeCharacterEncoding()));
-    sb.append("\ncar.model=").append(new String(buffer, 0, car.getModel(buffer, 0, buffer.length), Car.modelCharacterEncoding()));
+    sb.append("\ncar.make.semanticType=").append(CarEncoder.makeMetaAttribute(MetaAttribute.SEMANTIC_TYPE));
+    sb.append("\ncar.make=").append(car.make());
+
+    sb.append("\ncar.model=").append(
+        new String(buffer, 0, car.getModel(buffer, 0, buffer.length), CarEncoder.modelCharacterEncoding()));
+
+    final UnsafeBuffer tempBuffer = new UnsafeBuffer(buffer);
+    final int tempBufferLength = car.getActivationCode(tempBuffer, 0, tempBuffer.capacity());
+    sb.append("\ncar.activationCode=").append(new String(buffer, 0, tempBufferLength));
+
+    sb.append("\ncar.encodedLength=").append(car.encodedLength());
 ```
 
 **Note**: Variable data fields must be encoded and decoded in order as defined in the schema.
