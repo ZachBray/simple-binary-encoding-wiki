@@ -245,12 +245,14 @@ Fields can be semantically bound into a repeating group. On the wire the repeati
 At the end of a message it is possible to encode variable length strings or binary blobs. Strings are binary data that uses a schema defined character encoding.
 
 ```java
-    public void onVarData(final Token fieldToken, final DirectBuffer buffer, final int bufferIndex, final int length, final Token typeToken)
+    public void onVarData(
+        final Token fieldToken, final DirectBuffer buffer, final int bufferIndex, final int length, final Token typeToken)
     {
         final String value;
         try
         {
-            value = new String(tempBuffer, 0, buffer.getBytes(bufferIndex, tempBuffer, 0, length), typeToken.encoding().characterEncoding());
+            buffer.getBytes(bufferIndex, tempBuffer, 0, length);
+            value = new String(tempBuffer, 0, length, typeToken.encoding().characterEncoding());
         }
         catch (final UnsupportedEncodingException ex)
         {
