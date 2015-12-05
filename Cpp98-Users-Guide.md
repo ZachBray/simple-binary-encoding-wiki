@@ -62,7 +62,7 @@ The decoder should decode the header and then lookup which template should be us
 Single fixed fields can be encoded in a fluent style after a message flyweight has been reset for encoding.
 
 ```cpp
-    car.resetForEncode(buffer, bufferOffset, bufferLength)
+    car.wrapForEncode(buffer, bufferOffset, bufferLength)
        .serialNumber(1234)
        .modelYear(2013);
 ```
@@ -70,7 +70,7 @@ Single fixed fields can be encoded in a fluent style after a message flyweight h
 Decoding single fixed fields is simply the reverse.
 
 ```cpp
-    car.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
+    car.wrapForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
 
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
@@ -125,8 +125,8 @@ Constants do not get read from the underlying buffer. Their value as defined in 
 Choice from the message schema directly map to enums in C++. Encoding is as follows.
 
 ```cpp
-    car.resetForEncode(buffer, bufferOffset)
-       .available(BooleanType::TRUE)
+    car.wrapForEncode(buffer, bufferOffset)
+       .available(BooleanType::T)
        .code(Model::A);
 ```
 
