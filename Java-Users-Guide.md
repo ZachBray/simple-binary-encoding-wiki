@@ -8,11 +8,11 @@ Due to the streaming nature of the codec the encoded length of the message canno
 
 It is expected that the messages are communicated inside a framing protocol. The frame defines the size of the buffer containing the message header and message itself.
 
-    +-------------------------------------------------------------+
-    |        +----------++----------------------------------+     |
-    |Frame   |Msg Header||Message Body                      |     |
-    |        +----------++----------------------------------+     |
-    +-------------------------------------------------------------+
+    +------------------------------------------------------------+
+    |        +----------+----------------------------------+     |
+    |Frame   |Msg Header|Message Body                      |     |
+    |        +----------+----------------------------------+     |
+    +------------------------------------------------------------+
 
 The frame may contain session or transport level fields that belong to different layers of the [OSI Model](http://en.wikipedia.org/wiki/OSI_model) and beyond the scope of the message codec which deals with the [layer 6](http://en.wikipedia.org/wiki/OSI_model#Layer_6:_presentation_layer) presentation.
 
