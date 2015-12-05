@@ -1,4 +1,4 @@
-Some applications, such as network sniffers, need to process messages dynamically and thus have to use the [Intermediate Representation](Intermediate-Representation) to decode the messages on-the-fly (OTF). An example of using the OTF API can be found [here](https://github.com/real-logic/simple-binary-encoding/tree/master/examples/java/uk/co/real_logic/sbe/examples/).
+Some applications, such as network sniffers, need to process messages dynamically and thus have to use the [Intermediate Representation](Intermediate-Representation) to decode the messages on-the-fly (OTF). An example of using the OTF API can be found [here](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-samples/src/main/java/uk/co/real_logic/sbe/examples).
 
 The Java OTF decoder follows the [design principles](Design-Principles) of the generated codec stubs, and it is thread safe to be reused concurrently across multiple threads for memory efficiency.
 
@@ -67,11 +67,11 @@ Once you have decoded the header you can lookup the IR for the appropriate messa
         new ExampleTokenListener(new PrintWriter(System.out, true)));
 ```
 
-The eagle eyed will have noticed the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/otf/TokenListener.java). If you are wondering what this is then wonder no longer and read on.
+The eagle eyed will have noticed the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/otf/TokenListener.java). If you are wondering what this is then wonder no longer and read on.
 
 ## Decoding Messages
 
-As messages are decoded a number of callback events will be generated as the structural elements of the message are encountered. The callbacks are received by implementing the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/otf/TokenListener.java) interface. If you only want to receive some of the callbacks then extend [AbstractTokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/otf/AbstracTokenListener.java).
+As messages are decoded a number of callback events will be generated as the structural elements of the message are encountered. The callbacks are received by implementing the [TokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/otf/TokenListener.java) interface. If you only want to receive some of the callbacks then extend [AbstractTokenListener](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/otf/AbstractTokenListener.java).
 
 ### Decoding Primitive Fields
 
