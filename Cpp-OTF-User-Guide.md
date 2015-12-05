@@ -1,4 +1,4 @@
-Some applications, such as network sniffers, need to process messages dynamically and thus have to use the [Intermediate Representation](Intermediate-Representation) to decode the messages on-the-fly (OTF). An example of using the OTF API can be found [here](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp). Doxygen documentation for the C++ OTF API can be found in the header files [here](https://github.com/real-logic/simple-binary-encoding/tree/master/main/cpp/otf_api). You will need to have doxygen installed to build the doc.
+Some applications, such as network sniffers, need to process messages dynamically and thus have to use the [Intermediate Representation](Intermediate-Representation) to decode the messages on-the-fly (OTF). An example of using the OTF API can be found [here](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/cpp/SbeOtfDecoder.cpp). Doxygen documentation for the C++ OTF API can be found in the header files [here](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-tool/src/main/cpp/otf_api). You will need to have doxygen installed to build the doc.
 
 The C++ OTF decoder follows the [design principles](Design-Principles) of the generated codec stubs.
 
@@ -302,7 +302,7 @@ private:
 ## Error Handling & Message Completion
 
 Decoding of a message stops when an error is encountered, such as the length of the buffer being too short,
-or the message is completed successfully. The former is signaled via the `OnError::onError` method. And the latter is signaled via the `OnCompleted::onCompleted` method. An example of usage taken from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp) is below.
+or the message is completed successfully. The former is signalled via the `OnError::onError` method. And the latter is signalled via the `OnCompleted::onCompleted` method. An example of usage taken from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/cpp/SbeOtfDecoder.cpp) is below.
 
 ```c++
 class CarCallbacks : public OnError, public OnCompleted
@@ -333,7 +333,7 @@ private:
 
 ## IR Collections
 
-A convenience collection object for IR is provided via the `IrCollection` class. This class can read in a serialized IR file, created via `SbeTool` and provides it ready to go for decoding automatically. An example of usage is below. For more details, please see the [header](https://github.com/real-logic/simple-binary-encoding/blob/master/main/cpp/otf_api/IrCollection.h) or the doxygen documentation.
+A convenience collection object for IR is provided via the `IrCollection` class. This class can read in a serialized IR file, created via `SbeTool` and provides it ready to go for decoding automatically. An example of usage is below. For more details, please see the [header](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-tool/src/main/cpp/otf_api/IrCollection.h) or the doxygen documentation.
 
 ```c++
 // class to encapsulate Ir repository as well as Ir callback for dispatch
