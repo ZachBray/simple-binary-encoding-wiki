@@ -68,7 +68,7 @@ Single fixed fields can be encoded in a fluent style after a message flyweight h
     car.wrap(directBuffer, bufferOffset)
         .serialNumber(1234)
         .modelYear(2013)
-        .available(BooleanType.TRUE)
+        .available(BooleanType.T)
         .code(Model.A);
 ```
 
