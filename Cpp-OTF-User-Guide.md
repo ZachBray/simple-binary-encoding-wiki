@@ -94,7 +94,7 @@ listener.dispatchMessageByHeader(...)
 
 During decoding a Listener will call `OnNext::onNext(const Field &)` and pass encountered fields to the application. These fields may be of varying types, including composites (or structs), enumerations, bit sets, or variable length data. All of these types may be accessed via the `Field` class.
 
-For details of the `Field` class, see the header file [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/cpp/otf_api/Field.h) or the doxygen doc. Below is an example of accessing various field methods, types, etc. from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp).
+For details of the `Field` class, see the header file [here](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-tool/src/main/cpp/otf_api/Field.h) or the doxygen doc. Below is an example of accessing various field methods, types, etc. from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/cpp/SbeOtfDecoder.cpp).
 
 ```c++
 class CarCallbacks : public OnNext
@@ -257,7 +257,7 @@ protected:
 Groups are markers in the event sequence of calls to `OnNext::onNext`. Groups contain fields. When a group starts, `OnNext::onNext(const Group &)` is called with a `Group::Event` type of `Group::START`, the name of the group, the iteration number (starting at 0), and the expected number of iterations. After that, a set of calls to `OnNext(const Field &)` should occur. A group is ended by a call to `OnNext::onNext(const Group &)`
 with a `Group::Event` type of `Group::END`. Nested repeating groups are handled as one would expect with `Group::START` and `Group::END` within an existing Group sequence.
 
-For details of the `Group` class, see the header file [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/cpp/otf_api/Group.h) or the doxygen doc. Below is an example of usage from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/examples/cpp98/SbeOtfDecoder.cpp).
+For details of the `Group` class, see the header file [here](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-tool/src/main/cpp/otf_api/Group.h) or the doxygen doc. Below is an example of usage from the [example](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/cpp/SbeOtfDecoder.cpp).
 
 ```c++
 class CarCallbacks : public OnNext
