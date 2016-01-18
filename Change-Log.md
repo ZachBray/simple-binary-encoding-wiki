@@ -1,3 +1,11 @@
+### 1.3.1-RC3 (18 Jan 2016)
+* Add Checkstyle for indentation and fix violations.
+* Update to JMH 1.11.3
+* Check for keywords class on formatted property field.
+* Update to Agrona 0.4.10.
+* Fix publishing of sbe-all JAR to Maven Central.
+
+
 ### 1.3-RC3 (06 Jan 2016)
 * Updated implementation to reflect the [RC3 Specification](https://github.com/FIXTradingCommunity/fix-simple-binary-encoding/tree/master/v1-0-RC3/doc). RC3 is more generally useful with support added for var data in repeating groups and composites that can contain other types than just primitive encodings.
 * Significant rewrite of Java and C++ OTF implementation to be more efficient with no back or re-scanning of the IR, plus they are now similar in usage and API.
