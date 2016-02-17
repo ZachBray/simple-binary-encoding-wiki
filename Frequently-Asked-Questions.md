@@ -16,3 +16,7 @@ There are a number of ant targets for C++ that use cpptask for compilation. The 
  * `cpp:examples:otf`: compile and run cpp99 OTF decoder example
 
 NOTE: Doxygen is required. If you don't have it, the `cpp` target will not succeed. But `cpp:test` should still work.
+
+**3. What if a 3rd party schema contains names that are language keywords?**
+
+Some 3rd parties have not considered that the names they use could cause a clash with language keywords such as Java `final`. Generated property names that clash with keywords can have a string appended, such as the `_` character, by setting the `aeron.keyword.append.token` system property when running the `SbeTool`.
