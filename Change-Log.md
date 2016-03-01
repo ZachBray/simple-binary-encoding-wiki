@@ -1,3 +1,12 @@
+### 1.3.3-RC3 (01 Mar 2016)
+* Validate length of encoded var data strings against length type of var data in schema.
+* Update var data length type in IR and examples to be uint16 to support larger strings.
+* Added the ability to append a token to property names that have keyword clashes.
+* Added fluent API support for putting strings into var data fields.
+* Update to Checkstyle 6.15.
+* Update to Gradle 2.11.
+* Update to Agrona 0.4.11.
+
 ### 1.3.2-RC3 (06 Feb 2016)
 * Warn that optional presence is not allowed on var data fields.
 * Bring C++ inline with Java features.
