@@ -2,9 +2,9 @@
 
 One of the [design principles](Design-Principles) for SBE is to stream through messages in a ascending sequential access pattern for performance reasons.
 
-**2. What are the `ant` targets for C++?**
+**2. What are the targets for C++?**
 
-There are a number of ant targets for C++ that use cpptask for compilation. The ant `cpp:test` target compiles and run tests on Linux (Ubuntu 13.10) fine. There is some compiler warns on the generated code about signed/unsigned compares. Those are OK for now and will be cleaned up. Here are the various targets related to `cpp`.
+There are a number of ant targets for C++ that use cpptask for compilation. The ant `cpp:test` target compiles and run tests on Linux (Ubuntu 14.10) fine. There is some compiler warns on the generated code about signed/unsigned compares. Those are OK for now and will be cleaned up. Here are the various targets related to `cpp`.
 
 * `cpp`: compile OTF files, tests, run tests, generate Doxygen doc, and package doc into zip
  * `cpp:test`: compile cpp OTF files, compile Google Test files, run unit tests for OTF decoder
