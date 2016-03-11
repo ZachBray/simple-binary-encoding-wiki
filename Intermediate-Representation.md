@@ -29,7 +29,7 @@ The format of a serialized IR file is a simple sequence, or list, of "Tokens". E
 </tr>
 </table>
 
-Each Token has several fields, one of which is the `Signal`. See [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/ir/Token.java) and [here](https://github.com/real-logic/simple-binary-encoding/blob/master/main/java/uk/co/real_logic/sbe/ir/Signal.java) for more
+Each Token has several fields, one of which is the `Signal`. See [here](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/ir/Token.java) and [here](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/ir/Signal.java) for more
 detail on the Token elements.
 The header would be expanded to look something like below.
 
