@@ -1,3 +1,10 @@
+### 1.3.4-RC3 (24 Mar 2016)
+* Generate MessageEncoder and MessageDecoder interfaces to common message methods.
+* Fix up code for Agrona changes to org.agrona package structure.
+* Update to Checkstyle 6.16.1.
+* Update to Gradle 2.12.
+* Update to Agrona 0.4.13.
+
 ### 1.3.3-RC3 (01 Mar 2016)
 * Validate length of encoded var data strings against length type of var data in schema.
 * Update var data length type in IR and examples to be uint16 to support larger strings.
