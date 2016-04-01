@@ -1,3 +1,12 @@
+### 1.3.5-RC3 (01 Apr 2016)
+* Performance improvements to C++ generated stub by using move constructors where possible.
+* Add a check for string length to avoid truncation in C++ generated stubs.
+* Validate that number of items as a repeat count is within range for groups for Java generated stubs.
+* Use UINT16, rather than UINT8, for number of times a groups repeats in the examples.
+* Use UINT32 length strings in the examples.
+* Support for UINT32 length var-data strings as fields. Previously allowed UINT8 and UINT16 length strings.
+* Fix bug with UINT32 type in Java not treating the most significant bit correctly.
+
 ### 1.3.4-RC3 (24 Mar 2016)
 * Generate MessageEncoder and MessageDecoder interfaces to common message methods.
 * Fix up code for Agrona changes to org.agrona package structure.
