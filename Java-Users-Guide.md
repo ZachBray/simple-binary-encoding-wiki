@@ -230,7 +230,7 @@ To decode the flyweight implements Iterable and Iterator allowing for use with t
 
 ## Variable Length Data
 
-To store variable length strings or binary data the var data fields can be used at the end of the message. These are variable length byte arrays for which optional character encoding can be provided in the schema. Three variants of the API are provided for convenience.
+To store variable length strings or binary data the var data fields can be used at the end of the message or repeating group. These are variable length byte arrays for which optional character encoding can be provided in the schema. Three variants of the API are provided for convenience.
 
 The length of the string is typically encoded using an `uint8` or `uint16` primitive type. If strings longer than 64KB are required then `uint32` needs to be the type of the length. As Java does not have unsigned types then the `maxValue` attribute must be set to avoid negative values. It is also worth keeping the `maxValue` well under 2GB to ensure there is space in a buffer for framing and other fields.
 
