@@ -92,7 +92,7 @@ Primitive fields are the most common data element to be decoded. These are simpl
            .append('=')
            .append(value)
            .println();
-    }}
+    }
 
     private static CharSequence readEncodingAsString(
         final DirectBuffer buffer, final int index, final Token typeToken, final int actingVersion)
