@@ -1,6 +1,6 @@
 ### 1.4.0-RC4 (22 Apr 2016)
 * Correct examples for illustration of how to do message extension.
-* Update On-The-Fly decoding to assign naming for types within composites.
+* Update On-The-Fly decoding to assign contextual names for types within composites.
 * Add feature support for RC4 which brings in offsets and refs in composites, and restricted ranges on repeating groups.
 * Upgrade to Agrona 0.5 to bring in support for encoding into expandable buffers.
 * Upgrade to Checkstyle 6.17.
