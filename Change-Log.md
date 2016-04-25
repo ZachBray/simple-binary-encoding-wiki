@@ -1,7 +1,7 @@
 ### 1.4.0-RC4 (22 Apr 2016)
 * Correct examples for illustration of how to do message extension.
 * Update On-The-Fly decoding to assign contextual names for types within composites.
-* Add feature support for the [RC4 Specification](https://github.com/FIXTradingCommunity/fix-simple-binary-encoding/tree/master/v1-0-RC4) which brings in offsets and refs in composites, and restricted ranges on repeating groups.
+* Add feature support for the [RC4 Specification](https://github.com/FIXTradingCommunity/fix-simple-binary-encoding/tree/master/v1-0-RC4) which adds offsets and refs in composites, plus restricted ranges on repeating groups.
 * Upgrade to Agrona 0.5 to bring in support for encoding into expandable buffers.
 * Upgrade to Checkstyle 6.17.
 * Upgrade to JMH 1.12.
