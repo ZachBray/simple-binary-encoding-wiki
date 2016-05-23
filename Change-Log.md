@@ -1,3 +1,8 @@
+### 1.4.1-RC4 (23 May 2016)
+* Update to Agrona 0.5.1.
+* Update to Checkstyle 6.18.
+* Update to Gradle 2.13.
+
 ### 1.4.0-RC4 (22 Apr 2016)
 * Correct examples for illustration of how to do message extension.
 * Update On-The-Fly decoding to assign contextual names for types within composites.
