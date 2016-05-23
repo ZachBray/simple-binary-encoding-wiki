@@ -20,7 +20,7 @@ Add the following to your POM dependencies:
 		<dependency>
 			<groupId>uk.co.real-logic</groupId>
 			<artifactId>sbe-all</artifactId>
-			<version>1.3.2-RC3</version>
+			<version>1.4.1-RC4</version>
 		</dependency>
 	</dependencies>
 
@@ -79,8 +79,8 @@ Add the following to your build section
 				<dependencies>
 					<dependency>
 						<groupId>uk.co.real-logic</groupId>
-						<artifactId>sbe</artifactId>
-						<version>1.0-RC2</version>
+						<artifactId>sbe-all</artifactId>
+						<version>1.4.1-RC4</version>
 					</dependency>
 				</dependencies>
 			</plugin>
