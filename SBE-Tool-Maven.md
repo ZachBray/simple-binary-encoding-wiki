@@ -1,123 +1,95 @@
-The SBE Tool currently does not have a dedicated Maven plugin; it is possible to run SBE builds 
-using the code-haus plugins <code>exec-maven-plugin</code> and <code>build-helper-maven-plugin</code>
+The SBE Tool does not have a dedicated Maven plugin, but it is possible to run SBE code generation 
+using the MojoHaus [exec-maven-plugin](http://www.mojohaus.org/exec-maven-plugin/) and [build-helper-maven-plugin](http://www.mojohaus.org/build-helper-maven-plugin/).
 
 ## Overview
-To use the SBE tool as part of your Maven Build, you need to do the following:
+To use the SBE Tool as part of your Maven build:
 
-1. Include SBE as a Dependency for the Project
+1. Add [Agrona](https://github.com/real-logic/Agrona) to your project ``<dependencies>``
+1. Place your SBE schema file in a location of your choice (eg ``src/main/resources/schema.xml``)
+1. Use ``exec-maven-plugin`` to invoke the SBE Tools code generator
+1. Use ``build-helper-maven-plugin`` to include generated directories in your compilation classpath
+1. Execute a goal that includes the ``generate-sources`` phase (most typically ``mvn clean install``)
 
-1. Invoke SBE Build tool using Exec Plugin 
+You do not need to add SBE Tool itself to your project classpath, as all runtime requirements are provided by the Agrona dependency. You will only need SBE Tool as a dependency of the ``exec-maven-plugin``, as shown below.
 
-1. Include SBE Source Outputs to be compile via Maven 
+The following configuration will implement the two MojoHaus plugins:
 
-1. Put your SBE Tool schema file in the location: src/main/resources/schema.xml
-
-1. build i.e. mvn clean install 
-
-Add the following to your POM dependencies: 
-
-	<dependencies>
-		<dependency>
-			<groupId>uk.co.real-logic</groupId>
-			<artifactId>sbe-all</artifactId>
-			<version>1.4.1-RC4</version>
-		</dependency>
-	</dependencies>
-
-Add the following to your build section 
-
-    <build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.1</version>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.build.directory}/generated-sources</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.3.2</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<executableDependency>
-						<groupId>uk.co.real-logic</groupId>
-						<artifactId>sbe</artifactId>
-					</executableDependency>
-					<mainClass>uk.co.real_logic.sbe.SbeTool</mainClass>
-					<systemProperties>
-						<systemProperty>
-							<key>sbe.output.dir</key>
-							<value>${project.build.directory}/generated-sources</value>
-						</systemProperty>
-					</systemProperties>
-					<arguments>
-						<argument>${project.build.resources[0].directory}/schema.xml</argument>
-					</arguments>
-					<workingDirectory>${project.build.directory}/generated-sources</workingDirectory>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>uk.co.real-logic</groupId>
-						<artifactId>sbe-all</artifactId>
-						<version>1.4.1-RC4</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-		</plugins>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>target/generated-sources</directory>
-			</resource>
-		</resources>
-	</build>
+```
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.3.2</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <includeProjectDependencies>false</includeProjectDependencies>
+          <includePluginDependencies>true</includePluginDependencies>
+          <executableDependency>
+            <groupId>uk.co.real-logic</groupId>
+            <artifactId>sbe-all</artifactId>
+          </executableDependency>
+          <mainClass>uk.co.real_logic.sbe.SbeTool</mainClass>
+          <classpathScope>main</classpathScope>
+          <systemProperties>
+            <systemProperty>
+              <key>sbe.output.dir</key>
+              <value>${project.build.directory}/generated-sources/java</value>
+            </systemProperty>
+          </systemProperties>
+          <arguments>
+            <argument>${project.build.resources[0].directory}/schema.xml</argument>
+          </arguments>
+          <workingDirectory>${project.build.directory}/generated-sources/java</workingDirectory>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>uk.co.real-logic</groupId>
+            <artifactId>sbe-all</artifactId>
+            <version>1.4.1-RC4</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${project.build.directory}/generated-sources/java/</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+```
 
 ## Directory Structure
 	pom.xml
-	src/main/resources/schema.xml 	
-	target/classes (compiled SBE classes)
-	target/generated-sources (generated SBE Sources)
-	target/sbe-output-1.0-SNAPSHOT.JAR (Final Output)
+	src/main/resources/schema.xml (your SBE schema)
+	src/main/java (your main and test classes can all reference the SBE Tool-generated types)
+	target/generated-sources/java (SBE Tool-generated sources)
 
-## to build 
-mvn clean install
+## Use
+The above configuration causes any goal that includes the ``generate-sources`` phase to generate the SBE schema-defined types. This occurs before your own classes are compiled, therefore enabling them to refer to the SBE-generated types. Some typical goals that include the ``generate-sources`` phase includes ``compile``, ``test`` and ``install``.
 
-if successful there will be no output in the console log for the tasks, but the files will generated to your target/generated-sources. 
-
-SBE Schema errors will be displayed in the console and will cause the project build to fail. 
+Any SBE Schema errors will be displayed in the console. You may wish to enable additional SBE Tool properties such as ``sbe.validation.xsd``, ``sbe.validation.stop.on.error`` and ``sbe.validation.warnings.fatal`` to halt the build on error.
 
 ## Additional Parameters
-
-Additional SBE parameters can be added in the System Properties section: 
-
-	<systemProperty>
-		<key>sbe.output.dir</key>
-		<value>${project.build.directory}/generated-sources</value>
-	</systemProperty>
-
-The SBE tool parameters are documented here:
-
-https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Guide
+Additional SBE parameters can be added in the ``<systemProperties>`` element. The available parameters are documented in the [SBE Tool Guide](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Guide).
