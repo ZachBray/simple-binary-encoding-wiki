@@ -1,3 +1,10 @@
+### 1.4.2-RC2 (29 Jun 2016)
+* Added `sbe.cpp.namespaces.collapse` system property so c++ nested namespaces are collapsed to a single namespace, separated by underscores, which defaults to false.
+* Move generated interfaces for flyweights to [Agrona](https://github.com/real-logic/Agrona) and allow configuration via `sbe.java.generate.interfaces` system property which defaults to false.
+* Update to Agrona 0.5.2.
+* Update to Checkstyle 6.19.
+* Update to Gradle 2.14.
+
 ### 1.4.1-RC4 (23 May 2016)
 * Update to Agrona 0.5.1.
 * Update to Checkstyle 6.18.
