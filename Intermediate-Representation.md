@@ -12,7 +12,7 @@ Generating serialized IR is straight forward with the SBE Tool. Simply set `sbe.
 
 Serialized IR can act as input to the SBE Tool for code generation. This is done by using the file extension `.sbeir` instead of `.xml`. Here is an example.
 
-    $ java -jar sbe-all-1.4.1-RC4.jar <message-declarations-file.sbeir>
+    $ java -jar sbe-all-1.4.2-RC4.jar <message-declarations-file.sbeir>
 
 Therefore it is possible to use serialized IR as a means to pass around "compiled" representations.
 
@@ -45,4 +45,4 @@ The header would be expanded to look something like below.
 
 Each message is similar in that it is started with `BEGIN_MESSAGE` and ended with `END_MESSAGE`.
 
-Careful readers may realize that it is simple to add more messages to an IR file by concatenation. Just concatenate a list of Tokens to the end of the file. This is intentional and provides a simple mechanism for composition.
+Careful readers may realise that it is simple to add more messages to an IR file by concatenation. Just concatenate a list of Tokens to the end of the file. This is intentional and provides a simple mechanism for composition.
