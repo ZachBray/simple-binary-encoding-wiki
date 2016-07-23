@@ -1,3 +1,9 @@
+### 1.5.0 (22 Jul 2016)
+* Reference the 1.0 final SBE schema XSD.
+* Generate a `toString()` method for the Java codecs stubs to help with debugging.
+* Update to Agrona 0.5.3.
+* Update to Checkstyle 7.0.
+
 ### 1.4.2-RC2 (29 Jun 2016)
 * Added `sbe.cpp.namespaces.collapse` system property so c++ nested namespaces are collapsed to a single namespace, separated by underscores, which defaults to false.
 * Move generated interfaces for flyweights to [Agrona](https://github.com/real-logic/Agrona) and allow configuration via `sbe.java.generate.interfaces` system property which defaults to false.
