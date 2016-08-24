@@ -1,3 +1,10 @@
+### 1.5.1 (24 Aug 2016)
+* Target CMake 3.0.2 minimum.
+* Correctly encode int64 min value in C++.
+* Apply constexpr's where possible in C++.
+* Upgrade to Agrona 0.5.4.
+* Upgrade to Gradle 2.14.1.
+
 ### 1.5.0 (22 Jul 2016)
 * Reference the 1.0 final SBE schema XSD.
 * Generate a `toString()` method for the Java codecs stubs to help with debugging.
