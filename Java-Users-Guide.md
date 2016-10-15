@@ -214,11 +214,11 @@ To encode it is necessary to first stage the count of times the group will repea
 To decode the flyweight implements Iterable and Iterator allowing for use with the foreach loop pattern.
 
 ``` java
-    for (final CarDecoder.PerformanceFiguresDecoder performanceFigures : car.performanceFigures())
+    for (CarDecoder.PerformanceFiguresDecoder performanceFigures : car.performanceFigures())
     {
         sb.append("\ncar.performanceFigures.octaneRating=").append(performanceFigures.octaneRating());
 
-        for (final AccelerationDecoder acceleration : performanceFigures.acceleration())
+        for (AccelerationDecoder acceleration : performanceFigures.acceleration())
         {
             sb.append("\ncar.performanceFigures.acceleration.mph=").append(acceleration.mph());
             sb.append("\ncar.performanceFigures.acceleration.seconds=").append(acceleration.seconds());
