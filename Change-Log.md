@@ -1,3 +1,15 @@
+### 1.5.2 (15 Oct 2016)
+* Added checks for extension var data and repeating groups in OTF for Java and C++.
+* Added `sinceVerion` and `inActingVersion` to repeating groups for C++.
+* Added acting version guard to repeating groups and var data for extensions.
+* Added `sinceVersion` metadata methods for all field types in Java generated stubs.
+* Expose buffer and offset in fixed flyweights for C++.
+* Use static constexpr for C++ constants.
+* Upgrade to Agrona 0.5.5.
+* Upgrade to Checkstyle 7.1.2.
+* Upgrade to JMH 1.15.
+* Upgrade to Gradle 3.1.
+
 ### 1.5.1 (24 Aug 2016)
 * Target CMake 3.0.2 minimum.
 * Correctly encode int64 min value in C++.
