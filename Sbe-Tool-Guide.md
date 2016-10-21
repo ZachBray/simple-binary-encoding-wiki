@@ -20,6 +20,7 @@ The tool supports the following options:
  * `sbe.java.decoding.buffer.type`: Buffer type to be used for the decoder stubs. This type only reads the underlying buffer.
  * `sbe.java.generate.group-order.annotation`: Should the `GroupOrder` annotation be generated, defaults to false.
  * `sbe.cpp.namespaces.collapse`: Boolean to turn on or off collapsing of nested namespaces in generated C++ stubs. Defaults to false.
+ * `sbe.keyword.append.token`: String to append to schema tokens that collide with reserved words in the target language.
 
 The SBE tool can be used with Maven
 [see](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Maven)
