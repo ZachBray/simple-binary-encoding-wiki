@@ -1,3 +1,9 @@
+### 1.5.3 (03 Nov 2016)
+* Add String convenience accessors to Java generated stubs for char array types.
+* Upgrade to Mockito 2.2.9.
+* Upgrade to Agrona 0.5.6.
+* Upgrade to Checkstyle 7.2.
+
 ### 1.5.2 (15 Oct 2016)
 * Added checks for extension var data and repeating groups in OTF for Java and C++.
 * Added `sinceVerion` and `inActingVersion` to repeating groups for C++.
