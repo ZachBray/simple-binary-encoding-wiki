@@ -199,6 +199,8 @@ Group elements designate a repeating group in a message. Each group contains one
 * `dimensionType`: The composite type that is used to hold the group dimensions. This must be composed of a `numInGroup` type as well as a `blockLength` type. This defaults to "groupSizeEncoding".
 * `blockLength`: The length of the fixed fields in the group in bytes.
 
+When `numInGroup` type is set to `uint8`, a group element may contain up to 256 entities. This type can be set to `uint16` in order for the group to contain up to 65,536 entities. A group cannot contain more than 65,536 entities.
+
 Examples of the use of `<field>` are below:
 
 ```xml
