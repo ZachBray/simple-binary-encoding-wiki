@@ -12,14 +12,15 @@ The tool supports the following options:
  * `sbe.validation.warnings.fatal`: Are warnings in parsing considered fatal? Defaults to false.
  * `sbe.validation.suppress.output`: Should the parser suppress output during validation? Defaults to false.
  * `sbe.generate.stubs`: Generate stubs or not. Defaults to true.
- * `sbe.generate.ir`: Generate IR or not. Defaults to false.
  * `sbe.target.language`: Target language for code generation, defaults to Java (also supports CPP).
+ * `sbe.generate.ir`: Generate IR or not. Defaults to false.
  * `sbe.output.dir`: Target directory for output generation, defaults to current directory.
- * `sbe.target.namespace`: Namespace to be used for generated code. Equates package for Java. If not provided then the `package` attribute from the schema will be used.
+ * `sbe.java.generate.interfaces`: Generate interface hierarchy or not. Defaults to false.
  * `sbe.java.encoding.buffer.type`: Buffer type to be used for the encoder stubs. This type needs to mutate the underlying buffer.
  * `sbe.java.decoding.buffer.type`: Buffer type to be used for the decoder stubs. This type only reads the underlying buffer.
- * `sbe.java.generate.group-order.annotation`: Should the `GroupOrder` annotation be generated, defaults to false.
+ * `sbe.target.namespace`: Namespace to be used for generated code. Equates package for Java. If not provided then the `package` attribute from the schema will be used.
  * `sbe.cpp.namespaces.collapse`: Boolean to turn on or off collapsing of nested namespaces in generated C++ stubs. Defaults to false.
+ * `sbe.java.generate.group-order.annotation`: Should the `GroupOrder` annotation be generated, defaults to false.
  * `sbe.keyword.append.token`: String to append to schema tokens that collide with reserved words in the target language.
 
 The SBE tool can be used with Maven
