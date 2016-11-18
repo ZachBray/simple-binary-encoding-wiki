@@ -1,3 +1,11 @@
+### 1.5.4 (17 Nov 2016)
+* Added optional support for decoding unknown extended enums.
+* Upgrade to JMH 1.16.
+* Upgrade to sevntu-checks 1.21.1.
+* Upgrade to Mockito 2.2.16.
+* Upgrade to Agrona 0.9.0.
+* Upgrade to Gradle 3.2.
+
 ### 1.5.3 (03 Nov 2016)
 * Add String convenience accessors to Java generated stubs for char array types.
 * Upgrade to Mockito 2.2.9.
