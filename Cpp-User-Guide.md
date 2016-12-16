@@ -38,14 +38,14 @@ To encode a message it is necessary to encode the header then the message.
        .version(Car::sbeSchemaVersion());
 
     // Then encode the message
-    messageFlyweight.resetForEncode(buffer, bufferOffset + MessageHeader.size(), bufferLength);
+    messageFlyweight.wrapForEncode(buffer, bufferOffset + MessageHeader.size(), bufferLength);
 ```
 
 The decoder should decode the header and then lookup which template should be used to decode the message body.
 
 ```cpp
     // Reset the message header in preparation for decoding a message.
-    hdr.wrap(buffer, bufferOffset, bufferLength);
+    hdr.wrap(buffer, offset, messageHeaderVersion, bufferLength);
 
     int templateId = hdr.templateId();
     int actingVersion = hdr.version();
@@ -54,7 +54,7 @@ The decoder should decode the header and then lookup which template should be us
     // Lookup template for decoding the message
 
     bufferOffset += hdr.size();
-    messageFlyweight.resetForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
+    messageFlyweight.wrapForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
 ```
 
 ### Single Fixed Fields
@@ -70,7 +70,7 @@ Single fixed fields can be encoded in a fluent style after a message flyweight h
 Decoding single fixed fields is simply the reverse.
 
 ```cpp
-    car.wrapForDecode(buffer, bufferOffset, actingBlockLength, actingVersion, bufferLength);
+    car.wrapForDecode(buffer, offset, actingBlockLength, actingVersion, bufferLength);
 
     sb.append("\ncar.serialNumber=").append(car.serialNumber());
     sb.append("\ncar.modelYear=").append(car.modelYear());
@@ -125,7 +125,7 @@ Constants do not get read from the underlying buffer. Their value as defined in 
 Choice from the message schema directly map to enums in C++. Encoding is as follows.
 
 ```cpp
-    car.wrapForEncode(buffer, bufferOffset)
+    car.wrapForEncode(buffer, offset, bufferLength)
        .available(BooleanType::T)
        .code(Model::A);
 ```
