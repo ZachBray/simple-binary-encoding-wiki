@@ -14,7 +14,7 @@ It is expected that the messages are communicated inside a framing protocol. The
     |        +----------+----------------------------------+     |
     +------------------------------------------------------------+
 
-The frame may contain session or transport level fields that belong to different layers of the [OSI Model](http://en.wikipedia.org/wiki/OSI_model) and beyond the scope of the message codec which deals with the [layer 6](http://en.wikipedia.org/wiki/OSI_model#Layer_6:_presentation_layer) presentation.
+The frame may contain session or transport level fields that belong to different layers of the [OSI Model](http://en.wikipedia.org/wiki/OSI_model) and beyond the scope of the message codec which deals with the [layer 6](https://en.wikipedia.org/wiki/OSI_model#Layer_6:_Presentation_Layer) presentation.
 
 ### Message Header
 
