@@ -1,3 +1,16 @@
+### 1.5.5 (20 Dec 2016)
+* Correct issues with message extension on types other than basic encoded types.
+* Removed unneeded fields from the Java codecs to reduce footprint.
+* Capture `sinceVersion` and `description` attributes for all types in the XML schema and store in the IR.
+* Expose the buffer and offset as accessor methods in the Java stubs.
+* Generate encoding offset and length as static methods for fields in the codec stubs.
+* Upgrade to JMH 1.17.3.
+* Upgrade to Checkstyle 7.3.
+* Upgrade to sevntu-checks 1.22.0.
+* Upgrade to Mockito 2.2.29.
+* Upgrade to Agrona 0.9.1.
+* Upgrade to Gradle 3.2.1.
+
 ### 1.5.4 (17 Nov 2016)
 * Added optional support for decoding unknown extended enums.
 * Upgrade to JMH 1.16.
