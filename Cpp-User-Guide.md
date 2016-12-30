@@ -145,9 +145,9 @@ Encoding
 
 ```cpp
     car.extras().clear()
-                .cruiseControl(true)
-                .sportsPack(true)
-                .sunRoof(false);
+        .cruiseControl(true)
+        .sportsPack(true)
+        .sunRoof(false);
 ```
 
 Decoding
