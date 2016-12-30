@@ -2,7 +2,7 @@ After running the [SbeTool](Sbe-Tool-Guide) a number of C++ source files will be
 
 Messages are designed to be read in the sequential order as define in the schema. This ensures a [stream access](Design-Principles) pattern for performance. If groups or variable data are not processed in order then the data may become corrupt. Conceptually the message is encoded as a series of blocks. The blocks are the root fields, followed by each iteration of repeating groups, and finally followed by one or more variable data fields.
 
-Due to the streaming nature of the codec the size of the message cannot be determined until encoding or decoding is complete. The method <code>MessageFlyweight::position()</code> will return the index in the underlying buffer at which the next block will commence, and the <code>MessageFlyweight::size()</code> method will return the current encoded size depending on how far it has progressed.
+Due to the streaming nature of the codec the size of the message cannot be determined until encoding or decoding is complete. The method <code>MessageFlyweight::position()</code> will return the index in the underlying buffer at which the next block will commence, and the <code>MessageFlyweight::encodedLength()</code> method will return the current encoded length in bytes depending on how far it has progressed.
 
 ### Framing
 
@@ -38,7 +38,7 @@ To encode a message it is necessary to encode the header then the message.
        .version(Car::sbeSchemaVersion());
 
     // Then encode the message
-    messageFlyweight.wrapForEncode(buffer, bufferOffset + MessageHeader.size(), bufferLength);
+    messageFlyweight.wrapForEncode(buffer, bufferOffset + MessageHeader.encodedLength(), bufferLength);
 ```
 
 The decoder should decode the header and then lookup which template should be used to decode the message body.
@@ -139,7 +139,7 @@ Decoding is simply the reverse.
 
 ### BitSets
 
-A bitset is multi-value choice that is mapped to the presence or not of particular bits in an integer. The bitset is returned from the flyweight with properties that take true or false arguments for each named bit. A `clear()` method is provided to reset the flags and should be used to initialize for encoding.
+A bitset is multi-value choice that is mapped to the presence or not of particular bits in an integer. The bitset is returned from the flyweight with properties that take true or false arguments for each named bit. A `clear()` method is provided to reset the flags and should be used to initialise for encoding.
 
 Encoding
 
@@ -168,9 +168,10 @@ Composite types provide a means of reuse. The map directly to a class as a flywe
 Encoding
 
 ```cpp
-    car.engine().capacity(2000)
-                .numCylinders((short)4)
-                .putManufacturerCode(MANUFACTURER_CODE);
+    car.engine()
+        .capacity(2000)
+        .numCylinders((short)4)
+        .putManufacturerCode(MANUFACTURER_CODE);
 ```
 
 Decoding
