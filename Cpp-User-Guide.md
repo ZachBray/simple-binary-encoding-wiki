@@ -106,14 +106,14 @@ When encoding things like financial symbols it often beneficial to encode these 
 For encoding a put method is defined taking a source pointer at which to begin copying. The copy will always be for the size of the field.
 
 ```cpp
-       car.putVehicleCode(VEHICLE_CODE);
+   car.putVehicleCode(VEHICLE_CODE);
 ```
 
 For decoding a get method is define taking destination byte array with an destination offset at which copy into to.
 
 ```cpp
-       char tmp[80];
-       car.getVehicleCode(tmp, sizeof(tmp));
+   char tmp[80];
+   car.getVehicleCode(tmp, sizeof(tmp));
 ```
 
 ### Constants
