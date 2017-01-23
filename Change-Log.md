@@ -1,3 +1,15 @@
+### 1.5.6 (23 Jan 2017)
+* Fix bug with generating composites within composites.
+* Fix bug with message `sinceVersion` being over written by schema version id.
+* Add `deprecated` version information from the XML to the IR.
+* Add Golang support to generator.
+* Upgrade to Agrona 0.9.2.
+* Upgrade to JMH 1.17.4.
+* Upgrade to Checkstyle 7.4.
+* Upgrade to sevntu-checks 1.23.0.
+* Upgrade to Mockito 2.6.8.
+* Upgrade to Gradle 3.3.
+
 ### 1.5.5 (20 Dec 2016)
 * Correct issues with message extension on types other than basic encoded types.
 * Removed unneeded fields from the Java codecs to reduce footprint.
