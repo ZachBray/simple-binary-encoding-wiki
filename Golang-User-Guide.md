@@ -54,22 +54,22 @@ To encode a message it is first necessary to encode the header. Using
 the Car from the example-schema:
 
 ``` go
-    var car Car
-    var buf = new(bytes.Buffer)
-    m := NewSbeGoMarshaller() 
+var car Car
+var buf = new(bytes.Buffer)
+m := NewSbeGoMarshaller() 
 
-    header := MessageHeader{car.SbeBLockLength(), car.SbeTemplateId(), car.SbeSchemaId(), car.SbeSchemaVersion()}
-    header.Encode(m, buf)
+header := MessageHeader{car.SbeBLockLength(), car.SbeTemplateId(), car.SbeSchemaId(), car.SbeSchemaVersion()}
+header.Encode(m, buf)
 ```
 
 and then for a (populated) car:
 ``` go
-    var car Car
-    // populate car
-    CarInit(car) // populate constant value fields
-    if err:= car.Encode(m, buf, false); err != nil {
-        /// handle errors
-    }
+var car Car
+// populate car
+CarInit(car) // populate constant value fields
+if err:= car.Encode(m, buf, false); err != nil {
+    /// handle errors
+}
 ```
 
 Some notes of interest:
@@ -109,19 +109,16 @@ The decoder decodes the header and then can lookup which template should be used
 
 ``` go
 
-    var header MessageHeader
-    m := NewSbeGoMarshaller() 
+var header MessageHeader
+m := NewSbeGoMarshaller() 
+header.Decode(m, reader)
 
-    header.Decode(m, reader)
-
-    // Lookup template for decoding the message and determine it is a car
-    
-    var car Car
-    if err := car.Decode(m, reader, header.SbeSchemaVersion(), header.SbeBlockLength(), true); err != nil {
-        // error handling
-    }
+// Lookup template for decoding the message and determine it is a car
+var car Car
+if err := car.Decode(m, reader, header.SbeSchemaVersion(), header.SbeBlockLength(), true); err != nil {
+    // error handling
+}
 ```
-
 ## Golang Idioms
 
 The Golang generator does not produce a flyweight implementation as
@@ -137,23 +134,22 @@ Single fixed fields are represented as a field in a type and are
 directly accessed e.g.,
 
 ``` go
-    car.SerialNumber = 1234
-    model := car.ModelYear
+car.SerialNumber = 1234
+model := car.ModelYear
 ```
 
 Integer types (both signed and unsigned) are explicitly sized (e.g., ```uint16```, ```int64``` so they are correctly represented on the wire.
 
 Single characters are represented as a ```byte```.
 
-
 ### Fixed Size Array Fields
 
 SBE fixed size arrays are represented as golang fixed size array and can be referenced as such e.g.,
 
 ``` go
-    for i := 0; i < len(car.SomeNumbers; i++ {
-        car.SomeNumbers[i] = i;
-    }
+for i := 0; i < len(car.SomeNumbers; i++ {
+    car.SomeNumbers[i] = i;
+}
 ```
 
 Fixed size string arrays are represented as fixed length byte arrays
@@ -190,7 +186,7 @@ var Model = ModelValues{65, 66, 67, 0}
 
 Using this would look like:
 ``` go
-      car.DiscountedModel = Model.C
+car.DiscountedModel = Model.C
 ```
 
 Range checking of enumeration values is only performed when the
@@ -219,7 +215,7 @@ var OptionalExtrasChoice = OptionalExtrasChoiceValues{0, 1, 2}
 and it's usage is similar to enumerations:
 
 ``` go
-    car.Extras[OptionalExtrasChoice.CruiseControl] = true
+car.Extras[OptionalExtrasChoice.CruiseControl] = true
 ```
 
 ### Composite Types
@@ -227,8 +223,8 @@ and it's usage is similar to enumerations:
 Composite types provide a means of reuse. They map directly to a type in Golang and are simply referenced e.g.,
 
 ``` go
-    car.Engine.Capacity = 17
-    cylinders = car.Enging.NumCylinders
+car.Engine.Capacity = 17
+cylinders = car.Engine.NumCylinders
 ```
 ### Repeating Groups
 
@@ -237,9 +233,9 @@ even be nested. The groups are types represented as slices where the
 length of the slice determines the number in the group. e.g.,
 
 ``` go
-    groupLength := len(car.FuelFigures)
-    // Grab the second element's Speed
-    speed := car.FuelFigures[1].Speed
+groupLength := len(car.FuelFigures)
+// Grab the second element's Speed
+speed := car.FuelFigures[1].Speed
 ```    
 
 ### Variable Length Data
