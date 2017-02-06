@@ -75,9 +75,9 @@ if err:= car.Encode(m, buf, false); err != nil {
 Some notes of interest:
 
 The marshaller ```m``` in the above example can be used for both
-encoding and decoding and it contains per thread (or goroutine)
-state. As a result each goroutine should use it's own marshaller but
-they can be reused within an existing thread.
+encoding and decoding and it contains state. As a result each goroutine 
+should use it's own marshaller but they can be reused within an existing
+goroutine for both encoding and decoding.
 
 Here we use a ```bytes.Buffer``` type to hold our marshalled data but
 this can be any ```io.Writer``` such as a socket, pipe etc and can
@@ -144,7 +144,7 @@ Single characters are represented as a ```byte```.
 
 ### Fixed Size Array Fields
 
-SBE fixed size arrays are represented as golang fixed size array and can be referenced as such e.g.,
+SBE fixed size arrays are represented as golang fixed size arrays and can be referenced as such e.g.,
 
 ``` go
 for i := 0; i < len(car.SomeNumbers; i++ {
@@ -155,20 +155,19 @@ for i := 0; i < len(car.SomeNumbers; i++ {
 Fixed size string arrays are represented as fixed length byte arrays
 in golang. There is no default character encoding but if the character
 encoding is specified then validity may be performed by the
-```RanegCheck()``` method. Currently validated character encodings are
+``RangeCheck()``` method. Currently validated character encodings are
 UTF-8 and ASCII.
-
 
 ### Constants
 
 Constants are not encoded and decoded. Their value as defined in the
-schema is writtten automatically on decode and can be set using the
-TypeInit() method described above for encoding.
+schema is written automatically on decode and can be set using the
+```TypeInit()``` method described above for encoding.
 
 ### Enumerations
 
 Choice from the message schema do not map directly as golang does not
-support an enumerated tyoe. Instead they are represented as type and a
+support an enumerated type. Instead they are represented as type and a
 variable containing the known constant values. From the Car example
 there is a Model enumeration generated:
 
@@ -190,14 +189,14 @@ car.DiscountedModel = Model.C
 ```
 
 Range checking of enumeration values is only performed when the
-schemaVersion is equal to or greater than the actingVersion so that
-new enumeration values are allowed to propogate to older decoders.
+SchemaVersion is equal to or greater than the ActingVersion so that
+new enumeration values are allowed to propagate to older decoders.
 
 ### BitSets
 
-A bitset is multi-value choice that is encoded as bits in an integer
+A bitset is multi-value choice that is encoded to the wire as bits in an integer
 which represent the presence or not (1 vs 0).  Golang does not support
-bitsets and so they are represented as an array of boolean
+bitsets and so they are represented in code as an array of boolean
 values. Again from the Car example the generated code looks like:
 
 ``` go
@@ -212,7 +211,7 @@ type OptionalExtrasChoiceValues struct {
 var OptionalExtrasChoice = OptionalExtrasChoiceValues{0, 1, 2}
 ```
 
-and it's usage is similar to enumerations:
+and the usage is similar to enumerations:
 
 ``` go
 car.Extras[OptionalExtrasChoice.CruiseControl] = true
