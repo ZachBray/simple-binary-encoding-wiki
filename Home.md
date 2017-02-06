@@ -11,6 +11,7 @@ The SBE tool can be used as a library enabling on-the-fly decoding of messages, 
 1. [How to use the SBE Tool](wiki/Sbe-Tool-Guide)
 1. [Java Users Guide](wiki/Java-Users-Guide)
 1. [C++ Users Guide](wiki/Cpp-User-Guide)
+1. [Golang Users Guide](wiki/Golang-User-Guide)
 1. [FIX/SBE XML Primer](wiki/FIX-SBE-XML-Primer)
 1. [Message Extension/Versioning](wiki/Message-Versioning)
 1. [Intermediate Representation](wiki/Intermediate-Representation)
