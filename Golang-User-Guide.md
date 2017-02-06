@@ -204,7 +204,7 @@ which represent the presence or not (1 vs 0).  Golang does not support
 bitsets and so they are represented as an array of boolean
 values. Again from the Car example the generated code looks like:
 
-``` fgo
+``` go
 type OptionalExtras [8]bool
 type OptionalExtrasChoiceValue uint8
 type OptionalExtrasChoiceValues struct {
