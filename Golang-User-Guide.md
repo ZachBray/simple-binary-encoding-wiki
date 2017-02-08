@@ -99,13 +99,13 @@ that range checking would be used during development to ensure
 messages are valid within the spec. For usage where performance is not
 paramount it may be left enabled in production.
 
-Each generated type ```Foo``` will a ```FooInit()``` method to
+Each generated type ```Foo``` will have a ```FooInit()``` method to
 populate constant value fields. It is only necessary to call this for
 types that have constant value fields.
 
 #### Decoding
 
-The decoder decodes the header and then can lookup which template should be used to decode the message body.
+The decoder decodes the header and can then lookup which template should be used to decode the message body.
 
 ``` go
 
@@ -160,14 +160,14 @@ UTF-8 and ASCII.
 
 ### Constants
 
-Constants are not encoded and decoded. Their value as defined in the
-schema is written automatically on decode and can be set using the
+Constants are not encoded and decoded. Their value, as defined in the
+schema, is set automatically on decode and can be set using the
 ```TypeInit()``` method described above for encoding.
 
 ### Enumerations
 
-Choice from the message schema do not map directly as golang does not
-support an enumerated type. Instead they are represented as type and a
+Enumerations in the message schema do not map directly as golang does not
+support an enumerated type. Instead they are represented as a type and a
 variable containing the known constant values. From the Car example
 there is a Model enumeration generated:
 
@@ -195,7 +195,7 @@ new enumeration values are allowed to propagate to older decoders.
 ### BitSets
 
 A bitset is multi-value choice that is encoded to the wire as bits in an integer
-which represent the presence or not (1 vs 0).  Golang does not support
+which represent their presence or not (1 vs 0).  Golang does not support
 bitsets and so they are represented in code as an array of boolean
 values. Again from the Car example the generated code looks like:
 
