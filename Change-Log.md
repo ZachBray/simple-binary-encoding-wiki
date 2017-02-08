@@ -1,3 +1,10 @@
+### 1.5.7 (08 Feb 2017)
+* Make name clash with language keywords a warning rather than error. Issue #433.
+* Capture byte order as a field in the IR for convenience.
+* Add missing accessor methods for C++ OTF Token` and `Encoding`.
+* Golang additions in preparation for beta launch.
+* Upgrade to Checkstyle 7.5.1.
+
 ### 1.5.6 (23 Jan 2017)
 * Fix bug with generating composites within composites.
 * Fix bug with message `sinceVersion` being over written by schema version id.
