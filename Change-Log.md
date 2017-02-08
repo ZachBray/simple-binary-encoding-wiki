@@ -1,5 +1,5 @@
 ### 1.5.7 (08 Feb 2017)
-* Make name clash with language keywords a warning rather than error. Issue #433.
+* Make name clash with language keywords a warning rather than error. Issue [#433](https://github.com/real-logic/simple-binary-encoding/issues/433).
 * Capture byte order as a field in the IR for convenience.
 * Add missing accessor methods for C++ OTF Token` and `Encoding`.
 * Golang additions in preparation for beta launch.
