@@ -45,8 +45,10 @@ identify what codec should be used as the template for a message.
 1. **SchemaId**: The identifier for the schema the message belongs to.
 1. **Version**: The version of the schema allowing for extension.
 
-**Note**: A new message header type can be defined with different
-sizes of integers for the template and version according to needs.
+**Note**: A message header type can be defined with other fields and with different
+sizes of integers for the template and version according to needs. A ```MessageHeader```
+type will always be generated and can be used but if a standard message header is used an
+optimized ```SbeGoMessageHeader``` type is made generally available.
 
 #### Encoding
 
@@ -58,7 +60,7 @@ var car Car
 var buf = new(bytes.Buffer)
 m := NewSbeGoMarshaller() 
 
-header := MessageHeader{car.SbeBLockLength(), car.SbeTemplateId(), car.SbeSchemaId(), car.SbeSchemaVersion()}
+header := SbeGoMessageHeader{car.SbeBLockLength(), car.SbeTemplateId(), car.SbeSchemaId(), car.SbeSchemaVersion()}
 header.Encode(m, buf)
 ```
 
@@ -109,7 +111,7 @@ The decoder decodes the header and can then lookup which template should be used
 
 ``` go
 
-var header MessageHeader
+var header SbeGoMessageHeader
 m := NewSbeGoMarshaller() 
 header.Decode(m, reader)
 
