@@ -1,3 +1,13 @@
+### 1.6.0 (22 Feb 2017)
+* Allow complex types to be included in the `messageHeader` for a schema.
+* Fixed bug [#435](https://github.com/real-logic/simple-binary-encoding/issues/435) so that the name is correctly picked up for ref types in composites.
+* Add `referencedName` to the IR so that is can be used with ref types.
+* Code clean ups for C++.
+* Go lang support beta complete.
+* Upgrade to Agrona 0.9.3.
+* Upgrade to Gradle 3.4.
+* Upgrade to Mockito 2.7.9.
+
 ### 1.5.7 (08 Feb 2017)
 * Make name clash with language keywords a warning rather than error. Issue [#433](https://github.com/real-logic/simple-binary-encoding/issues/433).
 * Capture byte order as a field in the IR for convenience.
