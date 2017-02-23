@@ -12,7 +12,7 @@ Generating serialized IR is straight forward with the SBE Tool. Simply set `sbe.
 
 Serialized IR can act as input to the SBE Tool for code generation. This is done by using the file extension `.sbeir` instead of `.xml`. Here is an example.
 
-    $ java -jar sbe-all-1.5.7.jar <message-declarations-file.sbeir>
+    $ java -jar sbe-all-1.6.0.jar <message-declarations-file.sbeir>
 
 Therefore it is possible to use serialized IR as a means to pass around "compiled" representations.
 
