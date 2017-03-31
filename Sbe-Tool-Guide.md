@@ -12,7 +12,7 @@ The tool supports the following options:
  * `sbe.validation.warnings.fatal`: Are warnings in parsing considered fatal? Defaults to false.
  * `sbe.validation.suppress.output`: Should the parser suppress output during validation? Defaults to false.
  * `sbe.generate.stubs`: Generate stubs or not. Defaults to true.
- * `sbe.target.language`: Target language for code generation, defaults to Java (also supports CPP).
+ * `sbe.target.language`: Target language for code generation, defaults to Java (also supports CPP and Golang). Additionally a fully qualified class name can be provided which implements `uk.co.real_logic.sbe.generation.TargetCodeGeneratorLoader`.
  * `sbe.generate.ir`: Generate IR or not. Defaults to false.
  * `sbe.output.dir`: Target directory for output generation, defaults to current directory.
  * `sbe.java.generate.interfaces`: Generate interface hierarchy or not. Defaults to false.
