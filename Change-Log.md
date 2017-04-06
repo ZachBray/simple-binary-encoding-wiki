@@ -1,4 +1,4 @@
-### 1.6.1 (06 Mar 2017)
+### 1.6.1 (06 Apr 2017)
 * Share some test code with Golang.
 * Upgrade to Checkstyle 7.6.1.
 * Upgrade to Agrona 0.9.4.
