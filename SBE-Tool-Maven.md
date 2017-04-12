@@ -53,7 +53,7 @@ The following configuration will implement the two MojoHaus plugins:
           <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-all</artifactId>
-            <version>1.6.0</version>
+            <version>1.6.2</version>
           </dependency>
         </dependencies>
       </plugin>
