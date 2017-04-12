@@ -1,3 +1,8 @@
+### 1.6.2 (12 Apr 2017)
+* Upgrade to Agrona 0.9.5.
+* Upgrade to Gradle 3.5.
+* Upgrade to Mockito 2.7.22.
+
 ### 1.6.1 (06 Apr 2017)
 * Share some test code with Golang.
 * Upgrade to Checkstyle 7.6.1.
