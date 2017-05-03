@@ -34,7 +34,7 @@ The following configuration will implement the two MojoHaus plugins:
           <includePluginDependencies>true</includePluginDependencies>
           <executableDependency>
             <groupId>uk.co.real-logic</groupId>
-            <artifactId>sbe-all</artifactId>
+            <artifactId>sbe-tool</artifactId>
           </executableDependency>
           <mainClass>uk.co.real_logic.sbe.SbeTool</mainClass>
           <classpathScope>main</classpathScope>
@@ -51,8 +51,13 @@ The following configuration will implement the two MojoHaus plugins:
         </configuration>
         <dependencies>
           <dependency>
+            <groupId>org.agrona</groupId>
+            <artifactId>agrona</artifactId>
+            <version>0.9.5</version>
+          </dependency>
+          <dependency>
             <groupId>uk.co.real-logic</groupId>
-            <artifactId>sbe-all</artifactId>
+            <artifactId>sbe-tool</artifactId>
             <version>1.6.2</version>
           </dependency>
         </dependencies>
