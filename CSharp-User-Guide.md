@@ -1,6 +1,6 @@
 ### History
 
-The initial version of the C# generator was produced by Adaptive's Olivier Deheurles which supported The SBE standard up RC2. Most of that code is still in use but the tool now supports the 1.0 standard.
+The initial version of the C# generator was produced by Adaptive's Olivier Deheurles which supported the SBE standard up RC2. Most of that code is still in use but the tool now supports the 1.0 standard.
 
 ### Quickstart
 
