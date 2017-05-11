@@ -233,7 +233,7 @@ To store variable length strings or binary data then the var data fields can be 
 Encoding
 
 ```cpp
-    car.putMake(MAKE, strlen(MAKE));
+    car.putManufacturer(MANUFACTURER, strlen(MANUFACTURER));
     car.putModel(MODEL, strlen(MODEL));
 ```
 
@@ -241,9 +241,9 @@ Decoding
 
 ```cpp
     char tmp[80];
-    bytesCopied = car.getMake(tmp, sizeof(tmp));
-    sb.append("\ncar.make=").append(tmp, bytesCopied);
-    sb.append("\ncar.makeCharacterEncoding=").append(car.makeCharacterEncoding());
+    bytesCopied = car.getManufacturer(tmp, sizeof(tmp));
+    sb.append("\ncar.manufacturer=").append(tmp, bytesCopied);
+    sb.append("\ncar.manufacturerCharacterEncoding=").append(car.manufacturerCharacterEncoding());
     bytesCopied = car.getModel(tmp, sizeof(tmp));
     sb.append("\ncar.model=").append(tmp, bytesCopied);
     sb.append("\ncar.modelCharacterEncoding=").append(car.modelCharacterEncoding());
