@@ -39,7 +39,7 @@ The message header contains the fields that allows the decoder to identify what 
 
 **Note**: A new message header type can be defined with different sizes of integers for the template and version according to needs.
 
-The csharp implementation uses the [directBuffer](https://github.com/real-logic/simple-binary-encoding/blob/master/csharp/lib/DirectBuffer.cs) implementation to hold the bytes used for encoding and decoding messages. It provides a fast efficient and garbage collection free mechanism for manipulating the underlying byte arrays,
+The csharp implementation uses the [DirectBuffer](https://github.com/real-logic/simple-binary-encoding/blob/master/csharp/sbe-dll/DirectBuffer.cs) implementation to hold the bytes used for encoding and decoding messages. It provides a fast efficient and garbage collection free mechanism for manipulating the underlying byte arrays,
 
 ``` csharp
 // This byte array is used for encoding and decoding,
