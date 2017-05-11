@@ -235,7 +235,7 @@ To store variable length strings or binary data the var data fields can be used 
 The length of the string is typically encoded using an `uint8` or `uint16` primitive type. If strings longer than 64KB are required then `uint32` needs to be the type of the length. As Java does not have unsigned types then the `maxValue` attribute must be set to avoid negative values. It is also worth keeping the `maxValue` well under 2GB to ensure there is space in a buffer for framing and other fields.
 
 ``` xml
-    <composite name="varDataEncoding">
+    <composite name="varStringEncoding">
         <type name="length" primitiveType="uint32" maxValue="1073741824"/>
         <type name="varData" primitiveType="uint8" length="0" characterEncoding="UTF-8"/>
     </composite>
@@ -244,15 +244,15 @@ The length of the string is typically encoded using an `uint8` or `uint16` primi
 Encoding
 
 ``` java
-        car.make(new String(MAKE));
+        car.manufacturer(new String(MANUFACTURER));
         car.putModel(MODEL, srcOffset, MODEL.length);
 ```
 
 Decoding
 
 ``` java
-    sb.append("\ncar.make.semanticType=").append(CarEncoder.makeMetaAttribute(MetaAttribute.SEMANTIC_TYPE));
-    sb.append("\ncar.make=").append(car.make());
+    sb.append("\ncar.manufacturer.semanticType=").append(CarEncoder.manufacturerMetaAttribute(MetaAttribute.SEMANTIC_TYPE));
+    sb.append("\ncar.manufacturer=").append(car.make());
 
     sb.append("\ncar.model=").append(
         new String(buffer, 0, car.getModel(buffer, 0, buffer.length), CarEncoder.modelCharacterEncoding()));
