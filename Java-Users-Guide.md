@@ -252,7 +252,7 @@ Decoding
 
 ``` java
     sb.append("\ncar.manufacturer.semanticType=").append(CarEncoder.manufacturerMetaAttribute(MetaAttribute.SEMANTIC_TYPE));
-    sb.append("\ncar.manufacturer=").append(car.make());
+    sb.append("\ncar.manufacturer=").append(car.manufacturer());
 
     sb.append("\ncar.model=").append(
         new String(buffer, 0, car.getModel(buffer, 0, buffer.length), CarEncoder.modelCharacterEncoding()));
