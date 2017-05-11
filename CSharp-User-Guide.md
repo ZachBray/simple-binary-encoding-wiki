@@ -8,7 +8,7 @@ The initial version of the C# generator was produced by Adaptive's Olivier Deheu
 * Look in `packages/sbe-tool*/example` for an example project
 * Use `packages/sbe-tool*/bin/sbe-tool.sh` to generate CSharp from your schema
 
-After running the [SbeTool](Sbe-Tool-Guide) a number of C# source files will be created. These files represent the types and messages declared in the schema. For a quick start to SBE look at [this](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/resources/example-schema.xml) schema and its usage [here](https://github.com/real-logic/simple-binary-encoding/tree/master/csharp/examples). This example is used throughout this document.
+After running the [SbeTool](Sbe-Tool-Guide) a number of C# source files will be created. These files represent the types and messages declared in the schema. For a quick start to SBE look at [this](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/resources/example-schema.xml) schema and its usage [here](https://github.com/real-logic/simple-binary-encoding/tree/master/csharp/sbe-samples). This example is used throughout this document.
 
 ### The detail
 
