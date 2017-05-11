@@ -6,7 +6,7 @@ The initial version of the C# generator was produced by Adaptive's Olivier Deheu
 
 * Add the [sbe-tool nuget package](https://www.nuget.org/packages/sbe-tool?NormalizedVersion=0.1.7-alpha-1) to your .net framework project
 * Look in `packages/sbe-tool*/example` for an example project
-* Use `packages/sbe-tool*/bin/sbe-tool.sh` to generate csharp from your schema
+* Use `packages/sbe-tool*/bin/sbe-tool.sh` to generate CSharp from your schema
 
 After running the [SbeTool](Sbe-Tool-Guide) a number of C# source files will be created. These files represent the types and messages declared in the schema. For a quick start to SBE look at [this](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/resources/example-schema.xml) schema and its usage [here](https://github.com/real-logic/simple-binary-encoding/tree/master/csharp/examples). This example is used throughout this document.
 
@@ -39,7 +39,7 @@ The message header contains the fields that allows the decoder to identify what 
 
 **Note**: A new message header type can be defined with different sizes of integers for the template and version according to needs.
 
-The csharp implementation uses the [DirectBuffer](https://github.com/real-logic/simple-binary-encoding/blob/master/csharp/sbe-dll/DirectBuffer.cs) implementation to hold the bytes used for encoding and decoding messages. It provides a fast efficient and garbage collection free mechanism for manipulating the underlying byte arrays,
+The CSharp implementation uses the [DirectBuffer](https://github.com/real-logic/simple-binary-encoding/blob/master/csharp/sbe-dll/DirectBuffer.cs) implementation to hold the bytes used for encoding and decoding messages. It provides a fast efficient and garbage collection free mechanism for manipulating the underlying byte arrays,
 
 ``` csharp
 // This byte array is used for encoding and decoding,
@@ -50,7 +50,7 @@ var byteBuffer = new byte[4096];
 var directBuffer = new DirectBuffer(byteBuffer);
 ```
 
-The csharp generated objects use a flyweight idiom so that encoding and decoding is done by simply reading and writing values directly into the underlying direct buffer implementation.
+The CSharp generated objects use a flyweight idiom so that encoding and decoding is done by simply reading and writing values directly into the underlying direct buffer implementation.
 
 To encode a message and it's header:
 
@@ -166,7 +166,7 @@ Constants do not get read from the underlying buffer. Their value as defined in 
 
 ### Enumerations
 
-Choice from the message schema directly map to enums in csharp. Encoding is as follows.
+Choice from the message schema directly map to enums in CSharp. Encoding is as follows.
 
 ``` csharp
 car.Available = BooleanType.T;
@@ -203,7 +203,7 @@ sb.Append("\ncar.extras.sportsPack=").Append((extras & OptionalExtras.SportsPack
 
 ### Composite Types
 
-Composite types provide a means of reuse. They map directly to a class as a flyweight pattern in csharp.
+Composite types provide a means of reuse. They map directly to a class as a flyweight pattern in CSharp.
 
 Encoding
 
@@ -275,7 +275,7 @@ while (performanceFiguresGroup.HasNext)
 To store variable length strings or binary data the var data fields can be used at the end of the message or repeating group. These are variable length byte arrays for which optional character encoding can be provided in the schema. Three variants of the API are provided for convenience.
 
 The length of the string is typically encoded using an `uint8` or `uint16` primitive type. If strings longer than 64KB
-are required then `uint32` needs to be the type of the length. As csharp does not have unsigned types then the `maxValue` attribute must be set to avoid negative values. It is also worth keeping the `maxValue` well under 2GB to ensure there is space in a buffer for framing and other fields.
+are required then `uint32` needs to be the type of the length. It is also worth keeping the `maxValue` well under 2GB to ensure there is space in a buffer for framing and other fields.
 
 ``` xml
 <composite name="varDataEncoding">
