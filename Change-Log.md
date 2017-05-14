@@ -1,3 +1,14 @@
+### 1.7.0 (14 Apr 2017)
+* Use compiler detections to guard pragmas to suppress excessive warnings in C++ #454
+* Reinstate C# support but consider it beta.
+* Fix min/max macro conflicts on Windows for C++.
+* Remove `sinceVersion=1` from `deprecated` attribute in IR as the base IR has no message header.
+* Support generation of var-data methods for raw data which do not have a `characterEncoding`.
+* Default to `US-ASCII` rather than `UTF-8` for `char` type as per specification.
+* Generate `wrapAndApplyHeader()` method to Java encoders for convenience. 
+* Upgrade to Agrona 0.9.6.
+* Upgrade to Checkstyle 7.7.
+
 ### 1.6.2 (12 Apr 2017)
 * Upgrade to Agrona 0.9.5.
 * Upgrade to Gradle 3.5.
