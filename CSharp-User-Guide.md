@@ -249,17 +249,26 @@ acceleration.Seconds = 7.5f;
 // and so forth
 ```
 
-For decoding the flyweight does not yet implement an iterable group so the same mechanism is followed.
+For decoding a repeating group there are multiple available mechanism as in this snippet from the example
 
 ``` csharp
-// the nested group
-var performanceFiguresGroup = car.PerformanceFigures;
-while (performanceFiguresGroup.HasNext)
+// The first way to access a repeating group is by using Next()
+var fuelFiguresGroup = car.FuelFigures;
+while (fuelFiguresGroup.HasNext)
 {
-    var performanceFigures = performanceFiguresGroup.Next();
+    var fuelFigures = fuelFiguresGroup.Next();
+    sb.Append("\ncar.fuelFigures.speed=").Append(fuelFigures.Speed);
+    sb.Append("\ncar.fuelFigures.mpg=").Append(fuelFigures.Mpg);
+}
+
+// The second way to access a repeating group is to use an iterator
+foreach (Car.PerformanceFiguresGroup performanceFigures in car.PerformanceFigures)
+{
     sb.Append("\ncar.performanceFigures.octaneRating=").Append(performanceFigures.OctaneRating);
+
+    // The third way to access a repeating group is loop over the count of elements
     var accelerationGroup = performanceFigures.Acceleration;
-    while (accelerationGroup.HasNext)
+    for (int i = 0; i < accelerationGroup.Count; i++)
     {
         var acceleration = accelerationGroup.Next();
         sb.Append("\ncar.performanceFigures.acceleration.mph=").Append(acceleration.Mph);
