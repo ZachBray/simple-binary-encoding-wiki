@@ -19,4 +19,4 @@ NOTE: Doxygen is required. If you don't have it, the `cpp` target will not succe
 
 **3. What if a 3rd party schema contains names that are language keywords?**
 
-Some 3rd parties have not considered that the names they use could cause a clash with language keywords such as Java `final`. Generated property names that clash with keywords can have a string appended, such as the `_` character, by setting the `aeron.keyword.append.token` system property when running the `SbeTool`. An example of this problem is the `templates_FixBinary.xml` from the CME using the keyword `final` in their schema which clashes with the keyword `final` in the Java programming language.
+Some 3rd parties have not considered that the names they use could cause a clash with language keywords such as Java `final`. Generated property names that clash with keywords can have a string appended, such as the `_` character, by setting the `aeron.keyword.append.token` system property when running the `SbeTool`. The `templates_FixBinary.xml` from the CME is such an example.
