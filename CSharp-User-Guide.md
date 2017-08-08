@@ -4,7 +4,7 @@ The initial version of the C# generator was produced by Adaptive's Olivier Deheu
 
 ### Quickstart
 
-* Add the [sbe-tool nuget package](https://www.nuget.org/packages/sbe-tool?NormalizedVersion=0.1.7-alpha-1) to your .net framework project
+* Add the [sbe-tool nuget package](https://www.nuget.org/packages/sbe-tool) to your .net framework project
 * Look in `packages/sbe-tool*/example` for an example project
 * Use `packages/sbe-tool*/bin/sbe-tool.sh` to generate CSharp from your schema
 
@@ -288,8 +288,12 @@ are required then `uint32` needs to be the type of the length. It is also worth 
 
 ``` xml
 <composite name="varDataEncoding">
+      <type name="length" primitiveType="uint32" maxValue="1073741824"/>
+      <type name="varData" primitiveType="uint8" length="0"/>
+    </composite>
+<composite name="varAsciiEncoding">
     <type name="length" primitiveType="uint32" maxValue="1073741824"/>
-    <type name="varData" primitiveType="uint8" length="0" characterEncoding="UTF-8"/>
+    <type name="varData" primitiveType="uint8" length="0" characterEncoding="ASCII"/>
 </composite>
 <composite name="varStringEncoding">
     <type name="length" primitiveType="uint32" maxValue="1073741824"/>
