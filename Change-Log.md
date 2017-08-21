@@ -1,3 +1,26 @@
+### 1.7.1 (21 Aug 2017)
+* Add accessors for buffer length on C++ codecs. [Issue #479](https://github.com/real-logic/simple-binary-encoding/issues/479).
+* Add the ability to lookup message tokens when decoding IR by template id for C++. [Issue #484](https://github.com/real-logic/simple-binary-encoding/issues/484).
+* Don't dereference a null character encoding. [Issue #491](https://github.com/real-logic/simple-binary-encoding/pull/491).
+* Add metadata attribute for presence. [Issue #483](https://github.com/real-logic/simple-binary-encoding/issues/483).
+* Add `noexcept` specifier for C++ [PR #480](https://github.com/real-logic/simple-binary-encoding/pull/480)
+* Capture referenced name when dealing with simple types for refs. [Issue #477](https://github.com/real-logic/simple-binary-encoding/issues/477).
+* Handle `presence=optional` better in Golang generator. [PR #475](https://github.com/real-logic/simple-binary-encoding/pull/475).
+* Validate message names and field names are unique in a given context. [Issue #470](https://github.com/real-logic/simple-binary-encoding/issues/470)
+* Copy elements of correct size in C++ fix arrays. [Issue #402](https://github.com/real-logic/simple-binary-encoding/issues/402).
+* Generate a field accessor as a char for constant Java char arrays exactly 1 in length.
+* Generate a field accessor as a String for constant Java char arrays greater than 1 in length.
+* Generate garbage free settors for Java strings and char arrays when the encoding is US_ASCII.
+* Use compiler detections to guard pragmas to suppress excessive warnings. [Issue #437](https://github.com/real-logic/simple-binary-encoding/issues/437).
+* Provide dotnet core support. [PR #456](https://github.com/real-logic/simple-binary-encoding/pull/456).
+* Correct defaults for UINT32 type as per specification. **Note:** this maybe breaking for those relying on hardcoded references for the values.  [Issue #455](https://github.com/real-logic/simple-binary-encoding/issues/455).
+* Upgrade to Mockito 2.8.47.
+* Upgrade to JMH 1.19 for Java benchmarks.
+* Upgrade to sevntu-checks:1.24.1.
+* Upgrade to Checkstyle 8.1.
+* Upgrade to Gradle 4.1.
+* Upgrade to Agrona 0.9.7.
+
 ### 1.7.0 (14 Apr 2017)
 * Use compiler detections to guard pragmas to suppress excessive warnings in C++ #454
 * Reinstate C# support but consider it beta.
