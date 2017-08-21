@@ -4,7 +4,7 @@ using the MojoHaus [exec-maven-plugin](http://www.mojohaus.org/exec-maven-plugin
 ## Overview
 To use the SBE Tool as part of your Maven build:
 
-1. Add [Agrona](https://github.com/real-logic/Agrona) to your project ``<dependencies>``
+1. Add [Agrona](https://github.com/real-logic/agrona) to your project ``<dependencies>``
 1. Place your SBE schema file in a location of your choice (eg ``src/main/resources/schema.xml``)
 1. Use ``exec-maven-plugin`` to invoke the SBE Tools code generator
 1. Use ``build-helper-maven-plugin`` to include generated directories in your compilation classpath
@@ -53,12 +53,12 @@ The following configuration will implement the two MojoHaus plugins:
           <dependency>
             <groupId>org.agrona</groupId>
             <artifactId>agrona</artifactId>
-            <version>0.9.6</version>
+            <version>0.9.7</version>
           </dependency>
           <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-tool</artifactId>
-            <version>1.7.0</version>
+            <version>1.7.1</version>
           </dependency>
         </dependencies>
       </plugin>
