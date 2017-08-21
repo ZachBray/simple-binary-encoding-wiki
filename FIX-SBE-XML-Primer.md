@@ -245,7 +245,7 @@ Examples of the use of `<data>` are below:
 ```xml
     <composite name="varDataEncoding">
         <type name="length" primitiveType="uint16" semanticType="Length"/>
-        <type name="varData" primitiveType="uint16" length="0" characterEncoding="UTF-8" semanticType="data"/>
+        <type name="varData" primitiveType="uint16" length="0" characterEncoding="UTF-8"/>
     </composite>
 
     <data name="make" id="17" type="varDataEncoding" semanticType="Make"/>
