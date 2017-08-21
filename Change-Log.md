@@ -8,8 +8,8 @@
 * Handle `presence=optional` better in Golang generator. [PR #475](https://github.com/real-logic/simple-binary-encoding/pull/475).
 * Validate message names and field names are unique in a given context. [Issue #470](https://github.com/real-logic/simple-binary-encoding/issues/470)
 * Copy elements of correct size in C++ fix arrays. [Issue #402](https://github.com/real-logic/simple-binary-encoding/issues/402).
-* Generate a field accessor as a char for constant Java char arrays exactly 1 in length.
-* Generate a field accessor as a String for constant Java char arrays greater than 1 in length.
+* Generate a field accessor as a `char` for constant Java char arrays exactly 1 in length.
+* Generate a field accessor as a `String` for constant Java char arrays greater than 1 in length.
 * Generate garbage free settors for Java strings and char arrays when the encoding is US_ASCII.
 * Use compiler detections to guard pragmas to suppress excessive warnings. [Issue #437](https://github.com/real-logic/simple-binary-encoding/issues/437).
 * Provide dotnet core support. [PR #456](https://github.com/real-logic/simple-binary-encoding/pull/456).
