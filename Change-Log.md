@@ -13,7 +13,7 @@
 * Generate garbage free settors for Java strings and char arrays when the encoding is US_ASCII.
 * Use compiler detections to guard pragmas to suppress excessive warnings. [Issue #437](https://github.com/real-logic/simple-binary-encoding/issues/437).
 * Provide dotnet core support. [PR #456](https://github.com/real-logic/simple-binary-encoding/pull/456).
-* Correct defaults for UINT32 type as per specification. **Note:** this maybe breaking for those relying on hardcoded references for the values.  [Issue #455](https://github.com/real-logic/simple-binary-encoding/issues/455).
+* Correct defaults for `UINT32` type as per specification. **Note:** this maybe breaking for those relying on hardcoded references for the values.  [Issue #455](https://github.com/real-logic/simple-binary-encoding/issues/455).
 * Upgrade to Mockito 2.8.47.
 * Upgrade to JMH 1.19 for Java benchmarks.
 * Upgrade to sevntu-checks:1.24.1.
