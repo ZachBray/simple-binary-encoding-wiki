@@ -1,3 +1,15 @@
+### 1.7.2 (11 Oct 2017)
+* Fix move constructors and assignment operators for c++ 11 code generation.
+* Add bit twiddling methods to codecs for bitsets. Issue [#489](https://github.com/real-logic/simple-binary-encoding/issues/489).
+* Remove old SBE typedefs from C++ codecs.
+* Handle case of constant array of char with length of 1. Issue [#505](https://github.com/real-logic/simple-binary-encoding/issues/505).
+* Capture types by `ref` name for support refs in refs. Issue[#496](https://github.com/real-logic/simple-binary-encoding/issues/496).
+* Improvements to efficiency of introducing c++ 11 functionality.
+* Initial support for Rust language.
+* Upgrade to GSON 2.8.2.
+* Upgrade to Checkstyle 8.3.
+* Upgrade to Mockito 2.10.0.
+
 ### 1.7.1 (21 Aug 2017)
 * Add accessors for buffer length on C++ codecs. [Issue #479](https://github.com/real-logic/simple-binary-encoding/issues/479).
 * Add the ability to lookup message tokens when decoding IR by template id for C++. [Issue #484](https://github.com/real-logic/simple-binary-encoding/issues/484).
