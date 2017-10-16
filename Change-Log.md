@@ -1,3 +1,6 @@
+### 1.7.3 (16 Oct 2017)
+* Fix the generated group name for arrays within groups for c++ codecs. [#521](https://github.com/real-logic/simple-binary-encoding/pull/521).
+
 ### 1.7.2 (11 Oct 2017)
 * Fix move constructors and assignment operators for c++ 11 code generation.
 * Add bit twiddling methods to codecs for bitsets. Issue [#489](https://github.com/real-logic/simple-binary-encoding/issues/489).
