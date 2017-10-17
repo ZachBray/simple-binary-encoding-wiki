@@ -1,5 +1,6 @@
 ### 1.7.3 (16 Oct 2017)
 * Fix the generated group name for arrays within groups for c++ codecs. [#521](https://github.com/real-logic/simple-binary-encoding/pull/521).
+* Upgrade to Agrona 0.9.9.
 
 ### 1.7.2 (11 Oct 2017)
 * Fix move constructors and assignment operators for c++ 11 code generation.
@@ -12,6 +13,7 @@
 * Upgrade to GSON 2.8.2.
 * Upgrade to Checkstyle 8.3.
 * Upgrade to Mockito 2.10.0.
+* Upgrade to Agrona 0.9.8.
 
 ### 1.7.1 (21 Aug 2017)
 * Add accessors for buffer length on C++ codecs. [Issue #479](https://github.com/real-logic/simple-binary-encoding/issues/479).
