@@ -1,3 +1,9 @@
+### 1.7.4 (01 Nov 2017)
+* Generate Javadocs for major types in codecs based on descriptions. Simple fields to come later.
+* Take the max of type and field version rather than just having the field take precedence.
+* Expose a `JsonPrinter` method that takes an `UnsafeBuffer` rather than a `ByteBuffer`.
+* Update to Mockito 2.11.0.
+
 ### 1.7.3 (16 Oct 2017)
 * Fix the generated group name for arrays within groups for c++ codecs. [#521](https://github.com/real-logic/simple-binary-encoding/pull/521).
 * Upgrade to Agrona 0.9.9.
