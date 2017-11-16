@@ -1,3 +1,11 @@
+### 1.7.5 (15 Nov 2017)
+* Support lookup of an enum value to be used as the value for a constant primitive type in a composite or message. Issue [#529](https://github.com/real-logic/simple-binary-encoding/issues/529).
+* Take account of constant fields when computing block length. Issue [#528](https://github.com/real-logic/simple-binary-encoding/issues/528).
+* Validate the type is correct in a `valueRef` attribute.
+* Update to Mockito 2.12.0.
+* Update to Checkstyle 8.4.
+* Update to Agrona 0.9.11.
+
 ### 1.7.4 (01 Nov 2017)
 * Generate Javadocs for major types in codecs based on descriptions. Simple fields to come later.
 * Take the max of type and field version rather than just having the field take precedence.
