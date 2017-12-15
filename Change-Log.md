@@ -8,6 +8,7 @@
 * Upgrade to Checkstyle 8.5.
 * Upgrade to JShadow 2.0.1.
 * Upgrade to Gradle 4.4.
+* Upgrade to Agrona 0.9.12.
 
 ### 1.7.5 (15 Nov 2017)
 * Support lookup of an enum value to be used as the value for a constant primitive type in a composite or message. Issue [#529](https://github.com/real-logic/simple-binary-encoding/issues/529).
