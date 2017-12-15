@@ -1,3 +1,14 @@
+### 1.7.6 (15 Dec 2017)
+* Fix build of golang code due to failing test. Issue [#532](https://github.com/real-logic/simple-binary-encoding/issues/532).
+* Generate getters for constant properties in Java decoders. Issue [#531](https://github.com/real-logic/simple-binary-encoding/issues/531).
+* Rework C++ OTF to support unaligned access.
+* Generate field accessors in C++ to use `memcpy` to support platforms requiring aligned access and X86 when the XMM registers are used. Issue [#506](https://github.com/real-logic/simple-binary-encoding/issues/506).
+* Rework C++ generated code for options sets to work with Visual Studio.
+* Upgrade to Mockito 2.13.0.
+* Upgrade to Checkstyle 8.5.
+* Upgrade to JShadow 2.0.1.
+* Upgrade to Gradle 4.4.
+
 ### 1.7.5 (15 Nov 2017)
 * Support lookup of an enum value to be used as the value for a constant primitive type in a composite or message. Issue [#529](https://github.com/real-logic/simple-binary-encoding/issues/529).
 * Take account of constant fields when computing block length. Issue [#528](https://github.com/real-logic/simple-binary-encoding/issues/528).
