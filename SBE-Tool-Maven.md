@@ -53,12 +53,12 @@ The following configuration will implement the two MojoHaus plugins:
           <dependency>
             <groupId>org.agrona</groupId>
             <artifactId>agrona</artifactId>
-            <version>0.9.11</version>
+            <version>0.9.12</version>
           </dependency>
           <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-tool</artifactId>
-            <version>1.7.5</version>
+            <version>1.7.6</version>
           </dependency>
         </dependencies>
       </plugin>
