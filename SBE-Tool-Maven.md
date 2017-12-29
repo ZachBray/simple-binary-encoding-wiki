@@ -14,13 +14,13 @@ You do not need to add SBE Tool itself to your project classpath, as all runtime
 
 The following configuration will implement the two MojoHaus plugins:
 
-```
+```xml
   <build>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.3.2</version>
+        <version>1.6.0</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -32,12 +32,7 @@ The following configuration will implement the two MojoHaus plugins:
         <configuration>
           <includeProjectDependencies>false</includeProjectDependencies>
           <includePluginDependencies>true</includePluginDependencies>
-          <executableDependency>
-            <groupId>uk.co.real-logic</groupId>
-            <artifactId>sbe-tool</artifactId>
-          </executableDependency>
           <mainClass>uk.co.real_logic.sbe.SbeTool</mainClass>
-          <classpathScope>main</classpathScope>
           <systemProperties>
             <systemProperty>
               <key>sbe.output.dir</key>
@@ -51,11 +46,6 @@ The following configuration will implement the two MojoHaus plugins:
         </configuration>
         <dependencies>
           <dependency>
-            <groupId>org.agrona</groupId>
-            <artifactId>agrona</artifactId>
-            <version>0.9.12</version>
-          </dependency>
-          <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-tool</artifactId>
             <version>1.7.6</version>
@@ -65,7 +55,7 @@ The following configuration will implement the two MojoHaus plugins:
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.1</version>
+        <version>3.0.0</version>
         <executions>
           <execution>
             <id>add-source</id>
