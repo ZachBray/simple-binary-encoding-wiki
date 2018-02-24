@@ -8,6 +8,7 @@
 * Upgrade to Checkstyle 8.8.
 * Reduce Hamcrest dependency from all to library.
 * Upgrade to Mockito 2.15.0.
+* Upgrade to Agrona 0.9.13.
 
 ### 1.7.6 (15 Dec 2017)
 * Fix build of golang code due to failing test. Issue [#532](https://github.com/real-logic/simple-binary-encoding/issues/532).
