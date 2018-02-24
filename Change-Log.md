@@ -1,3 +1,14 @@
+### 1.7.7 (23 Feb 2018)
+* Regenerate IR codecs.
+* Provide `ByteOrder` as a constant available in the generated Java codecs.
+* Do not allocate when putting or getting an empty string in Java codecs.
+* Apply strict indentation code style.
+* Upgrade to JMH 1.20.0.
+* Upgrade to Gradle 4.5.1.
+* Upgrade to Checkstyle 8.8.
+* Reduce Hamcrest dependency from all to library.
+* Upgrade to Mockito 2.15.0.
+
 ### 1.7.6 (15 Dec 2017)
 * Fix build of golang code due to failing test. Issue [#532](https://github.com/real-logic/simple-binary-encoding/issues/532).
 * Generate getters for constant properties in Java decoders. Issue [#531](https://github.com/real-logic/simple-binary-encoding/issues/531).
