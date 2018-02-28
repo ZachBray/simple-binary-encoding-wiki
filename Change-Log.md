@@ -1,3 +1,8 @@
+### 1.7.8 (23 Feb 2018)
+* Advance toString() operation on decoders when raw bytes for var data is encountered. Issue [#542](https://github.com/real-logic/simple-binary-encoding/issues/542).
+* Add C++ classes for OTF and header include to the sources jar. Issue [#540](https://github.com/real-logic/simple-binary-encoding/issues/540).
+* Upgrade to Agrona 0.9.14.
+
 ### 1.7.7 (23 Feb 2018)
 * Regenerate IR codecs.
 * Provide `ByteOrder` as a constant available in the generated Java codecs.
