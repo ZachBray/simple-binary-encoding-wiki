@@ -1,3 +1,9 @@
+### 1.7.9 (09 Mar 2018)
+* Remove redundant throws clause from Java `TargetCodeGenerator`.
+* Removed the using of namespace in generated C++ headers. Issue [#544](https://github.com/real-logic/simple-binary-encoding/pull/544).
+* Fix generated C# code for version checking of fields. Issue [#543](https://github.com/real-logic/simple-binary-encoding/issues/543).
+* Upgrade to Agrona 0.9.15.
+
 ### 1.7.8 (23 Feb 2018)
 * Advance toString() operation on Java decoders when raw bytes for var data is encountered. Issue [#542](https://github.com/real-logic/simple-binary-encoding/issues/542).
 * Add C++ classes for OTF and header include to the sources jar. Issue [#540](https://github.com/real-logic/simple-binary-encoding/issues/540).
