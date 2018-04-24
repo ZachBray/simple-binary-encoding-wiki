@@ -10,7 +10,7 @@
 * Upgrade to Mockito 2.18.3.
 * Upgrade to Gradle 4.6.
 * Upgrade to Checkstyle 8.9.
-* Upgrade to Agrona 0.9.15.
+* Upgrade to Agrona 0.9.16.
 
 ### 1.7.9 (09 Mar 2018)
 * Remove redundant throws clause from Java `TargetCodeGenerator`.
