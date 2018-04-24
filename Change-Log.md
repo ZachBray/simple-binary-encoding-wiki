@@ -1,8 +1,8 @@
 ### 1.7.10 (23 Apr 2018)
-* Return NULL_VAL for unknown `enum` value so it can be used in a Java switch. [PR #548](https://github.com/real-logic/simple-binary-encoding/pull/548)
+* Return `NULL_VAL` for unknown `enum` value so it can be used in a Java switch. [PR #548](https://github.com/real-logic/simple-binary-encoding/pull/548)
 * Improve C++ Unit tests. [PR #459](https://github.com/real-logic/simple-binary-encoding/pull/549).
 * Use since version from field rather than type in Java codecs. [PR #548](https://github.com/real-logic/simple-binary-encoding/pull/548).
-* Generate put CharSequence methods for ASCII encoded fields in Java. [PR #547](https://github.com/real-logic/simple-binary-encoding/pull/547)
+* Generate put `CharSequence` methods for ASCII encoded fields in Java. [PR #547](https://github.com/real-logic/simple-binary-encoding/pull/547)
 * Cleaning up unit tests' global namespaces for C++. [PR #545](https://github.com/real-logic/simple-binary-encoding/pull/545)
 * Generates invalid CSharp code when using sinceVersion attribute inside groups. [PR #555](https://github.com/real-logic/simple-binary-encoding/pull/555).
 * Add support for netstandard2.0 removing support for 1.3 for .NET.
