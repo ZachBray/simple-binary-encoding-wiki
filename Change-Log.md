@@ -1,3 +1,16 @@
+### 1.7.10 (23 Apr 2018)
+* Return NULL_VAL for unknown `enum` value so it can be used in a Java switch. [PR #548](https://github.com/real-logic/simple-binary-encoding/pull/548)
+* Improve C++ Unit tests. [PR #459](https://github.com/real-logic/simple-binary-encoding/pull/549).
+* Use since version from field rather than type in Java codecs. [PR #548](https://github.com/real-logic/simple-binary-encoding/pull/548).
+* Generate put CharSequence methods for ASCII encoded fields in Java. [PR #547](https://github.com/real-logic/simple-binary-encoding/pull/547)
+* Cleaning up unit tests' global namespaces for C++. [PR #545](https://github.com/real-logic/simple-binary-encoding/pull/545)
+* Add support for netstandard2.0 removing support for 1.3 for .NET.
+* Upgrade to Shadow 2.0.3.
+* Upgrade to Mockito 2.18.3.
+* Upgrade to Gradle 4.6.
+* Upgrade to Checkstyle 8.9.
+* Upgrade to Agrona 0.9.15.
+
 ### 1.7.9 (09 Mar 2018)
 * Remove redundant throws clause from Java `TargetCodeGenerator`.
 * Removed the using of namespace in generated C++ headers. Issue [#544](https://github.com/real-logic/simple-binary-encoding/pull/544).
