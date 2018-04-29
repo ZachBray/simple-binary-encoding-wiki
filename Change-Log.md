@@ -1,3 +1,10 @@
+### 1.8.0 (29 Apr 2018)
+* Use `Constructor` to dynamically create new instances to avoid deprecated warning in Java 10.
+* Remove use of `javax.annotation.Generated` so that the generated codecs compile and and run on Java 10.
+* Rename `position` methods in C++ generated codecs to `sbePosition` to avoid clash with Aeron codecs for the archive and clustering. **Note:** this is a breaking change for those who have used these methods.
+* Upgrade to Gradle 4.7.
+* Upgrade to Agrona 0.9.17.
+
 ### 1.7.10 (23 Apr 2018)
 * Return `NULL_VAL` for unknown `enum` value so it can be used in a Java switch. [PR #548](https://github.com/real-logic/simple-binary-encoding/pull/548)
 * Improve C++ Unit tests. [PR #459](https://github.com/real-logic/simple-binary-encoding/pull/549).
