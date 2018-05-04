@@ -1,3 +1,9 @@
+### 1.8.1 (04 May 2018)
+* Upgrade to JMH 1.21.
+* Upgrade to Checkstyle 8.10.
+* Upgrade to Shadow 2.0.4.
+* Upgrade to Agrona 0.9.18.
+
 ### 1.8.0 (29 Apr 2018)
 * Use `Constructor` to dynamically create new instances to avoid deprecated warning in Java 10.
 * Remove use of `javax.annotation.Generated` so that the generated codecs compile and and run on Java 10.
