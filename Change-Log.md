@@ -1,3 +1,17 @@
+### 1.8.2 (03 Jul 2018)
+* Update to latest CME fix binary market template for testing.
+* Allow, with warning, `numInGroup` type to use `uint32` for repeating groups.
+* Add support to C# codecs for constant presence enums.
+* Fix issue with loss of IR data on encoding the IR for constant presence enums. [Issue #560](https://github.com/real-logic/simple-binary-encoding/issues/560).
+* Complete functionality for `JsonPrinter` so that an SBE message can be transformed to JSON for debugging. [Issue #560](https://github.com/real-logic/simple-binary-encoding/issues/560).
+* Remove debugging output from C++ IR decoder. [Issue #559](https://github.com/real-logic/simple-binary-encoding/issues/559).
+* Make `HEADER_SIZE` a public constant in Java codecs for repeating groups.
+* Allow Java decoders to use an `Appendable` for ASCII strings. [PR #557](https://github.com/real-logic/simple-binary-encoding/pull/557).
+* Upgrade to Mockito 2.19.0.
+* Upgrade to Checkstyle 8.10.1.
+* Upgrade to Agrona 0.9.19.
+* Upgrade to GSON 2.8.5.
+
 ### 1.8.1 (04 May 2018)
 * Upgrade to JMH 1.21.
 * Upgrade to Checkstyle 8.10.
