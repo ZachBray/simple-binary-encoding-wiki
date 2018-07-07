@@ -1,3 +1,9 @@
+### 1.8.3 (07 Jul 2018)
+* Regenerate IR Codecs to quote strings when printing.
+* Upgrade to Checkstyle 8.11.
+* Upgrade to Gradle 4.8.1.
+* Upgrade to Agrona 0.9.20.
+
 ### 1.8.2 (03 Jul 2018)
 * Update to latest CME fix binary market template for testing.
 * Allow, with warning, `numInGroup` type to use `uint32` for repeating groups.
