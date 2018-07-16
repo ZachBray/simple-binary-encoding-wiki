@@ -1,3 +1,7 @@
+### 1.8.4 (07 Jul 2018)
+* Upgrade to Mockito 2.19.1.
+* Upgrade to Agrona 0.9.21.
+
 ### 1.8.3 (07 Jul 2018)
 * Regenerate IR Codecs to quote strings when printing.
 * Upgrade to Checkstyle 8.11.
