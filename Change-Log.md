@@ -1,4 +1,4 @@
-### 1.8.4 (07 Jul 2018)
+### 1.8.4 (16 Jul 2018)
 * Upgrade to Mockito 2.19.1.
 * Upgrade to Agrona 0.9.21.
 
