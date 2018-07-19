@@ -1,3 +1,6 @@
+### 1.8.5 (19 Jul 2018)
+* Invalid Java generated for codec with an extension string field that is appendable. [PR #574](https://github.com/real-logic/simple-binary-encoding/pull/574).
+
 ### 1.8.4 (16 Jul 2018)
 * Upgrade to Mockito 2.19.1.
 * Upgrade to Agrona 0.9.21.
