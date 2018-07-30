@@ -1,3 +1,9 @@
+### 1.8.6 (30 Jul 2018)
+* Provide the ability to query for an empty bit set in Java and C++ codecs for simplicity. [PR #575](https://github.com/real-logic/simple-binary-encoding/pull/575).
+* Upgrade to Mockito 2.20.1.
+* Upgrade to Gradle 4.9.
+* Upgrade to Agrona 0.9.22.
+
 ### 1.8.5 (19 Jul 2018)
 * Invalid Java generated for codec with an extension string field that is appendable. [PR #574](https://github.com/real-logic/simple-binary-encoding/pull/574).
 
