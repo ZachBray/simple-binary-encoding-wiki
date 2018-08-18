@@ -1,3 +1,10 @@
+### 1.8.7 (18 Aug 2018)
+* Use find package to discover java executable when building C++ codecs tests.
+* Use pointers in golang codecs to improve efficiency. [PR #578](https://github.com/real-logic/simple-binary-encoding/pull/578).
+* Upgrade to Checkstyle 8.12.
+* Upgrade to Mockito 2.21.0.
+* Upgrade to Agrona 0.9.23.
+
 ### 1.8.6 (30 Jul 2018)
 * Provide the ability to query for an empty bit set in Java and C++ codecs for simplicity. [PR #575](https://github.com/real-logic/simple-binary-encoding/pull/575).
 * Upgrade to Mockito 2.20.1.
