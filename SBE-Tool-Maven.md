@@ -48,7 +48,7 @@ The following configuration will implement the two MojoHaus plugins:
           <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-tool</artifactId>
-            <version>1.8.7</version>
+            <version>1.8.8</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -76,10 +76,10 @@ The following configuration will implement the two MojoHaus plugins:
 ```
 
 ## Directory Structure
-	pom.xml
-	src/main/resources/schema.xml (your SBE schema)
-	src/main/java (your main and test classes can all reference the SBE Tool-generated types)
-	target/generated-sources/java (SBE Tool-generated sources)
+    pom.xml
+    src/main/resources/schema.xml (your SBE schema)
+    src/main/java (your main and test classes can all reference the SBE Tool-generated types)
+    target/generated-sources/java (SBE Tool-generated sources)
 
 ## Use
 The above configuration causes any goal that includes the ``generate-sources`` phase to generate the SBE schema-defined types. This occurs before your own classes are compiled, therefore enabling them to refer to the SBE-generated types. Some typical goals that include the ``generate-sources`` phase includes ``compile``, ``test`` and ``install``.
