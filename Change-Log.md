@@ -1,3 +1,10 @@
+### 1.8.8 (12 Sep 2018)
+* Fix initialisation of encoding type with length is zero for C++. [Issue #583](https://github.com/real-logic/simple-binary-encoding/issues/583).
+* Fix formatting of property access methods for Java within composites. [Issue #582](https://github.com/real-logic/simple-binary-encoding/issues/582).
+* Upgrade to Mockito 2.22.0.
+* Upgrade to Gradle 4.10.
+* Upgrade to Agrona 0.9.24.
+
 ### 1.8.7 (18 Aug 2018)
 * Use find package to discover java executable when building C++ codecs tests.
 * Use pointers in golang codecs to improve efficiency. [PR #578](https://github.com/real-logic/simple-binary-encoding/pull/578).
