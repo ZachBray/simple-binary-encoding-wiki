@@ -31,5 +31,3 @@ The SBE tool can be used as a library enabling on-the-fly decoding of messages, 
 > Subject	Simple Binary Encoding specification Release Candidate 1
 
 > This proposal from the High Performance Working Group entails the use of an FPL designed Simple Binary Encoding to produce fast and compact encodings of FIX messages. Simple Binary Encoding (SBE) provides different characteristics than other binary encodings. It is optimized for low latency. This new FPL binary encoding complements the existing only binary encoding developed in 2005 (FAST) with a focus on reducing bandwidth utilization for market data. In addition, the encoding is also defined and controlled within FPL only in contrast to the binary encodings proposals to encode FIX with Google Protocol Buffers and ASN.1. 
-
-Further details of the discussions behind SBE can be found [here](http://www.fixtradingcommunity.org/pg/discussions/topicpost/168327/).
