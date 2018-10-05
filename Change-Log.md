@@ -1,3 +1,10 @@
+### 1.8.9 (05 Oct 2018)
+* Fix string format warnings in Rust and Golang generators.
+* Add Travis build.
+* Upgrade to Shadow 4.0.0.
+* Upgrade to Gradle 4.10.0.
+* Upgrade to Agrona 0.9.25.
+
 ### 1.8.8 (12 Sep 2018)
 * Fix initialisation of encoding type with length is zero for C++. [Issue #583](https://github.com/real-logic/simple-binary-encoding/issues/583).
 * Fix formatting of property access methods for Java within composites. [Issue #582](https://github.com/real-logic/simple-binary-encoding/issues/582).
