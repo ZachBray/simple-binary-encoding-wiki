@@ -2,7 +2,7 @@
 * Fix string format warnings in Rust and Golang generators.
 * Add Travis build.
 * Upgrade to Shadow 4.0.0.
-* Upgrade to Gradle 4.10.0.
+* Upgrade to Gradle 4.10.1.
 * Upgrade to Agrona 0.9.25.
 
 ### 1.8.8 (12 Sep 2018)
