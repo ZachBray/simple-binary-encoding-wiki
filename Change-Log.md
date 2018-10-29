@@ -1,3 +1,16 @@
+### 1.9.0 (29 Oct 2018)
+* This is the first release that supports building and running on Java 11.
+* Support constant members in message header Java codecs. [PR #602](https://github.com/real-logic/simple-binary-encoding/issues/602).
+* Generate static constexpr methods for C++ codecs for constant enums. [Issue #591](https://github.com/real-logic/simple-binary-encoding/issues/591).
+* Added encoding offset and other metadata to C++ composite codecs. [Issue #594](https://github.com/real-logic/simple-binary-encoding/issues/594).
+* Fix length encoding on arrays for C++ codecs. [Issue #595](https://github.com/real-logic/simple-binary-encoding/issues/595).
+* Add methods to access schema id and version for all fixed flyweights for Java and C++. [Issue #593](https://github.com/real-logic/simple-binary-encoding/issues/593).
+* Detect duplication ids in message fields. [Issue #597](https://github.com/real-logic/simple-binary-encoding/issues/597).
+* Add Travis build matrix for Java 8 and 11 for OpenJDK and Oracle JDK.
+* Upgrade to Checkstyle 8.14.
+* Upgrade to Mockito 0.23.0.
+* Upgrade to Agrona 0.9.26.
+
 ### 1.8.9 (05 Oct 2018)
 * Fix string format warnings in Rust and Golang generators.
 * Add Travis build.
