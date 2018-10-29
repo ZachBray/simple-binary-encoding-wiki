@@ -10,7 +10,7 @@ To use the SBE Tool as part of your Maven build:
 1. Use ``build-helper-maven-plugin`` to include generated directories in your compilation classpath
 1. Execute a goal that includes the ``generate-sources`` phase (most typically ``mvn clean install``)
 
-You do not need to add SBE Tool itself to your project classpath, as all runtime requirements are provided by the Agrona dependency. You will only need SBE Tool as a dependency of the ``exec-maven-plugin``, as shown below.
+You do not need to add SBE Tool itself to your project classpath, as all runtime requirements are provided by the [Agrona](https://github.com/real-logic/agrona) dependency. You will only need SBE Tool as a dependency of the ``exec-maven-plugin``, as shown below.
 
 The following configuration will implement the two MojoHaus plugins:
 
@@ -48,7 +48,7 @@ The following configuration will implement the two MojoHaus plugins:
           <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-tool</artifactId>
-            <version>1.8.9</version>
+            <version>1.9.0</version>
           </dependency>
         </dependencies>
       </plugin>
