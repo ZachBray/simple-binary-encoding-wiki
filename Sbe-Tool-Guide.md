@@ -22,7 +22,7 @@ The tool supports the following options:
  * `sbe.cpp.namespaces.collapse`: Boolean to turn on or off collapsing of nested namespaces in generated C++ stubs. Defaults to false.
  * `sbe.java.generate.group-order.annotation`: Should the `GroupOrder` annotation be generated, defaults to false.
  * `sbe.keyword.append.token`: String to append to schema tokens that collide with reserved words in the target language.
- * `sbe.decode.unknown.enum.values`: Support unknown decoded enum values..
+ * `sbe.decode.unknown.enum.values`: Support unknown decoded enum values.
 
 The SBE tool can be used with Maven
 [see](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Maven)
