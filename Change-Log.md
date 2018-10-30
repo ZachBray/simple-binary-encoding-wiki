@@ -1,5 +1,7 @@
 ### 1.9.0 (29 Oct 2018)
 * This is the first release that supports building and running on Java 11.
+* Add a `wrap<field-name>(DirectBuffer)` to Java codecs for more efficient consumption of strings.
+* Return `const char *` from `buffer()` method in C++ codecs. [Issue #601](https://github.com/real-logic/simple-binary-encoding/issues/601).
 * Support constant members in message header Java codecs. [PR #602](https://github.com/real-logic/simple-binary-encoding/issues/602).
 * Generate static constexpr methods for C++ codecs for constant enums. [Issue #591](https://github.com/real-logic/simple-binary-encoding/issues/591).
 * Added encoding offset and other metadata to C++ composite codecs. [Issue #594](https://github.com/real-logic/simple-binary-encoding/issues/594).
