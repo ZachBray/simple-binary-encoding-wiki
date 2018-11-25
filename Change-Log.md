@@ -1,3 +1,16 @@
+### 1.10.0 (25 Nov 2018)
+* Add support for `Span` in C# codecs. [PR #589](https://github.com/real-logic/simple-binary-encoding/pull/589).
+* Check when wrapping the same buffer in all types to avoid Java GC write barrier where possible.
+* Set `parentMessage` on construction of group codecs and remove need for dimensions composite to reduce footprint and improve performance.
+* Allow signed `numInGroup` and issue warning to support `int32` type. [PR #617](https://github.com/real-logic/simple-binary-encoding/pull/617).
+* Allow flexibility on group header member ordering in codecs. [PR #614](https://github.com/real-logic/simple-binary-encoding/pull/614).
+* Fix Golang return type bug. [PR #611](https://github.com/real-logic/simple-binary-encoding/pull/611).
+* Allow `uint32` for `blockLength` in Java codecs but issue warning. [Issue #609](https://github.com/real-logic/simple-binary-encoding/issues/609).
+* Add non-const buffer access method to C++ codecs.
+* Upgrade to Mockito 2.23.4.
+* Upgrade to Shadow 4.0.3.
+* Upgrade to Agrona 0.9.27.
+
 ### 1.9.0 (29 Oct 2018)
 * This is the first release that supports building and running on Java 11.
 * Add a `wrap<field-name>(DirectBuffer)` to Java codecs for more efficient consumption of strings.
