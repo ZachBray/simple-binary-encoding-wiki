@@ -1,26 +1,26 @@
-SBE uses an Intermediate Representation (IR) between data layout mechanisms and code generators and on-the-fly decoders. [SBE Tool](Sbe-Tool-Guide) can generate serialized IR via the `sbe.generate.ir` option (false by default). This generates a file, conventionally using the `.sbeir` extension, that can serve as input to SBE Tool instead of XML for code generation. In addition, the On-The-Fly (OTF) decoder, requires serialized IR for decoding. In this section, we will explore how to generate IR and use it, as well as how IR works.
+SBE uses an Intermediate Representation (IR) between data layout mechanisms and code generators and on-the-fly decoders. [SBE Tool](Sbe-Tool-Guide) can generate serialised IR via the `sbe.generate.ir` option (false by default). This generates a file, conventionally using the `.sbeir` extension, that can serve as input to SBE Tool instead of XML for code generation. In addition, the On-The-Fly (OTF) decoder, requires serialised IR for decoding. In this section, we will explore how to generate IR and use it, as well as how IR works.
 
-NOTE: it is our hope that serialized IR can form the foundation for a tool chain approach.
+NOTE: it is our hope that serialised IR can form the foundation for a tool chain approach.
 
-### Generating Serialized IR
+### Generating Serialised IR
 
-Generating serialized IR is straight forward with the SBE Tool. Simply set `sbe.generate.ir` to true. The SBE tool will  to write the serialized IR file using the same name as the input file with the `.sbeir` suffix. Here is an example.
+Generating serialised IR is straight forward with the SBE Tool. Simply set `sbe.generate.ir` to true. The SBE tool will  to write the serialised IR file using the same name as the input file with the `.sbeir` suffix. Here is an example.
 
-    $ java -Dsbe.generate.ir=true -jar sbe-all-1.9.0.jar <message-declarations-file.xml>
+    $ java -Dsbe.generate.ir=true -jar sbe-all-1.10.0.jar <message-declarations-file.xml>
 
 ### Using Serialized IR as Input to SBE Tool
 
 Serialized IR can act as input to the SBE Tool for code generation. This is done by using the file extension `.sbeir` instead of `.xml`. Here is an example.
 
-    $ java -jar sbe-all-1.8.9.jar <message-declarations-file.sbeir>
+    $ java -jar sbe-all-1.10.0.jar <message-declarations-file.sbeir>
 
 Therefore it is possible to use serialized IR as a means to pass around "compiled" representations.
 
-### Structure of Serialized IR
+### Structure of Serialised IR
 
-IR is serialized via SBE itself. The schema for SBE IR is [here](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/resources/sbe-ir.xml).
+IR is serialised via SBE itself. The schema for SBE IR is [here](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/resources/sbe-ir.xml).
 
-The format of a serialized IR file is a simple sequence, or list, of "Tokens". Each Token is one of the `SerializedToken` messages in the schema above. The first sequence of Tokens in the file is the message header for the messages. This is a composite, usually with the name `messageHeader` that holds the following three encodings: `blockLength`, `templateId`, and `version`. After the header is one or more messages represented by sequences of Tokens. At a high level, a serialized IR file looks like this:
+The format of a serialised IR file is a simple sequence, or list, of "Tokens". Each Token is one of the `TokenCodec` messages in the schema above. The first sequence of Tokens in the file is the message header for the messages. This is a composite, usually with the name `messageHeader` that holds the following three encodings: `blockLength`, `templateId`, and `version`. After the header is one or more messages represented by sequences of Tokens. At a high level, a serialised IR file looks like this:
 
 <table>
 <tr>
@@ -30,8 +30,7 @@ The format of a serialized IR file is a simple sequence, or list, of "Tokens". E
 </table>
 
 Each Token has several fields, one of which is the `Signal`. See [here](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/ir/Token.java) and [here](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/ir/Signal.java) for more
-detail on the Token elements.
-The header would be expanded to look something like below.
+detail on the Token elements. The header would be expanded to look something like below.
 
 <table>
 <tr>
