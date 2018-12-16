@@ -5,6 +5,7 @@
 * Add `Span` support to generated C# codecs. [PR #589](https://github.com/real-logic/simple-binary-encoding/pull/589).
 * Upgrade to Checkstyle 8.15.
 * Upgrade to Gradle 4.10.3.
+* Upgrade to Agrona 0.9.28.
 
 ### 1.10.0 (25 Nov 2018)
 * Add support for `Span` in C# codecs. [PR #589](https://github.com/real-logic/simple-binary-encoding/pull/589).
