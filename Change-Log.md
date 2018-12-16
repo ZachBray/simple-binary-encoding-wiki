@@ -1,3 +1,11 @@
+### 1.10.1 (16 Dec 2018)
+* Warnings clean up in code base.
+* Add OS X to Travis for native build.
+* Fix golang generated codec for metadata attributes. [Issue #620](https://github.com/real-logic/simple-binary-encoding/issues/620).
+* Add `Span` support to generated C# codecs. [PR #589](https://github.com/real-logic/simple-binary-encoding/pull/589).
+* Upgrade to Checkstyle 8.15.
+* Upgrade to Gradle 4.10.3.
+
 ### 1.10.0 (25 Nov 2018)
 * Add support for `Span` in C# codecs. [PR #589](https://github.com/real-logic/simple-binary-encoding/pull/589).
 * Check when wrapping the same buffer in all types to avoid Java GC write barrier where possible.
