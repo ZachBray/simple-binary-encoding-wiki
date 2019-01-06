@@ -1,3 +1,10 @@
+### 1.10.2 (06 Jan 2019)
+* Only generate lower bounds check in C++ codecs when necessary to add compile warning.
+* Improve C++ OTF code to be more strict and eliminate build warnings.
+* Improve build for optional build and include JAR dependency. [PR #623](https://github.com/real-logic/simple-binary-encoding/pull/623).
+* Upgrade to Checkstyle 8.15.
+* Upgrade to Agrona 0.9.29.
+
 ### 1.10.1 (16 Dec 2018)
 * Warnings clean up in code base.
 * Add OS X to Travis for native build.
