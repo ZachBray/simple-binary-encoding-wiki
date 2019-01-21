@@ -1,12 +1,13 @@
 The SBE tool is a command line utility that can be used to generate codecs and validate message declaration schemas. The tool is written in Java and can run as an executable JAR file, e.g:
 
-    $ java -jar sbe-all-1.10.2.jar <message-declarations-file.xml>
+    $ java -jar sbe-all-1.11.0.jar <message-declarations-file.xml>
 
 The tool will accept options using the system property option format as follows:
 
-    $ java [-Doption=value] -jar sbe-all-1.10.2.jar <message-declarations-file.xml>
+    $ java [-Doption=value] -jar sbe-all-1.11.0.jar <message-declarations-file.xml>
 
 The tool supports the following options:
+ * `sbe.xinclude.aware`: Is XInclude supported for the schema. Defaults to false.
  * `sbe.validation.xsd`: Use XSD to validate or not. XSD filename should be the provided option.
  * `sbe.validation.stop.on.error`: Should the parser stop on first error encountered? Defaults to false.
  * `sbe.validation.warnings.fatal`: Are warnings in parsing considered fatal? Defaults to false.
