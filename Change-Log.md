@@ -1,3 +1,10 @@
+### 1.11.0 (21 Jan 2019)
+* Better handing of null passed for string encoding to Java codecs.
+* Provide a fluent API for encoding array elements in Java and C++ codecs.
+* Add support for XInclude so common definitions can be included into a schema and update samples to reflect usage. [Issue #624](https://github.com/real-logic/simple-binary-encoding/issues/624).
+* Upgrade to Shadow 4.0.4.
+* Upgrade to Agrona 0.9.30.
+
 ### 1.10.2 (06 Jan 2019)
 * Only generate lower bounds check in C++ codecs when necessary to add compile warning.
 * Improve C++ OTF code to be more strict and eliminate build warnings.
