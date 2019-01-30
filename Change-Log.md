@@ -1,3 +1,13 @@
+### 1.12.0 (30 Jan 2019)
+* Fixes and improves to CMake build. [PR #632](https://github.com/real-logic/simple-binary-encoding/pull/632).
+* Add support for getting and setting a `string_view` on char array fields when C++17. [PR #631](https://github.com/real-logic/simple-binary-encoding/pull/631).
+* Simplify C++ generator and modernise for C++11. [PR #630](https://github.com/real-logic/simple-binary-encoding/pull/630).
+* Allow other types than `UINT16` for message header fields but issue a warning. [PR #629](https://github.com/real-logic/simple-binary-encoding/pull/629).
+* Change Golang codecs to no longer assume ordering of fields in group header. [PR #627](https://github.com/real-logic/simple-binary-encoding/pull/627). 
+* Upgrade to Google Test 1.8.0.
+* Upgrade to Checkstyle 8.17.
+* Upgrade to Agrona 0.9.31.
+
 ### 1.11.0 (21 Jan 2019)
 * Better handing of null passed for string encoding to Java codecs.
 * Provide a fluent API for encoding array elements in Java and C++ codecs.
