@@ -48,7 +48,7 @@ The following configuration will implement the two MojoHaus plugins:
           <dependency>
             <groupId>uk.co.real-logic</groupId>
             <artifactId>sbe-tool</artifactId>
-            <version>1.11.0</version>
+            <version>1.12.0</version>
           </dependency>
         </dependencies>
       </plugin>
