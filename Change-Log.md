@@ -1,3 +1,12 @@
+### 1.12.1 (05 Feb 2019)
+* Don't generate id methods for members of a composite. [Issue #641](https://github.com/real-logic/simple-binary-encoding/issues/641).
+* Fix broken code generation that resulted from merging [PR #631](https://github.com/real-logic/simple-binary-encoding/pull/631).
+* Add ability to get var data members as a `string_view` to remove copy with C++17. [Issue #550](https://github.com/real-logic/simple-binary-encoding/issues/550).
+* Add `Automatic-Module-Name` to help support modular Java systems that include SBE.
+* Update C++ build to be more inline with Aeron. [PR #635](https://github.com/real-logic/simple-binary-encoding/pull/635).
+* Upgrade to Mockito 2.24.0.
+* Upgrade to Agrona 0.9.32.
+
 ### 1.12.0 (30 Jan 2019)
 * Fixes and improves to CMake build. [PR #632](https://github.com/real-logic/simple-binary-encoding/pull/632).
 * Add support for getting and setting a `string_view` on char array fields when C++17. [PR #631](https://github.com/real-logic/simple-binary-encoding/pull/631).
