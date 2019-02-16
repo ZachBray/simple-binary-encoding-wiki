@@ -1,3 +1,9 @@
+### 1.12.2 (16 Feb 2019)
+* Add `wrapAndAppyHeader` method for ease of use for C++ codecs.
+* Generate `sbe.h` for C++ client to avoid namespace clash and dependencies. [Issue #](https://github.com/real-logic/simple-binary-encoding/issues/626).
+* Make C++ IR decode use params. [Issue #](https://github.com/real-logic/simple-binary-encoding/issues/643).
+* Upgrade to Agrona 0.9.33.
+
 ### 1.12.1 (05 Feb 2019)
 * Don't generate id methods for members of a composite. [Issue #641](https://github.com/real-logic/simple-binary-encoding/issues/641).
 * Fix broken code generation that resulted from merging [PR #631](https://github.com/real-logic/simple-binary-encoding/pull/631).
