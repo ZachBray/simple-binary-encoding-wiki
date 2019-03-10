@@ -1,3 +1,14 @@
+### 1.12.3 (16 Feb 2019)
+* Include links when generating Javadoc.
+* Update examples so they use relative path for XInclude.
+* Set `systemId` for message schemas so that XInclude can have a relative path. [PR #649](https://github.com/real-logic/simple-binary-encoding/pull/649).
+* Trim strings decoded from fixed length character arrays for C++ codec. [Issue #646](https://github.com/real-logic/simple-binary-encoding/issues/646).
+* Fix padding on fixed length character arrays so they are null padded in C++ codec. [Issue #646](https://github.com/real-logic/simple-binary-encoding/issues/646).
+* Fix generated include files. [PR #644](https://github.com/real-logic/simple-binary-encoding/pull/644).
+* Upgrade to Mockito 2.25.0.
+* Upgrade to Gradle 5.2.1.
+* Upgrade to Shadow 5.0.0.
+
 ### 1.12.2 (16 Feb 2019)
 * Add `wrapAndAppyHeader` method for ease of use for C++ codecs.
 * Generate `sbe.h` for C++ client to avoid namespace clash and dependencies. [Issue #626](https://github.com/real-logic/simple-binary-encoding/issues/626).
