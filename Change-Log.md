@@ -1,4 +1,4 @@
-### 1.12.3 (16 Feb 2019)
+### 1.12.3 (10 Mar 2019)
 * Include links when generating Javadoc.
 * Update examples so they use relative path for XInclude.
 * Set `systemId` for message schemas so that XInclude can have a relative path. [PR #649](https://github.com/real-logic/simple-binary-encoding/pull/649).
