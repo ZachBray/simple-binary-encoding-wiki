@@ -5,6 +5,7 @@
 * Trim strings decoded from fixed length character arrays for C++ codec. [Issue #646](https://github.com/real-logic/simple-binary-encoding/issues/646).
 * Fix padding on fixed length character arrays so they are null padded in C++ codec. [Issue #646](https://github.com/real-logic/simple-binary-encoding/issues/646).
 * Fix generated include files. [PR #644](https://github.com/real-logic/simple-binary-encoding/pull/644).
+* Upgrade to Checkstyle 8.18.
 * Upgrade to Mockito 2.25.0.
 * Upgrade to Gradle 5.2.1.
 * Upgrade to Shadow 5.0.0.
