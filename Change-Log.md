@@ -9,6 +9,7 @@
 * Upgrade to Mockito 2.25.0.
 * Upgrade to Gradle 5.2.1.
 * Upgrade to Shadow 5.0.0.
+* Upgrade to Agrona 0.9.34.
 
 ### 1.12.2 (16 Feb 2019)
 * Add `wrapAndAppyHeader` method for ease of use for C++ codecs.
