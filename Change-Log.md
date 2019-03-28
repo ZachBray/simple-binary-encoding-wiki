@@ -1,3 +1,16 @@
+### 1.12.4 (28 Mar 2019)
+* Reduce module warnings when using Java 11.
+* Fix incremental build due to annotation processor directory clash with generated code directory.
+* Various clean ups to C and C++ codecs.
+* Cast Java message header flyweight returns to int if interfaces are used. [PR #635](https://github.com/real-logic/simple-binary-encoding/pull/635).
+* Add a C codec generator. [PR #638](https://github.com/real-logic/simple-binary-encoding/pull/638).
+* Improve C++ generated codecs to use member initialisation lists for cleaner and easier to optimise code. [PR #650](https://github.com/real-logic/simple-binary-encoding/pull/650).
+* Fix Javadoc links so they use HTTPS and work with OpenJDK and Java 11.
+* Upgrade Checkstyle DTD and apply checkstyle to method Javadoc.
+* Upgrade to Agrona 0.9.35.
+* Upgrade to Mockito 2.25.1.
+* Upgrade to Gradle 5.3.1.
+
 ### 1.12.3 (10 Mar 2019)
 * Include links when generating Javadoc.
 * Update examples so they use relative path for XInclude.
