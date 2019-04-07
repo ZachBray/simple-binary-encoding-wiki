@@ -149,7 +149,7 @@ Single characters are represented as a ```byte```.
 SBE fixed size arrays are represented as golang fixed size arrays and can be referenced as such e.g.,
 
 ``` go
-for i := 0; i < len(car.SomeNumbers; i++ {
+for i := 0; i < len(car.SomeNumbers); i++ {
     car.SomeNumbers[i] = i;
 }
 ```
