@@ -1,3 +1,21 @@
+### 1.12.5 (03 May 2019)
+* Fix warnings in generated Rust codecs. [PR #676](https://github.com/real-logic/simple-binary-encoding/pull/676).
+* Generate null values for enums in Rust codecs. [PR #675](https://github.com/real-logic/simple-binary-encoding/pull/675).
+* Reduce footprint of repeating group by replacing field with stack allocated object for dimensions in C++ codecs. [PR #674](https://github.com/real-logic/simple-binary-encoding/pull/674).
+* Don't generate an encode method for a constant enum in Java codecs. [Issue #670](https://github.com/real-logic/simple-binary-encoding/issues/670).
+* Remove redundant code for put string methods on arrays in C++ codecs. [Issue #668](https://github.com/real-logic/simple-binary-encoding/issues/668).
+* Generate overload with a 2-4 arg methods for setting array values to support the likes of UUIDs and cryptographic hashes efficiently for Java and C++ codecs.
+* Add missing storage class specifier for C codecs. [PR #666](https://github.com/real-logic/simple-binary-encoding/pull/666).
+* Create a executable binary for C# benchmarks. [PR #664](https://github.com/real-logic/simple-binary-encoding/pull/664).
+* Always return a value bit set type in C# codec. [PR #663](https://github.com/real-logic/simple-binary-encoding/pull/663).
+* Add the ability to query length of var data from C# codecs. [PR #622](https://github.com/real-logic/simple-binary-encoding/pull/622).
+* Provide output on failure for ctest.
+* Upgrade to io.freefair.javadoc-links 3.2.1.
+* Upgrade to Checkstyle 8.20.
+* Upgrade to Mockito 2.27.0.
+* Upgrade to Gradle 5.4.1.
+* Upgrade to Agrona 1.0.0.
+
 ### 1.12.4 (28 Mar 2019)
 * Reduce module warnings when using Java 11.
 * Fix incremental build due to annotation processor directory clash with generated code directory.
