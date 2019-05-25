@@ -1,3 +1,10 @@
+### 1.12.6 (25 May 2019)
+* Remove the need for dimensions member in C codecs. [PR #681](https://github.com/real-logic/simple-binary-encoding/pull/681).
+* Improve Rust codec generator. [PR #679](https://github.com/real-logic/simple-binary-encoding/pull/679).
+* Upgrade to javadoc-links 3.6.4 to allow for offline builds.
+* Upgrade to hamcrest 2.1.
+* Upgrade to Agrona 1.0.1.
+
 ### 1.12.5 (03 May 2019)
 * Fix warnings in generated Rust codecs. [PR #676](https://github.com/real-logic/simple-binary-encoding/pull/676).
 * Generate null values for enums in Rust codecs. [PR #675](https://github.com/real-logic/simple-binary-encoding/pull/675).
