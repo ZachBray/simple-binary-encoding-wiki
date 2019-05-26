@@ -1,3 +1,6 @@
+### 1.12.7 (26 May 2019)
+* Truncate existing serialised IR file when generating to avoid garbage at the end when new IR is shorter. [Issue #682](https://github.com/real-logic/simple-binary-encoding/issues/682).
+
 ### 1.12.6 (25 May 2019)
 * Remove the need for dimensions member in C codecs. [PR #681](https://github.com/real-logic/simple-binary-encoding/pull/681).
 * Improve Rust codec generator. [PR #679](https://github.com/real-logic/simple-binary-encoding/pull/679).
