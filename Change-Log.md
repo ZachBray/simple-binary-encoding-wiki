@@ -1,3 +1,17 @@
+### 1.12.8 (12 Jul 2019)
+* More efficient approach for truncating an existing file when generating IR.
+* Improve Javadoc for IR.
+* More efficient implementation for appending to an `Appendable` for var-data in Java codecs.
+* Use raw string literals in C++ codecs. [PR #685](https://github.com/real-logic/simple-binary-encoding/pull/688).
+* Enhancements to Rust codecs. [PR #685](https://github.com/real-logic/simple-binary-encoding/pull/688).
+* Generate pretty printers for encoded data inspection for C++ codecs. [PR #683](https://github.com/real-logic/simple-binary-encoding/pull/683).
+* Test C++ codecs with a greater range of compilers.
+* Upgrade to javadoc-links 3.7.5.
+* Upgrade to Shadow 5.1.0.
+* Upgrade to Checkstyle 8.22.
+* Upgrade to Mockito 2.28.2.
+* Upgrade to Agrona 1.0.3.
+
 ### 1.12.7 (26 May 2019)
 * Truncate existing serialised IR file when generating to avoid garbage at the end when new IR is shorter. [Issue #682](https://github.com/real-logic/simple-binary-encoding/issues/682).
 
