@@ -1,10 +1,10 @@
 The SBE tool is a command line utility that can be used to generate codecs and validate message declaration schemas. The tool is written in Java and can run as an executable JAR file, e.g:
 
-    $ java -jar sbe-all-1.12.8.jar <message-declarations-file.xml>
+    $ java -jar sbe-all-1.13.0.jar <message-declarations-file.xml>
 
 The tool will accept options using the system property option format as follows:
 
-    $ java [-Doption=value] -jar sbe-all-1.12.8.jar <message-declarations-file.xml>
+    $ java [-Doption=value] -jar sbe-all-1.13.0.jar <message-declarations-file.xml>
 
 The tool supports the following options:
  * `sbe.xinclude.aware`: Is XInclude supported for the schema. Defaults to false.
@@ -24,6 +24,7 @@ The tool supports the following options:
  * `sbe.java.generate.group-order.annotation`: Should the `GroupOrder` annotation be generated, defaults to false.
  * `sbe.keyword.append.token`: String to append to schema tokens that collide with reserved words in the target language.
  * `sbe.decode.unknown.enum.values`: Support unknown decoded enum values.
+ * `sbe.csharp.generate.namespace.dir`: Should a directory be created for the namespace under the output directory? Defaults to true
 
 The SBE tool can be used with Maven
 [see](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Maven)
