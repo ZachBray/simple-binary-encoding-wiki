@@ -1,3 +1,14 @@
+### 1.13.0 (02 Aug 2019)
+* [C#] Add system property to allow squashing of namespace generation. [PR #702](https://github.com/real-logic/simple-binary-encoding/pull/702).
+* [C++] Use [[nodiscard]] attribute where applicable. [PR #700](https://github.com/real-logic/simple-binary-encoding/pull/700).
+* [C#] Use ThrowHelper and simplify bounds checks to improve inlining. [PR #695](https://github.com/real-logic/simple-binary-encoding/pull/695).
+* [Java] Javadoc to `MetaAttribute` generation.
+* Upgrade to Agrona 1.0.6.
+* Upgrade to javadoc-links 3.8.1.
+* Upgrade to Checkstyle 8.23.
+* Upgrade to Mockito 2.30.0.
+* Upgrade to Gradle 5.5.1.
+
 ### 1.12.8 (12 Jul 2019)
 * More efficient approach for truncating an existing file when generating IR.
 * Improve Javadoc for IR.
