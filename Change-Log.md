@@ -1,3 +1,10 @@
+### 1.13.1 (14 Aug 2019)
+* Reduce allocation and copying in Java codec generator.
+* Update C# README.
+* Generate package-info.java for codec Javadoc. [Issue #703](https://github.com/real-logic/simple-binary-encoding/issues/703).
+* Upgrade to javadoc-links 3.8.4.
+* Upgrade to Agrona 1.0.7.
+
 ### 1.13.0 (02 Aug 2019)
 * [C#] Add system property to allow squashing of namespace generation. [PR #702](https://github.com/real-logic/simple-binary-encoding/pull/702).
 * [C++] Use [[nodiscard]] attribute where applicable. [PR #700](https://github.com/real-logic/simple-binary-encoding/pull/700).
