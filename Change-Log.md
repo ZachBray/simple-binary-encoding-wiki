@@ -1,5 +1,5 @@
 ### 1.13.1 (14 Aug 2019)
-* Reduce allocation and copying in Java codec generator.
+* Reduce allocation and copying in Java codec generator to make stub generation more efficient.
 * Update C# README.
 * Generate package-info.java for codec Javadoc. [Issue #703](https://github.com/real-logic/simple-binary-encoding/issues/703).
 * Upgrade to javadoc-links 3.8.4.
