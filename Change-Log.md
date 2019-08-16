@@ -1,3 +1,6 @@
+### 1.13.2 (16 Aug 2019)
+* Cope with optional composite values being pretty printed in Java codecs. [Issue #708](https://github.com/real-logic/simple-binary-encoding/issues/708).
+
 ### 1.13.1 (14 Aug 2019)
 * Reduce allocation and copying in Java codec generator to make stub generation more efficient.
 * Update C# README.
