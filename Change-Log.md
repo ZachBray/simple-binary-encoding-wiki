@@ -78,6 +78,7 @@
 * Include links when generating Javadoc.
 * Update examples so they use relative path for XInclude.
 * Set `systemId` for message schemas so that XInclude can have a relative path. [PR #649](https://github.com/real-logic/simple-binary-encoding/pull/649).
+* Fix generated Java codec for optional fixed length character arrays. [PR #648](https://github.com/real-logic/simple-binary-encoding/pull/648).
 * Trim strings decoded from fixed length character arrays for C++ codec. [Issue #646](https://github.com/real-logic/simple-binary-encoding/issues/646).
 * Fix padding on fixed length character arrays so they are null padded in C++ codec. [Issue #646](https://github.com/real-logic/simple-binary-encoding/issues/646).
 * Fix generated include files. [PR #644](https://github.com/real-logic/simple-binary-encoding/pull/644).
