@@ -5,6 +5,7 @@
 * Print non-printable char in C++ codecs as int. [PR #716](https://github.com/real-logic/simple-binary-encoding/pull/716).
 * Fix unsigned conversation warning and use better default value for group index initialisation in C++ codecs. [Issue #714](https://github.com/real-logic/simple-binary-encoding/issues/714).
 * Declare primitive accessors as `noexcept` for C++ codecs. [PR #709](https://github.com/real-logic/simple-binary-encoding/pull/709).
+* Upgrade to Checkstyle 8.24.
 * Upgrade to javadoc-links 4.1.2.
 * Upgrade to Mockito 3.1.0.
 * Upgrade to Gradle 5.6.2.
