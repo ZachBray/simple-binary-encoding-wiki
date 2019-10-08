@@ -1,3 +1,15 @@
+### 1.13.3 (08 Oct 2019)
+* Fix type conversion warnings in C++ codecs. [PR #725](https://github.com/real-logic/simple-binary-encoding/pull/725).
+* Allow setting of raw value for bit sets in C++ codecs. [PR #724](https://github.com/real-logic/simple-binary-encoding/pull/724).
+* Fix initialisation of C++ codecs samples for printing as JSON.
+* Print non-printable char in C++ codecs as int. [PR #716](https://github.com/real-logic/simple-binary-encoding/pull/716).
+* Fix unsigned conversation warning and use better default value for group index initialisation in C++ codecs. [Issue #714](https://github.com/real-logic/simple-binary-encoding/issues/714).
+* Declare primitive accessors as `noexcept` for C++ codecs. [PR #709](https://github.com/real-logic/simple-binary-encoding/pull/709).
+* Upgrade to javadoc-links 4.1.2.
+* Upgrade to Mockito 3.1.0.
+* Upgrade to Gradle 5.6.2.
+* Upgrade to Agrona 1.0.8.
+
 ### 1.13.2 (16 Aug 2019)
 * Cope with optional composite values being pretty printed in Java codecs. [Issue #708](https://github.com/real-logic/simple-binary-encoding/issues/708).
 
