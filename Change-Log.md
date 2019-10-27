@@ -1,4 +1,16 @@
 ### 1.13.3 (08 Oct 2019)
+* Provide consistent API for constant char arrays to be compatible with mutable char arrays.
+* Cast length type for memcpy to address warning. [PR #730](https://github.com/real-logic/simple-binary-encoding/pull/730).
+* Reduce string copying to improve performance of C++ codec generators.
+* Provide property accessor methods for getting string values Json escaped in C++ codecs.
+* Escape Json string in C++ codec pretty printing. [Issue #718](https://github.com/real-logic/simple-binary-encoding/issues/718).
+* Escape Json strings in Java `JsonTokenListener`.
+* Upgrade to javadoc-links 4.1.3.
+* Upgrade to Checkstyle 8.25.
+* Upgrade to Gradle 5.6.3.
+* Upgrade to Agrona 1.0.9.
+
+### 1.13.3 (08 Oct 2019)
 * Fix type conversion warnings in C++ codecs. [PR #725](https://github.com/real-logic/simple-binary-encoding/pull/725).
 * Allow setting of raw value for bit sets in C++ codecs. [PR #724](https://github.com/real-logic/simple-binary-encoding/pull/724).
 * Fix initialisation of C++ codecs samples for printing as JSON.
