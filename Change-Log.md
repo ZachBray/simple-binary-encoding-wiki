@@ -1,4 +1,4 @@
-### 1.13.3 (08 Oct 2019)
+### 1.13.3 (27 Oct 2019)
 * Provide consistent API for constant char arrays to be compatible with mutable char arrays.
 * Cast length type for memcpy to address warning. [PR #730](https://github.com/real-logic/simple-binary-encoding/pull/730).
 * Reduce string copying to improve performance of C++ codec generators.
