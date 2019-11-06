@@ -1,4 +1,10 @@
-### 1.13.3 (27 Oct 2019)
+### 1.14.1 (06 Nov 2019)
+* Regenerate the Java IR Codecs to benefit for less allocation when pretty printing.
+* Add null enum value lookup into the switch for Java codecs. [PR #732](https://github.com/real-logic/simple-binary-encoding/pull/732).
+* Upgrade to JMH 1.22.
+* Upgrade to Agrona 1.0.11.
+
+### 1.14.0 (27 Oct 2019)
 * Provide consistent API for constant char arrays to be compatible with mutable char arrays.
 * Cast length type for memcpy to address warning. [PR #730](https://github.com/real-logic/simple-binary-encoding/pull/730).
 * Reduce string copying to improve performance of C++ codec generators.
