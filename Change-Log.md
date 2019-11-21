@@ -1,3 +1,14 @@
+### 1.15.0 (21 Nov 2019)
+* Add skip methods for var data fields in C++ and Java codecs.
+* Handle encoding of Nan, Infinity, and -Infinity for floating point values in Java `JsonPrinter`.
+* Fix handling of `sinceVersion` in IR, Java codecs, and C++ codecs so that the max value is taken from type in field.
+* Set javadoc encoding to UTF-8.
+* Upgrade to javadoc-links 4.1.4.
+* Upgrade to Hamcrest 2.2.
+* Upgrade to Checkstyle 8.26.
+* Upgrade to Shadow 5.2.0.
+* Upgrade to Agrona 1.1.0.
+
 ### 1.14.1 (06 Nov 2019)
 * Regenerate the Java IR Codecs to benefit for less allocation when pretty printing.
 * Add null enum value lookup into the switch for Java codecs. [PR #732](https://github.com/real-logic/simple-binary-encoding/pull/732).
