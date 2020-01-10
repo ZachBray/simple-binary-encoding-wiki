@@ -130,7 +130,7 @@ such as channels for io, goroutines for multiplexing, etc.
 
 This section describes the mappings between SBE types and golang.
 
-### Single fixed fields
+### Single Fixed Fields
 
 Single fixed fields are represented as a field in a type and are
 directly accessed e.g.,
@@ -144,9 +144,9 @@ Integer types (both signed and unsigned) are explicitly sized (e.g., ```uint16``
 
 Single characters are represented as a ```byte```.
 
-### Fixed Size Array Fields
+### Fixed Length Array Fields
 
-SBE fixed size arrays are represented as golang fixed size arrays and can be referenced as such e.g.,
+SBE fixed length arrays are represented as golang fixed length arrays and can be referenced as such e.g.,
 
 ``` go
 for i := 0; i < len(car.SomeNumbers); i++ {
@@ -154,7 +154,7 @@ for i := 0; i < len(car.SomeNumbers); i++ {
 }
 ```
 
-Fixed size string arrays are represented as fixed length byte arrays
+Fixed length string arrays are represented as fixed length byte arrays
 in golang. There is no default character encoding but if the character
 encoding is specified then validity may be performed by the
 ``RangeCheck()``` method. Currently validated character encodings are
