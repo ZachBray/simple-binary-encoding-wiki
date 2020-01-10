@@ -91,7 +91,7 @@ CarExample.Decode(Car, directBuffer, bufferOffset, actingBlockLength, actingVers
 // We can then directly read fields. (see below)
 ```
 
-### Single Fixed Size Fields
+### Single Fixed Length Fields
 
 Single fixed fields are represented as a field and can be accessed directly.
 
@@ -108,7 +108,7 @@ sb.Append("\ncar.serialNumber=").Append(car.SerialNumber);
 sb.Append("\ncar.available=").Append(car.Available);
 ```
 
-### Fixed Size Array Fields
+### Fixed Length Array Fields
 
 It is possible to encode a fixed length array of primitive value in a field.
 
@@ -131,7 +131,7 @@ for (int i = 0, size = car.SomeNumbersLength; i < size; i++)
 }
 ```
 
-### Fixed Size String Arrays
+### Fixed Length String Arrays
 
 SBE characters are single bytes. The default encoding is US-ASCII but it is possible to signify other encodings by using
 the characterEncoding attribute of the schema. In addition to the fixed array access method the following accessors are provided.
