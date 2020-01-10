@@ -10,7 +10,7 @@
 * Upgrade to javadoc-links 4.1.6.
 * Upgrade to Mockito 3.2.4.
 * Upgrade to Gradle 6.0.1.
-* UPgrade to gtest 1.10.0.
+* Upgrade to gtest 1.10.0.
 
 ### 1.15.0 (21 Nov 2019)
 * Add skip methods for var data fields in C++ and Java codecs.
