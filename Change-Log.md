@@ -1,6 +1,6 @@
 ### 1.16.0 (10 Jan 2020)
 * Generate simpler `MetaAttribute` lookup in Java Codecs which avoids the generation of a synthetic class.
-* Don't default timeunit and epoch for var data fields when parsing.
+* Don't default timeunit and epoch for var data fields when parsing. This results in more compact IR.
 * Move CI build to GitHub Actions.
 * Track `initialOffset` on Java codecs so `toString()` can be called on the decoder at any time during decoding. This allows SBE decoding to be debugged.
 * Use skip methods to avoid unused warning in C++ codecs.
