@@ -7,6 +7,7 @@
 * Upgrade to Agrona 1.2.0.
 * Upgrade to Checkstyle 8.28.
 * Upgrade to JUnit 5.6.0-RC1.
+* Upgrade to javadoc-links 4.1.6.
 * Upgrade to Mockito 3.2.4.
 * Upgrade to Gradle 6.0.1.
 * UPgrade to gtest 1.10.0.
