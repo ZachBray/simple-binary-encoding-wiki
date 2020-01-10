@@ -1,3 +1,16 @@
+### 1.16.0 (10 Jan 2020)
+* Generate simpler `MetaAttribute` lookup in Java Codecs which avoids the generation of a synthetic class.
+* Don't default timeunit and epoch for var data fields when parsing.
+* Move CI build to GitHub Actions.
+* Track `initialOffset` on Java codecs so `toString()` can be called on the decoder at any time during decoding. This allows SBE decoding to be debugged.
+* Use skip methods to avoid unused warning in C++ codecs.
+* Upgrade to Agrona 1.2.0.
+* Upgrade to Checkstyle 8.28.
+* Upgrade to JUnit 5.6.0-RC1.
+* Upgrade to Mockito 3.2.4.
+* Upgrade to Gradle 6.0.1.
+* UPgrade to gtest 1.10.0.
+
 ### 1.15.0 (21 Nov 2019)
 * Add skip methods for var data fields in C++ and Java codecs.
 * Handle encoding of Nan, Infinity, and -Infinity for floating point values in Java `JsonPrinter`.
