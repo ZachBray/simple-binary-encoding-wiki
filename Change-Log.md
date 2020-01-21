@@ -1,6 +1,6 @@
 ### 1.16.1 (21 Jan 2020)
 * Simplify the generation of `MetaAttribute` lookup on fields in C++ codecs to reduce code size.
-* Allow setting a count for groups and then later setting it to the value of index. This allows for streaming operations when the count is not known but can be limited and then later set to index for what is encoded. Applied to Java, C++, and C# codecs. [PR #749](https://github.com/real-logic/simple-binary-encoding/pull/749).
+* Allow setting a count for groups and then later setting it to the value of index. This allows for streaming operations when the count is not known but can be limited and then later set to index for what is encoded. Applied to Java, C++, and C# codecs. [PR #746](https://github.com/real-logic/simple-binary-encoding/pull/746).
 * Fix generation of Java Decoder names when message names start with lowercase. [Issue #745](https://github.com/real-logic/simple-binary-encoding/issues/745).
 * Upgrade to Agrona 1.3.0.
 * Upgrade to JUnit 5.6.0.
