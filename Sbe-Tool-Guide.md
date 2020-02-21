@@ -13,12 +13,12 @@ The tool supports the following options:
  * `sbe.validation.warnings.fatal`: Are warnings in parsing considered fatal? Defaults to `false`.
  * `sbe.validation.suppress.output`: Should the parser suppress output during validation? Defaults to `false`.
  * `sbe.generate.stubs`: Generate stubs or not. Defaults to `true`.
- * `sbe.target.language`: Target language for code generation, defaults to `Java` (also supports: `CPP`, `C`, and `Golang`). Additionally a fully qualified class name can be provided which implements [uk.co.real_logic.sbe.generation.TargetCodeGeneratorLoader](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/generation/TargetCodeGenerator.java), e.g. `uk.co.real_logic.sbe.generation.csharp.CSharp`.
+ * `sbe.target.language`: Target language for code generation, defaults to `Java` (also supports: `CPP`, `C`, and `Golang`). Additionally a fully qualified class name can be provided which implements [TargetCodeGeneratorLoader](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/generation/TargetCodeGenerator.java), e.g. `uk.co.real_logic.sbe.generation.csharp.CSharp`.
  * `sbe.generate.ir`: Generate IR or not. Defaults to `false`.
  * `sbe.output.dir`: Target directory for output generation, defaults to current directory.
  * `sbe.java.generate.interfaces`: Generate implements clauses for Java common interfaces from [Agrona](https://github.com/real-logic/agrona/tree/master/agrona/src/main/java/org/agrona/sbe). Defaults to `false`.
- * `sbe.java.encoding.buffer.type`: Buffer type to be used for the encoder stubs. This type needs to mutate the underlying buffer. Defaults to [org.agrona.MutableDirectBuffer](https://github.com/real-logic/agrona/blob/master/agrona/src/main/java/org/agrona/MutableDirectBuffer.java).
- * `sbe.java.decoding.buffer.type`: Buffer type to be used for the decoder stubs. This type only reads the underlying buffer. Defaults to [org.agrona.DirectBuffer](https://github.com/real-logic/agrona/blob/master/agrona/src/main/java/org/agrona/DirectBuffer.java).
+ * `sbe.java.encoding.buffer.type`: Buffer type to be used for the encoder stubs. This type needs to mutate the underlying buffer. Defaults to [MutableDirectBuffer](https://github.com/real-logic/agrona/blob/master/agrona/src/main/java/org/agrona/MutableDirectBuffer.java).
+ * `sbe.java.decoding.buffer.type`: Buffer type to be used for the decoder stubs. This type only reads the underlying buffer. Defaults to [DirectBuffer](https://github.com/real-logic/agrona/blob/master/agrona/src/main/java/org/agrona/DirectBuffer.java).
  * `sbe.target.namespace`: Namespace to be used for generated code. Equates to package for Java. If not provided then the `package` attribute from the schema will be used.
  * `sbe.cpp.namespaces.collapse`: Boolean to turn on or off collapsing of nested namespaces in generated C++ stubs. Defaults to `false`.
  * `sbe.java.generate.group-order.annotation`: Should the `GroupOrder` annotation be generated, defaults to `false`.
