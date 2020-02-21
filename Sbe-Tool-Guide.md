@@ -13,7 +13,7 @@ The tool supports the following options:
  * `sbe.validation.warnings.fatal`: Are warnings in parsing considered fatal? Defaults to `false`.
  * `sbe.validation.suppress.output`: Should the parser suppress output during validation? Defaults to `false`.
  * `sbe.generate.stubs`: Generate stubs or not. Defaults to `true`.
- * `sbe.target.language`: Target language for code generation, defaults to `Java` (also supports: `CPP`, `C`, and `Golang`). Additionally a fully qualified class name can be provided which implements `uk.co.real_logic.sbe.generation.TargetCodeGeneratorLoader`, e.g. `uk.co.real_logic.sbe.generation.csharp.CSharp`.
+ * `sbe.target.language`: Target language for code generation, defaults to `Java` (also supports: `CPP`, `C`, and `Golang`). Additionally a fully qualified class name can be provided which implements [uk.co.real_logic.sbe.generation.TargetCodeGeneratorLoader](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-tool/src/main/java/uk/co/real_logic/sbe/generation/TargetCodeGenerator.java), e.g. `uk.co.real_logic.sbe.generation.csharp.CSharp`.
  * `sbe.generate.ir`: Generate IR or not. Defaults to `false`.
  * `sbe.output.dir`: Target directory for output generation, defaults to current directory.
  * `sbe.java.generate.interfaces`: Generate implements clauses for Java common interfaces from [Agrona](https://github.com/real-logic/agrona/tree/master/agrona/src/main/java/org/agrona/sbe). Defaults to `false`.
