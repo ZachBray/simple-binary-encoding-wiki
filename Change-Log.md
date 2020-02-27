@@ -1,3 +1,18 @@
+### 1.16.2 (27 Feb 2020)
+* Variable data string improvements in C++ codecs. [PR #758](https://github.com/real-logic/simple-binary-encoding/pull/758).
+* Short circuit `toString` and `appendTo` in Java codes when buffer is null to avoid debugging issues.
+* CLang Tidy fixes for C++ codecs. [PR #757](https://github.com/real-logic/simple-binary-encoding/pull/757).
+* Eliminate allocation when calling `appendTo` on set based fields in Java codecs. [PR #755](https://github.com/real-logic/simple-binary-encoding/pull/755).
+* Support optional groups which is a non-standard feature. [Issue #754](https://github.com/real-logic/simple-binary-encoding/issues/754).
+* Fix issue with populating optional arrays in Go codecs. [PR #750](https://github.com/real-logic/simple-binary-encoding/pull/750).
+* Migrate to maven-publish plugin for Gradle.
+* C++ codec `sbePosition()` method should be SBE_NOEXCEPT.
+* Upgrade to Versions 0.28.0.
+* Upgrade to Mockito 3.3.0.
+* Upgrade to Agrona 1.4.0.
+* Upgrade to Gradle 6.2.1.
+* Upgrade to JMH 1.23.
+
 ### 1.16.1 (21 Jan 2020)
 * Simplify the generation of `MetaAttribute` lookup on fields in C++ codecs to reduce code size.
 * Allow setting a count for groups and then later setting it to the value of index. This allows for streaming operations when the count is not known but can be limited and then later set to index for what is encoded. Applied to Java, C++, and C# codecs. [PR #746](https://github.com/real-logic/simple-binary-encoding/pull/746).
