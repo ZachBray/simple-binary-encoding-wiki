@@ -1,3 +1,7 @@
+### 1.16.3 (28 Feb 2020)
+* Re-generate Java IR codecs.
+* Make Java codec `toString()` methods version aware so the wrapped `actingVersion` and `actingBlockLength` are accounted for.
+
 ### 1.16.2 (27 Feb 2020)
 * Variable data string improvements in C++ codecs. [PR #758](https://github.com/real-logic/simple-binary-encoding/pull/758).
 * Short circuit `toString` and `appendTo` in Java codes when buffer is null to avoid debugging issues.
