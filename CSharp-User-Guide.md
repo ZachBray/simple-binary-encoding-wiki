@@ -57,7 +57,7 @@ To encode a message and it's header:
 ``` csharp
 // First the message header
 messageHeader = new baseline.MessageHeader();
-messageHeader.Wrap(directBuffer, bufferOffset, Car,Schemaversion);
+messageHeader.Wrap(directBuffer, bufferOffset, Car.Schemaversion);
 messageHeader.BlockLength = Car.BlockLength;
 messageHeader.SchemaId = Car.SchemaId;
 messageHeader.TemplateId = Car.TemplateId;
@@ -77,7 +77,7 @@ The decoder should decode the header and then lookup which template should be us
 // first we decode the header (in a real world scenario you would need the header to decide which SBE decoder you are going to use
 bufferOffset = 0;
 // position the MessageHeader object at the beginning of the array
-MessageHeader.Wrap(directBuffer, bufferOffset, Car,SchemaVersion);
+MessageHeader.Wrap(directBuffer, bufferOffset, Car.SchemaVersion);
 
 // Extract info from the header which you would use to lookup the
 // applicable flyweight to decode this type of message based on templateId and version.
