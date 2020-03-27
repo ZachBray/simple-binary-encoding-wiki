@@ -85,16 +85,29 @@ Examples of the use of `<composite>` are below:
         <type name="version" primitiveType="uint16"/>
     </composite>
 
+    <composite name="Booster">
+        <enum name="BoostType" encodingType="char">
+            <validValue name="TURBO">T</validValue>
+            <validValue name="SUPERCHARGER">S</validValue>
+            <validValue name="NITROUS">N</validValue>
+            <validValue name="KERS">K</validValue>
+        </enum>
+        <type name="horsePower" primitiveType="uint8"/>
+    </composite>
+
     <composite name="Engine" semanticType="Engine">
         <type name="capacity" primitiveType="uint16"/>
         <type name="numCylinders" primitiveType="uint8"/>
         <type name="maxRpm" primitiveType="uint16" presence="constant">9000</type>
         <type name="manufacturerCode" primitiveType="char" length="3"/>
         <type name="fuel" primitiveType="char" presence="constant">Petrol</type>
+        <ref name="booster" type="Booster"/>
     </composite>
 ```
 
 The `messageHeader` composite is treated as the header for all messages included in the message schema.
+
+A member of a composite can reference another type, with the `ref` tag, to include it for reuse.
 
 ### <code>enum</code> Element
 
