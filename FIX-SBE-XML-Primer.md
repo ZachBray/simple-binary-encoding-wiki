@@ -65,50 +65,6 @@ An few examples of the use of `<type>` are below:
     <type name="someNumbers" primitiveType="int32" length="5" semanticType="SomeArray"/>
 ```
 
-### <code>composite</code> Element
-
-A `composite` is a structure of encoded types. The encoding is in the order of declaration.
-Some `composite` elements are used for message header declaration as well as variable length field
-encoding and group dimension encoding. The `<composite>` element has the following attributes.
-
-* `name`: Name of the type.
-* `semanticType`: Semantic information about the type. (optional)
-* `description`: Description of the type. (optional)
-
-Examples of the use of `<composite>` are below:
-
-```xml
-    <composite name="messageHeader" description="Message identifiers and length of message root">
-        <type name="blockLength" primitiveType="uint16"/>
-        <type name="templateId" primitiveType="uint16"/>
-        <type name="schemaId" primitiveType="uint16"/>
-        <type name="version" primitiveType="uint16"/>
-    </composite>
-
-    <composite name="Booster">
-        <enum name="BoostType" encodingType="char">
-            <validValue name="TURBO">T</validValue>
-            <validValue name="SUPERCHARGER">S</validValue>
-            <validValue name="NITROUS">N</validValue>
-            <validValue name="KERS">K</validValue>
-        </enum>
-        <type name="horsePower" primitiveType="uint8"/>
-    </composite>
-
-    <composite name="Engine" semanticType="Engine">
-        <type name="capacity" primitiveType="uint16"/>
-        <type name="numCylinders" primitiveType="uint8"/>
-        <type name="maxRpm" primitiveType="uint16" presence="constant">9000</type>
-        <type name="manufacturerCode" primitiveType="char" length="3"/>
-        <type name="fuel" primitiveType="char" presence="constant">Petrol</type>
-        <ref name="booster" type="Booster"/>
-    </composite>
-```
-
-The `messageHeader` composite is treated as the header for all messages included in the message schema.
-
-A member of a composite can reference another type, with the `ref` tag, to include it for reuse.
-
 ### <code>enum</code> Element
 
 Enumerations use the `<enum>` element. This element contains the valid values for the enum. The element
@@ -159,6 +115,50 @@ Examples of the use of `<set>` are below:
         <choice name="cruiseControl">2</choice>
     </set>
 ```
+
+### <code>composite</code> Element
+
+A `composite` is a structure of encoded types. The encoding is in the order of declaration.
+Some `composite` elements are used for message header declaration as well as variable length field
+encoding and group dimension encoding. The `<composite>` element has the following attributes.
+
+* `name`: Name of the type.
+* `semanticType`: Semantic information about the type. (optional)
+* `description`: Description of the type. (optional)
+
+Examples of the use of `<composite>` are below:
+
+```xml
+    <composite name="messageHeader" description="Message identifiers and length of message root">
+        <type name="blockLength" primitiveType="uint16"/>
+        <type name="templateId" primitiveType="uint16"/>
+        <type name="schemaId" primitiveType="uint16"/>
+        <type name="version" primitiveType="uint16"/>
+    </composite>
+
+    <composite name="Booster">
+        <enum name="BoostType" encodingType="char">
+            <validValue name="TURBO">T</validValue>
+            <validValue name="SUPERCHARGER">S</validValue>
+            <validValue name="NITROUS">N</validValue>
+            <validValue name="KERS">K</validValue>
+        </enum>
+        <type name="horsePower" primitiveType="uint8"/>
+    </composite>
+
+    <composite name="Engine" semanticType="Engine">
+        <type name="capacity" primitiveType="uint16"/>
+        <type name="numCylinders" primitiveType="uint8"/>
+        <type name="maxRpm" primitiveType="uint16" presence="constant">9000</type>
+        <type name="manufacturerCode" primitiveType="char" length="3"/>
+        <type name="fuel" primitiveType="char" presence="constant">Petrol</type>
+        <ref name="booster" type="Booster"/>
+    </composite>
+```
+
+The `messageHeader` composite is treated as the header for all messages included in the message schema.
+
+A member of a composite can reference another type, with the `ref` tag, to include it for reuse.
 
 ### <code>message</code> Element
 
