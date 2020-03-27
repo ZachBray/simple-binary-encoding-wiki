@@ -173,6 +173,7 @@ Field elements designate the fixed size fields of a message. A `<field>` element
 * `id`: The ID of the field. Aka the schema ID. For FIX, this is the Tag.
 * `semanticType`: The semantic type of the field.
 * `type`: The type of the field. This can be any primitive type, `<type>`, `<composite>`, `<enum>`, or `<set>`.
+* `valueRef`: A constant value which references a valid value of an `enum`.
 * `offset`: Offset in bytes of this field from the start of the `<message>` or `<group>`. (optional)
 * `sinceVersion`: The version where this field was added. Defaults to 0.
 
@@ -186,7 +187,8 @@ Examples of the use of `<field>` are below:
     <field name="someNumbers" id="5" type="someNumbers"/>
     <field name="vehicleCode" id="6" type="VehicleCode"/>
     <field name="extras" id="7" type="OptionalExtras"/>
-    <field name="engine" id="8" type="Engine"/>
+    <field name="discountedModel" id="8" type="Model" presence="constant" valueRef="Model.C"/>
+    <field name="engine" id="9" type="Engine"/>
 ```
 
 ### <code>group</code> Element
