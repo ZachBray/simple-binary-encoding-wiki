@@ -1,3 +1,12 @@
+### 1.17.0 (28 Mar 2020)
+* Remove redundant generated casts from Java codecs. [Issue #766](https://github.com/real-logic/simple-binary-encoding/issues/766).
+* Add ability to compute the length of an encoded message before encoding for C++ codecs. [PR #761](https://github.com/real-logic/simple-binary-encoding/pull/761).
+* Remove Rust support due to lack of community support.
+* Use `sinceVersion` from field which overrides type in C# codecs. [Issue #763](https://github.com/real-logic/simple-binary-encoding/issues/763).
+* Upgrade to JUnit 5.6.1.
+* Upgrade to Gradle 6.3.
+* Upgrade to Agrona 1.4.1.
+
 ### 1.16.3 (28 Feb 2020)
 * Re-generate Java IR codecs.
 * Make Java codec `toString()` methods version aware so the wrapped `actingVersion` and `actingBlockLength` are accounted for.
