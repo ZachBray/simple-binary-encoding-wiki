@@ -1,3 +1,18 @@
+### 1.18.0 (23 May 2020)
+* Only generate imports for Java codecs when required to address warnings.
+* Access fixed length arrays as Spans in C# codecs. [PR #780](https://github.com/real-logic/simple-binary-encoding/pull/780).
+* Add `SbeSchemaId` and `SbeSchemaVersion` as constants in fixed flyweights for C# codecs.
+* Generate source docs from schema descriptions for C# codecs. [PR #778](https://github.com/real-logic/simple-binary-encoding/pull/778).
+* Add offset and wrap methods to C# codecs for ease of use. [PR #777](https://github.com/real-logic/simple-binary-encoding/pull/777).
+* Support non-standard message headers form the C++ codecs. [PR #775](https://github.com/real-logic/simple-binary-encoding/pull/775).
+* Fix version support for enums in C codecs. [Issue #773](https://github.com/real-logic/simple-binary-encoding/issues/773).
+* Improve formatting of generated C codecs.
+* Require a strict dependency on Agrona.
+* Upgrade to Agrona 1.5.0.
+* Upgrade to javadoc-links 5.1.0.
+* Upgrade to JUnit 5.6.2.
+* Upgrade to Gradle 6.4.1.
+
 ### 1.17.0 (28 Mar 2020)
 * Remove redundant generated casts from Java codecs. [Issue #766](https://github.com/real-logic/simple-binary-encoding/issues/766).
 * Add ability to compute the length of an encoded message before encoding for C++ codecs. [PR #761](https://github.com/real-logic/simple-binary-encoding/pull/761).
