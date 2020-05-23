@@ -1,3 +1,6 @@
+### 1.18.1 (23 May 2020)
+* Fix case of importing buffers when var data is used in nested groups for Java codecs.
+
 ### 1.18.0 (23 May 2020)
 * Only generate imports for Java codecs when required to address warnings.
 * Access fixed length arrays as Spans in C# codecs. [PR #780](https://github.com/real-logic/simple-binary-encoding/pull/780).
