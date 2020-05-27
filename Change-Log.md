@@ -1,3 +1,7 @@
+### 1.18.2 (27 May 2020)
+* Fix SbeMarshalling.go file generation based on template. [Issue #789](https://github.com/real-logic/simple-binary-encoding/issues/789).
+* Fix numerous MSVC warnings about C and C++ codec generation and testing.
+
 ### 1.18.1 (23 May 2020)
 * Fix case of importing buffers when var data is used in nested groups for Java codecs.
 
