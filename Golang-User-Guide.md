@@ -157,7 +157,7 @@ for i := 0; i < len(car.SomeNumbers); i++ {
 Fixed length string arrays are represented as fixed length byte arrays
 in golang. There is no default character encoding but if the character
 encoding is specified then validity may be performed by the
-``RangeCheck()``` method. Currently validated character encodings are
+```RangeCheck()``` method. Currently validated character encodings are
 UTF-8 and ASCII.
 
 ### Constants
