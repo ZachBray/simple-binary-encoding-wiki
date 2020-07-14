@@ -1,3 +1,21 @@
+### 1.19.0 (14 Jul 2020)
+* Improve edge case generation for `JsonPrinter` when groups have num in group of zero. [Issue #800](https://github.com/real-logic/simple-binary-encoding/issues/800).
+* Improve edge case generation for `JsonPrinter` when messages are empty. [Issue #799](https://github.com/real-logic/simple-binary-encoding/issues/799).
+* Fix case of generated variables in C++ `computeLength` method which could cause compilation errors. [Issue #796](https://github.com/real-logic/simple-binary-encoding/issues/796).
+* Enable Java 14 build in CI.
+* Improve Javadoc.
+* Remove use of `constexpr` from `computeLength` generated methods in C++ codecs to address compilation errors. 
+* Validate usage of group and var data types within composite elements when XSDs are not used.
+* Improve C# samples.
+* Improve C++ samples.
+* Reduce warnings in C++ build on Windows.
+* Upgrade to .net core 3.1 LTS for for CI.
+* Upgrade to Mockito 3.4.0.
+* Upgrade to Checkstyle 8.34.
+* Upgrade to Shadow 6.0.0.
+* Upgrade to Gradle 6.5.1.
+* Upgrade to Agrona 1.6.0.
+
 ### 1.18.2 (27 May 2020)
 * Fix SbeMarshalling.go file generation based on template. [Issue #789](https://github.com/real-logic/simple-binary-encoding/issues/789).
 * Fix numerous MSVC warnings about C and C++ codec generation and testing.
