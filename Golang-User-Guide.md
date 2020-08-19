@@ -1,20 +1,11 @@
-After running the [SbeTool](Sbe-Tool-Guide) a number of Golang source
-files will be created. These files represent the types and messages
-declared in the schema. For a quick start to SBE look at [this example
-schema](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/resources/example-schema.xml)
-schema and its usage
-[here](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-samples/src/main/java/uk/co/real_logic/sbe/examples).
+After running the [SbeTool](Sbe-Tool-Guide) a number of Golang source files will be created. These files represent the types and messages
+declared in the schema. For a quick start to SBE look at [this example schema](https://github.com/real-logic/simple-binary-encoding/blob/master/sbe-samples/src/main/resources/example-schema.xml) schema and its usage [here](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-samples/src/main/java/uk/co/real_logic/sbe/examples).
 
-Messages are designed to be read in the sequential order as defined in
-the schema. This ensures a [stream access](Design-Principles) pattern
-for performance. If groups, or variable data, are not processed in
-order then the data may become corrupt. Conceptually a message is
-encoded as a series of blocks. The blocks are the root fields,
-followed by each iteration of repeating groups, and finally followed
-by one or more variable data fields.
+Messages are designed to be read in the sequential order as defined in the schema. This ensures a [stream access](Design-Principles) pattern for performance. If groups, or variable data, are not processed in order then the data may become corrupt. Conceptually a message is encoded as a series of blocks. The blocks are the root fields, followed by each iteration of repeating groups, and finally followed by one or more variable data fields.
 
-Due to the streaming nature of the codec the encoded length of the
-message cannot be determined until encoding or decoding is complete.
+Due to the streaming nature of the codec the encoded length of the message cannot be determined until encoding or decoding is complete.
+
+**Note:** It is important to encode and decode elements in the schema order, otherwise undefined behaviour can occur. This is especially important to repeating groups and variable length data fields as they modify internal state for the position within the message.
 
 ### Framing
 
