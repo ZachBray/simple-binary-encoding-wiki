@@ -4,7 +4,7 @@ Messages are designed to be read in the sequential order as defined in the schem
 
 Due to the streaming nature of the codec the encoded length of the message cannot be determined until encoding or decoding is complete. The method <code>MessageFlyweight.limit()</code> will return the index in the underlying buffer at which the next block will commence, and the <code>MessageFlyweight.encodedLength()</code> method will return the current encoded length in bytes depending on how far it has progressed.
 
-*Note:* It is important to encode and decode elements in the schema order, otherwise undefined behaviour can occur. This is especially important to repeating groups and variable length data fields as they modify internal state for the position within the message.
+**Note:** It is important to encode and decode elements in the schema order, otherwise undefined behaviour can occur. This is especially important to repeating groups and variable length data fields as they modify internal state for the position within the message.
  
 ### Framing
 
