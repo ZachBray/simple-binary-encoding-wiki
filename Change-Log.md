@@ -1,3 +1,18 @@
+### 1.20.0 (29 Aug 2020)
+* Improve validation and error messages when parsing invalid SBE schemas.
+* Generate SBE header constants in C++ codecs so they can be used more easily in switch statements.
+* Generate C++ style casts rather than C style casts in C++ codecs.
+* Generate enum literals beyond `int` range correctly for C and C++. 
+* Enum get methods for C++ codecs should not be `noexcept`. [PR #806](https://github.com/real-logic/simple-binary-encoding/pull/806).
+* Improve javadoc.
+* Update Gradle build script so IDEA can more easily get the dependencies correct for generated code.
+* Upgrade to Gradle 6.6.1.
+* Upgrade to Mockito 3.5.7.
+* Upgrade to JMH 1.25.1.
+* Upgrade to Checkstyle 8.35.
+* Upgrade to Version 0.29.0.
+* Upgrade to Agrona 1.7.0.
+
 ### 1.19.0 (14 Jul 2020)
 * Improve edge case generation for `JsonPrinter` when groups have num in group of zero. [Issue #800](https://github.com/real-logic/simple-binary-encoding/issues/800).
 * Improve edge case generation for `JsonPrinter` when messages are empty. [Issue #799](https://github.com/real-logic/simple-binary-encoding/issues/799).
