@@ -1,3 +1,11 @@
+### 1.20.1 (12 Sep 2020)
+* Validate enum values are in valid range for type considering min and max value.
+* Upgrade to Versions 0.31.0.
+* Upgrade to Checkstyle 8.36.
+* Upgrade to Mockito 3.5.10.
+* Upgrade to JMH 1.25.2.
+* Upgrade to Agrona 1.7.1.
+
 ### 1.20.0 (29 Aug 2020)
 * Improve validation and error messages when parsing invalid SBE schemas.
 * Generate SBE header constants in C++ codecs so they can be used more easily in switch statements.
