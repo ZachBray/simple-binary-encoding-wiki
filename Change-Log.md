@@ -1,5 +1,5 @@
 ### 1.20.1 (12 Sep 2020)
-* Validate enum values are in valid range for type considering min and max value.
+* Validate enum values are in the range for type considering min and max value, excluding null value.
 * Upgrade to Versions 0.31.0.
 * Upgrade to Checkstyle 8.36.
 * Upgrade to Mockito 3.5.10.
