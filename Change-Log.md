@@ -1,3 +1,11 @@
+### 1.20.2 (18 Sep 2020)
+* Indicate files are auto-generated for C# so they can be ignored by VS. [PR #814](https://github.com/real-logic/simple-binary-encoding/pull/814).
+* Fix CMake install on MacOS.
+* Support CMake 3.6.1 as a minimum version.
+* Upgrade to Versions 0.33.0.
+* Upgrade to JUnit 5.7.0.
+* Upgrade to Agrona 1.7.2.
+
 ### 1.20.1 (12 Sep 2020)
 * Validate enum values are in the range for type considering min and max value, excluding null value.
 * Upgrade to Versions 0.31.0.
