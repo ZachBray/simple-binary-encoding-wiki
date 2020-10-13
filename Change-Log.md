@@ -1,3 +1,13 @@
+### 1.20.3 (13 Oct 2020)
+* Fix generation of GroupOrder annotations on Java codecs.
+* Reduce scope of some fields in Java codecs which were protected and should have been package or private.
+* Add GCC 10 and Clang 10 to build mix.
+* Add Java 15 to build mix.
+* Upgrade to JMH 1.26.
+* Upgrade to Checkstyle 8.36.2.
+* Upgrade to Mockito 3.5.13.
+* Upgrade to Agrona 1.8.0.
+
 ### 1.20.2 (18 Sep 2020)
 * Indicate files are auto-generated for C# so they can be ignored by VS. [PR #814](https://github.com/real-logic/simple-binary-encoding/pull/814).
 * Fix CMake install on MacOS.
