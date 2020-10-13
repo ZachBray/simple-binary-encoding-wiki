@@ -1,5 +1,6 @@
 ### 1.20.3 (13 Oct 2020)
 * Fix generation of GroupOrder annotations on Java codecs.
+* Java codecs have a new method `MessageDecoderFlyweight.appendTo(StringBuilder)` for the interface. [PR #220](https://github.com/real-logic/agrona/pull/220).
 * Reduce scope of some fields in Java codecs which were protected and should have been package or private.
 * Add GCC 10 and Clang 10 to build mix.
 * Add Java 15 to build mix.
