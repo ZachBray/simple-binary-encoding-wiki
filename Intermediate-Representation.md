@@ -6,7 +6,7 @@ NOTE: it is our hope that serialised IR can form the foundation for a tool chain
 
 Generating serialised IR is straight forward with the SBE Tool. Simply set `sbe.generate.ir` to true. The SBE tool will  to write the serialised IR file using the same name as the input file with the `.sbeir` suffix. Here is an example.
 
-    $ java -Dsbe.generate.ir=true -jar sbe-all-${SBE_LIB_VERSION}.jar <message-declarations-file.xml>
+    $ java -Dsbe.generate.ir=true -jar sbe-all-${SBE_TOOL_VERSION}.jar <message-declarations-file.xml>
 
 ### Using Serialized IR as Input to SBE Tool
 
