@@ -1,3 +1,21 @@
+### 1.20.4 (22 Dec 2020)
+* Add parsing of CME iLink order protocol to tests.
+* [C++] Generate literal marked up for correct type when shifting for bitsets using `uint64`. [PR #829](https://github.com/real-logic/agrona/pull/829).
+* [Java] Generate `@return` in javadoc for bitset values. [Issue #828](https://github.com/real-logic/simple-binary-encoding/issues/828).
+* [Java] Escape basic HTML characters for javadoc. [Issue #826](https://github.com/real-logic/simple-binary-encoding/issues/826).
+* [Go] Fix decoding into struct with pre-allocated slices. [PR #825](https://github.com/real-logic/agrona/pull/825).
+* [C++] Fix spelling of `_cplusplus` macro. [Issue #821](https://github.com/real-logic/agrona/issues/823).
+* [C#] Fix repeating group encode overflow. [PR #823](https://github.com/real-logic/agrona/pull/823).
+* [C] Fix argument order for wrap_and_apply_header methods. [PR #821](https://github.com/real-logic/agrona/pull/821).
+* [Java] Generate bulk methods for fixed length `uint8` arrays. [PR #819](https://github.com/real-logic/agrona/pull/819).
+* Add Java 16 EA to the build matrix.
+* Upgrade to JMH 1.27.
+* Upgrade to Checkstyle 8.38.
+* Upgrade to Versions 0.36.0.
+* Upgrade to Mockito 3.6.28.
+* Upgrade to Gradle 6.7.1.
+* Upgrade to Agrona 1.9.0.
+
 ### 1.20.3 (13 Oct 2020)
 * Fix generation of `GroupOrder` annotations on Java codecs.
 * Java codecs have a new method `MessageDecoderFlyweight.appendTo(StringBuilder)` for the interface. [PR #220](https://github.com/real-logic/agrona/pull/220).
