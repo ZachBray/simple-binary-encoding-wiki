@@ -1,3 +1,12 @@
+### 1.21.0 (15 Jan 2021)
+* [Java] Generate metadata methods to groups for min and max count values. [PR #834](https://github.com/real-logic/agrona/pull/834).
+* [Java] Declare generated classes as final to allow for better optimisation and increased performance.
+* [C++] Null terminate constant char arrays to avoid warnings. [Issue #832](https://github.com/real-logic/simple-binary-encoding/issues/832).
+* [C++] Add support for decoding unknown enum values from later versions by enabling `sbe.decode.unknown.enum.values` and provide access to raw values. 
+* Clean up warnings in bash scripts.
+* Upgrade to Checkstyle 8.39.
+* Upgrade to Mockito 3.7.0.
+
 ### 1.20.4 (22 Dec 2020)
 * Add parsing of CME iLink order protocol to tests.
 * [C++] Generate literal marked up for correct type when shifting for bitsets using `uint64`. [PR #829](https://github.com/real-logic/agrona/pull/829).
