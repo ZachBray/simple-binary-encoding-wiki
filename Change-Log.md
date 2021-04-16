@@ -1,3 +1,20 @@
+### 1.22.0 (16 Apr 2021)
+* [C#] Convert benchmarks to use DotNetBenchmark. [PR #841](https://github.com/real-logic/agrona/pull/841). 
+* [C#] Help compiler to inline `DirectBuffer.CheckLimit` for better performance. [PR #840](https://github.com/real-logic/agrona/pull/840).
+* Add Java 17-ea to the build matrix.
+* Test with CME FixBinary version 9.
+* [C++] Capture `actingBlockLength` and use it for prettying printing output in version aware codecs. [Issue #839](https://github.com/real-logic/simple-binary-encoding/issues/839).
+* [C++] Remove invalid use of `noexcept` on `resetCountToIndex`. [Issue #838](https://github.com/real-logic/simple-binary-encoding/issues/838).
+* [Java] Generate a `wrapAndApplyHeader` method for decoders to verify template then apply acting version and offset.
+* [C++] Clean up and improve samples.
+* [C++] Pass elements by reference rather than value in `forEach` for more efficient skip operations.
+* Upgrade to Version 0.38.0.
+* Upgrade to JMH 1.29.
+* Upgrade to JUnit 5.7.1.
+* Upgrade to Mockito 3.9.0.
+* Upgrade to Gradle 6.8.3.
+* Upgrade to Agrona 1.10.0.
+
 ### 1.21.0 (15 Jan 2021)
 * [Java] Generate metadata methods to groups for min and max count values. [PR #834](https://github.com/real-logic/agrona/pull/834).
 * [Java] Declare generated classes as final to allow for better optimisation and increased performance.
