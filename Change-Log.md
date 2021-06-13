@@ -1,3 +1,17 @@
+### 1.23.0 (13 Jun 2021)
+* [C#] Add `ToString()` method to generated codecs. [PR #853](https://github.com/real-logic/agrona/pull/853).
+* [C#] Add more string read and write methods to codecs. [PR #845](https://github.com/real-logic/agrona/pull/845).
+* [Go] Fix tokens passed when generating composites. [PR #850](https://github.com/real-logic/agrona/pull/850).
+* [C/C++] Add Clang 12 to the matrix build.
+* Upgrade to Versions 0.39.0.
+* Upgrade to JUnit 5.7.2.
+* Upgrade to Mockito 3.11.1.
+* Upgrade to ByteBuddy 1.11.2.
+* Upgrade to JMH 1.32.
+* Upgrade to Shadow 7.0.0.
+* Upgrade to Gradlew 7.0.2.
+* Upgrade to Agrona 1.11.0.
+
 ### 1.22.0 (16 Apr 2021)
 * [C#] Convert benchmarks to use DotNetBenchmark. [PR #841](https://github.com/real-logic/agrona/pull/841). 
 * [C#] Help compiler to inline `DirectBuffer.CheckLimit` for better performance. [PR #840](https://github.com/real-logic/agrona/pull/840).
