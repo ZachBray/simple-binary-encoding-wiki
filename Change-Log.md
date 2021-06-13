@@ -9,7 +9,7 @@
 * Upgrade to ByteBuddy 1.11.2.
 * Upgrade to JMH 1.32.
 * Upgrade to Shadow 7.0.0.
-* Upgrade to Gradlew 7.0.2.
+* Upgrade to Gradle 7.0.2.
 * Upgrade to Agrona 1.11.0.
 
 ### 1.22.0 (16 Apr 2021)
