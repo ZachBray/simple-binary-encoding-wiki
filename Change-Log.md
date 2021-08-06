@@ -1,3 +1,13 @@
+### 1.24.0 (13 Jun 2021)
+* [Java] Improve efficiency of encoding `CharSequence` when ASCII character encoding is used.
+* [Java] Check that IR codecs are regenerated on codec change.
+* [Java/C++] Add `sbeRewind` to decoders so they can rewind to the beginning of a message and begin decoding again.
+* Upgrade to Google Test 1.11.0
+* Upgrade to ByteBuddy 1.11.3
+* Upgrade to Mockito 3.11.2.
+* Upgrade to Gradle 7.1.1.
+* Upgrade to Agrona 1.12.0.
+
 ### 1.23.0 (13 Jun 2021)
 * [C#] Add `ToString()` method to generated codecs. [PR #853](https://github.com/real-logic/agrona/pull/853).
 * [C#] Add more string read and write methods to codecs. [PR #845](https://github.com/real-logic/agrona/pull/845).
