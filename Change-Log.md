@@ -1,4 +1,4 @@
-### 1.24.0 (13 Jun 2021)
+### 1.24.0 (06 Aug 2021)
 * [Java] Improve efficiency of encoding `CharSequence` when ASCII character encoding is used.
 * [Java] Check that IR codecs are regenerated on codec change.
 * [Java/C++] Add `sbeRewind` to decoders so they can rewind to the beginning of a message and begin decoding again.
