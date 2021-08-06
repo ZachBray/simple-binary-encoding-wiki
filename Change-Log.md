@@ -1,7 +1,7 @@
 ### 1.24.0 (06 Aug 2021)
 * [Java] Improve efficiency of encoding `CharSequence` when ASCII character encoding is used.
 * [Java] Check that IR codecs are regenerated on codec change.
-* [Java/C++] Add `sbeRewind` to decoders so they can rewind to the beginning of a message and begin decoding again.
+* [Java/C++/C] Add `sbeRewind` to decoders so they can rewind to the beginning of a message and begin decoding again.
 * Upgrade to Google Test 1.11.0
 * Upgrade to ByteBuddy 1.11.3
 * Upgrade to Mockito 3.11.2.
