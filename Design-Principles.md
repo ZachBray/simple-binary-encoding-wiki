@@ -1,5 +1,3 @@
-# Design Principles
-
 To achieve low-latency with minimal variance it is important to define a set of design principles that guide the development. When a trade off must be made then the design principles help guide the decision in choosing between competing alternatives.
 
 The results of applying the following design principles can be seen in the [benchmarks](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-benchmarks/src/main).
