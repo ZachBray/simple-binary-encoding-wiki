@@ -2,7 +2,7 @@ To achieve low-latency with minimal variance it is important to define a set of 
 
 The results of applying the following design principles can be seen in the [benchmarks](https://github.com/real-logic/simple-binary-encoding/tree/master/sbe-benchmarks/src/main).
 
-Many design principles come to bear on any implementation. Not all design principles require trade-offs but many do. The following set of design principles are key to the design of SBE and the likely to drive most trade-offs.
+Many design principles come to bear on any implementation. Not all design principles require trade-offs but many do. The following set of design principles are key to the design of SBE and they likely to drive most trade-offs.
 
 1. [Copy-Free](Design-Principles#copy-free)
 1. [Native Type Mapping](Design-Principles#native-type-mapping)
