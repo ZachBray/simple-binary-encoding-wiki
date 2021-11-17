@@ -1,3 +1,17 @@
+### 1.25.0 (17 Nov 2021)
+* [C#] Add support for wrapping `ArraySegment` in `DirectBuffer`. [PR #878](https://github.com/real-logic/agrona/pull/878).
+* [Java] Add `@Deprecated` annotation to message codecs that have been marked as deprecated in SBE schema. [PR #876](https://github.com/real-logic/agrona/pull/876).
+* [C++] Only generate necessary macros and includes for enum types.
+* [Rust] Reinstate improved Rust codec generation.
+* [Java] Add `sbeSkip` and `sbeDecodedLength` methods to codecs. [PR #865](https://github.com/real-logic/agrona/pull/865).
+* Upgrade to JUnit 5.8.1.
+* Upgrade to Shadow 7.1.0.
+* Upgrade to Mockito 4.0.0.
+* Upgrade to Checkstyle 9.1.
+* Upgrade to JMH 1.33.
+* Upgrade to Gradle 7.2.
+* Upgrade to Agrona 1.13.0.
+
 ### 1.24.0 (06 Aug 2021)
 * [Java] Improve efficiency of encoding `CharSequence` when ASCII character encoding is used.
 * [Java] Check that IR codecs are regenerated on codec change.
