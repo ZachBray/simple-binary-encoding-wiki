@@ -1,3 +1,7 @@
+### 1.25.1 (24 Nov 2021)
+* Upgrade to Mockito 4.1.0.
+* Upgrade to Agrona 1.14.0.
+
 ### 1.25.0 (17 Nov 2021)
 * [C#] Add support for wrapping `ArraySegment` in `DirectBuffer`. [PR #878](https://github.com/real-logic/agrona/pull/878).
 * [Java] Add `@Deprecated` annotation to message codecs that have been marked as deprecated in SBE schema. [PR #876](https://github.com/real-logic/agrona/pull/876).
