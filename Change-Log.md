@@ -1,3 +1,21 @@
+### 1.26.0 (18 Mar 2022)
+* [Java] Calling `toString()` on decoder should not disturb repeating group. PR #892.
+* [All] Generate `NULL_VALUE` for enums based on correct type. Issue #889.
+* [C++] Check for version before outputting to stream for composites and bitsets. PR #888.
+* [Java] Charset handling improvements for more efficient string decoding. PR #887.
+* Add descriptions to schema for IR.
+* Set warnings as errors in build and clean up existing warnings.
+* Add ability to set the error stream in `ParserOptions`.
+* Remove some unnecessary checks in `XmlSchemaParser` to improve generation performance.
+* Upgrade to Versions 0.42.0.
+* Upgrade to Checkstyle 9.3.
+* Upgrade to JMH 1.34.
+* Upgrade to Mockito 4.4.0.
+* Upgrade to Shadow 7.1.2.
+* Upgrade to JUnit 5.8.2.
+* Upgrade to Gradle 7.4.1.
+* Upgrade to Agrona 1.15.0.
+
 ### 1.25.1 (24 Nov 2021)
 * Upgrade to Mockito 4.1.0.
 * Upgrade to Agrona 1.14.0.
