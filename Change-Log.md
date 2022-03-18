@@ -1,4 +1,4 @@
-### 1.26.0 (18 Mar 2022)
+### 1.25.2 (18 Mar 2022)
 * [Java] Calling `toString()` on decoder should not disturb repeating group. PR #892.
 * [All] Generate `NULL_VALUE` for enums based on correct type. Issue #889.
 * [C++] Check for version before outputting to stream for composites and bitsets. PR #888.
