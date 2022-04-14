@@ -1,3 +1,9 @@
+### 1.25.3 (14 Apr 2022)
+* Set correct version range for Agrona dependency check.
+* Upgrade to Gradle 7.4.2.
+* Upgrade to JMH 1.35.
+* Upgrade to Agrona 1.15.1.
+
 ### 1.25.2 (18 Mar 2022)
 * [Java] Calling `toString()` on decoder should not disturb repeating group. PR #892.
 * [All] Generate `NULL_VALUE` for enums based on correct type. Issue #889.
