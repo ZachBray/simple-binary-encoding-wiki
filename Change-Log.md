@@ -1,3 +1,13 @@
+### 1.26.0 (11 July 2022)
+* [Java] Provide raw access to type for bitset. Issue #893.
+* [C++] Generate `skip` function with loop rather than lambda to avoid compilation errors on some compilers. Issue #903.
+* Check `sinceVersion` is valid on elements against schema version. Issue #902.
+* [Rust] Fix generated comparator when value is `NaN`. PR #896.
+* [Rust] Fix resource leak in Rust generator running in Java SBE compiler.
+* [Java] Generate `@SuppressWarnings` annotation on enums types. Issue #894.
+* Upgrade to Mockito 4.6.1.
+* Upgrade to Agrona 1.16.0.
+
 ### 1.25.3 (14 Apr 2022)
 * Set correct version range for Agrona dependency check.
 * Upgrade to Gradle 7.4.2.
