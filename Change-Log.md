@@ -1,9 +1,9 @@
 ### 1.27.0 (11 Oct 2022)
-* [Java] Add preview support for package override on types from SBE 2.0. [PR #904](https://github.com/real-logic/agrona/pull/904)., [PR #915](https://github.com/real-logic/agrona/pull/915).
+* [Java] Add preview support for package override on types from SBE 2.0. [PR #904](https://github.com/real-logic/simple-binary-encoding/pull/904)., [PR #915](https://github.com/real-logic/simple-binary-encoding/pull/915).
 * Add support for transforming a schema to generate code for older versions when checking compatibility.
-* [Java] Support binary var data in `JsonPrinter`. [PR #914](https://github.com/real-logic/agrona/pull/914).
-* [Java] Qualify methods with name `yield` to avoid warning in Java 17. [PR #910](https://github.com/real-logic/agrona/pull/910).
-* Carry down the the `sinceVersion` value into composite types to make parsing OTF easier. [Issue #908](https://github.com/real-logic/agrona/issue/908).
+* [Java] Support binary var data in `JsonPrinter`. [PR #914](https://github.com/real-logic/simple-binary-encoding/pull/914).
+* [Java] Qualify methods with name `yield` to avoid warning in Java 17. [PR #910](https://github.com/real-logic/simple-binary-encoding/910).
+* Carry down the the `sinceVersion` value into composite types to make parsing OTF easier. [Issue #908](https://github.com/real-logic/simple-binary-encoding/issues/908).
 * Set the size for constant encoded data type to be zero in IR.
 * Upgrade to Google Test 1.21.1.
 * Upgrade to Mockito 4.7.0.
@@ -50,11 +50,11 @@
 * Upgrade to Agrona 1.14.0.
 
 ### 1.25.0 (17 Nov 2021)
-* [C#] Add support for wrapping `ArraySegment` in `DirectBuffer`. [PR #878](https://github.com/real-logic/agrona/pull/878).
-* [Java] Add `@Deprecated` annotation to message codecs that have been marked as deprecated in SBE schema. [PR #876](https://github.com/real-logic/agrona/pull/876).
+* [C#] Add support for wrapping `ArraySegment` in `DirectBuffer`. [PR #878](https://github.com/real-logic/simple-binary-encoding/pull/878).
+* [Java] Add `@Deprecated` annotation to message codecs that have been marked as deprecated in SBE schema. [PR #876](https://github.com/real-logic/simple-binary-encoding/pull/876).
 * [C++] Only generate necessary macros and includes for enum types.
 * [Rust] Reinstate improved Rust codec generation.
-* [Java] Add `sbeSkip` and `sbeDecodedLength` methods to codecs. [PR #865](https://github.com/real-logic/agrona/pull/865).
+* [Java] Add `sbeSkip` and `sbeDecodedLength` methods to codecs. [PR #865](https://github.com/real-logic/simple-binary-encoding/pull/865).
 * Upgrade to JUnit 5.8.1.
 * Upgrade to Shadow 7.1.0.
 * Upgrade to Mockito 4.0.0.
@@ -74,9 +74,9 @@
 * Upgrade to Agrona 1.12.0.
 
 ### 1.23.0 (13 Jun 2021)
-* [C#] Add `ToString()` method to generated codecs. [PR #853](https://github.com/real-logic/agrona/pull/853).
-* [C#] Add more string read and write methods to codecs. [PR #845](https://github.com/real-logic/agrona/pull/845).
-* [Go] Fix tokens passed when generating composites. [PR #850](https://github.com/real-logic/agrona/pull/850).
+* [C#] Add `ToString()` method to generated codecs. [PR #853](https://github.com/real-logic/simple-binary-encoding/pull/853).
+* [C#] Add more string read and write methods to codecs. [PR #845](https://github.com/real-logic/simple-binary-encoding/pull/845).
+* [Go] Fix tokens passed when generating composites. [PR #850](https://github.com/real-logic/simple-binary-encoding/pull/850).
 * [C/C++] Add Clang 12 to the matrix build.
 * Upgrade to Versions 0.39.0.
 * Upgrade to JUnit 5.7.2.
@@ -89,7 +89,7 @@
 
 ### 1.22.0 (16 Apr 2021)
 * [C#] Convert benchmarks to use DotNetBenchmark. [PR #841](https://github.com/real-logic/agrona/pull/841). 
-* [C#] Help compiler to inline `DirectBuffer.CheckLimit` for better performance. [PR #840](https://github.com/real-logic/agrona/pull/840).
+* [C#] Help compiler to inline `DirectBuffer.CheckLimit` for better performance. [PR #840](https://github.com/real-logic/simple-binary-encoding/pull/840).
 * Add Java 17-ea to the build matrix.
 * Test with CME FixBinary version 9.
 * [C++] Capture `actingBlockLength` and use it for prettying printing output in version aware codecs. [Issue #839](https://github.com/real-logic/simple-binary-encoding/issues/839).
@@ -105,7 +105,7 @@
 * Upgrade to Agrona 1.10.0.
 
 ### 1.21.0 (15 Jan 2021)
-* [Java] Generate metadata methods to groups for min and max count values. [PR #834](https://github.com/real-logic/agrona/pull/834).
+* [Java] Generate metadata methods to groups for min and max count values. [PR #834](https://github.com/real-logic/simple-binary-encoding/pull/834).
 * [Java] Declare generated classes as final to allow for better optimisation and increased performance.
 * [C++] Null terminate constant char arrays to avoid warnings. [Issue #832](https://github.com/real-logic/simple-binary-encoding/issues/832).
 * [C++] Add support for decoding unknown enum values from later versions by enabling `sbe.decode.unknown.enum.values` and provide access to raw values. 
@@ -115,14 +115,14 @@
 
 ### 1.20.4 (22 Dec 2020)
 * Add parsing of CME iLink order protocol to tests.
-* [C++] Generate literal marked up for correct type when shifting for bitsets using `uint64`. [PR #829](https://github.com/real-logic/agrona/pull/829).
+* [C++] Generate literal marked up for correct type when shifting for bitsets using `uint64`. [PR #829](https://github.com/real-logic/simple-binary-encoding/pull/829).
 * [Java] Generate `@return` in javadoc for bitset values. [Issue #828](https://github.com/real-logic/simple-binary-encoding/issues/828).
 * [Java] Escape basic HTML characters for javadoc. [Issue #826](https://github.com/real-logic/simple-binary-encoding/issues/826).
-* [Go] Fix decoding into struct with pre-allocated slices. [PR #825](https://github.com/real-logic/agrona/pull/825).
-* [C++] Fix spelling of `_cplusplus` macro. [Issue #821](https://github.com/real-logic/agrona/issues/823).
-* [C#] Fix repeating group encode overflow. [PR #823](https://github.com/real-logic/agrona/pull/823).
-* [C] Fix argument order for wrap_and_apply_header methods. [PR #821](https://github.com/real-logic/agrona/pull/821).
-* [Java] Generate bulk methods for fixed length `uint8` arrays. [PR #819](https://github.com/real-logic/agrona/pull/819).
+* [Go] Fix decoding into struct with pre-allocated slices. [PR #825](https://github.com/real-logic/simple-binary-encoding/pull/825).
+* [C++] Fix spelling of `_cplusplus` macro. [Issue #821](https://github.com/real-logic/simple-binary-encoding/issues/823).
+* [C#] Fix repeating group encode overflow. [PR #823](https://github.com/real-logic/simple-binary-encoding/pull/823).
+* [C] Fix argument order for wrap_and_apply_header methods. [PR #821](https://github.com/real-logic/simple-binary-encoding/pull/821).
+* [Java] Generate bulk methods for fixed length `uint8` arrays. [PR #819](https://github.com/real-logic/simple-binary-encoding/pull/819).
 * Add Java 16 EA to the build matrix.
 * Upgrade to JMH 1.27.
 * Upgrade to Checkstyle 8.38.
