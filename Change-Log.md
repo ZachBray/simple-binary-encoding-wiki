@@ -1,8 +1,8 @@
 ### 1.27.0 (11 Oct 2022)
-* [Java] Add preview support for package override on types from SBE 2.0. [PR #904](https://github.com/real-logic/simple-binary-encoding/pull/904)., [PR #915](https://github.com/real-logic/simple-binary-encoding/pull/915).
+* [Java] Add preview support for package override on types from SBE 2.0. [PR #904](https://github.com/real-logic/simple-binary-encoding/pull/904), [PR #915](https://github.com/real-logic/simple-binary-encoding/pull/915).
 * Add support for transforming a schema to generate code for older versions when checking compatibility.
 * [Java] Support binary var data in `JsonPrinter`. [PR #914](https://github.com/real-logic/simple-binary-encoding/pull/914).
-* [Java] Qualify methods with name `yield` to avoid warning in Java 17. [PR #910](https://github.com/real-logic/simple-binary-encoding/910).
+* [Java] Qualify methods with name `yield` to avoid warning in Java 17. [PR #910](https://github.com/real-logic/simple-binary-encoding/pull/910).
 * Carry down the the `sinceVersion` value into composite types to make parsing OTF easier. [Issue #908](https://github.com/real-logic/simple-binary-encoding/issues/908).
 * Set the size for constant encoded data type to be zero in IR.
 * Upgrade to Google Test 1.21.1.
@@ -13,11 +13,11 @@
 
 ### 1.26.0 (11 Jul 2022)
 * [Java] Provide raw access to type for bitset. Issue #893.
-* [C++] Generate `skip` function with loop rather than lambda to avoid compilation errors on some compilers. Issue #903.
-* Check `sinceVersion` is valid on elements against schema version. Issue #902.
-* [Rust] Fix generated comparator when value is `NaN`. PR #896.
+* [C++] Generate `skip` function with loop rather than lambda to avoid compilation errors on some compilers. [Issue #903](https://github.com/real-logic/simple-binary-encoding/issues/903).
+* Check `sinceVersion` is valid on elements against schema version. [Issue #902](https://github.com/real-logic/simple-binary-encoding/issues/902).
+* [Rust] Fix generated comparator when value is `NaN`. [PR #896](https://github.com/real-logic/simple-binary-encoding/pull/896).
 * [Rust] Fix resource leak in Rust generator running in Java SBE compiler.
-* [Java] Generate `@SuppressWarnings` annotation on enums types. Issue #894.
+* [Java] Generate `@SuppressWarnings` annotation on enums types. [Issue #894](https://github.com/real-logic/simple-binary-encoding/issues/894).
 * Upgrade to Mockito 4.6.1.
 * Upgrade to Agrona 1.16.0.
 
@@ -28,10 +28,10 @@
 * Upgrade to Agrona 1.15.1.
 
 ### 1.25.2 (18 Mar 2022)
-* [Java] Calling `toString()` on decoder should not disturb repeating group. PR #892.
-* [All] Generate `NULL_VALUE` for enums based on correct type. Issue #889.
-* [C++] Check for version before outputting to stream for composites and bitsets. PR #888.
-* [Java] Charset handling improvements for more efficient string decoding. PR #887.
+* [Java] Calling `toString()` on decoder should not disturb repeating group. [PR #892](https://github.com/real-logic/simple-binary-encoding/pull/892).
+* [All] Generate `NULL_VALUE` for enums based on correct type. [Issue #889](https://github.com/real-logic/simple-binary-encoding/issues/889).
+* [C++] Check for version before outputting to stream for composites and bitsets. [PR #888](https://github.com/real-logic/simple-binary-encoding/pull/888).
+* [Java] Charset handling improvements for more efficient string decoding. [PR #887](https://github.com/real-logic/simple-binary-encoding/pull/887).
 * Add descriptions to schema for IR.
 * Set warnings as errors in build and clean up existing warnings.
 * Add ability to set the error stream in `ParserOptions`.
