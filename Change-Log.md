@@ -12,7 +12,7 @@
 * Upgrade to Agrona 1.17.1.
 
 ### 1.26.0 (11 Jul 2022)
-* [Java] Provide raw access to type for bitset. Issue #893.
+* [Java] Provide raw access to type for bitset. [Issue #893](https://github.com/real-logic/simple-binary-encoding/issues/893).
 * [C++] Generate `skip` function with loop rather than lambda to avoid compilation errors on some compilers. [Issue #903](https://github.com/real-logic/simple-binary-encoding/issues/903).
 * Check `sinceVersion` is valid on elements against schema version. [Issue #902](https://github.com/real-logic/simple-binary-encoding/issues/902).
 * [Rust] Fix generated comparator when value is `NaN`. [PR #896](https://github.com/real-logic/simple-binary-encoding/pull/896).
