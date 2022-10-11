@@ -1,9 +1,9 @@
 ### 1.27.0 (11 Oct 2022)
-* [Java] Add preview support for package override on types from SBE 2.0. PR #904, #915.
+* [Java] Add preview support for package override on types from SBE 2.0. [PR #904](https://github.com/real-logic/agrona/pull/904)., [PR #915](https://github.com/real-logic/agrona/pull/915).
 * Add support for transforming a schema to generate code for older versions when checking compatibility.
-* [Java] Support binary var data in `JsonPrinter`. PR #914.
-* [Java] Qualify methods with name `yield` to avoid warning in Java 17. PR #910.
-* Carry down the the `sinceVersion` value into composite types to make parsing OTF easier. Issue #908.
+* [Java] Support binary var data in `JsonPrinter`. [PR #914](https://github.com/real-logic/agrona/pull/914).
+* [Java] Qualify methods with name `yield` to avoid warning in Java 17. [PR #910](https://github.com/real-logic/agrona/pull/910).
+* Carry down the the `sinceVersion` value into composite types to make parsing OTF easier. [Issue #908](https://github.com/real-logic/agrona/issue/908).
 * Set the size for constant encoded data type to be zero in IR.
 * Upgrade to Google Test 1.21.1.
 * Upgrade to Mockito 4.7.0.
