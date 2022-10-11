@@ -1,4 +1,17 @@
-### 1.26.0 (11 July 2022)
+### 1.27.0 (11 Oct 2022)
+* [Java] Add preview support for package override on types from SBE 2.0. PR #904, #915.
+* Add support for transforming a schema to generate code for older versions when checking compatibility.
+* [Java] Support binary var data in `JsonPrinter`. PR #914.
+* [Java] Qualify methods with name `yield` to avoid warning in Java 17. PR #910.
+* Carry down the the `sinceVersion` value into composite types to make parsing OTF easier. Issue #908.
+* Set the size for constant encoded data type to be zero in IR.
+* Upgrade to Google Test 1.21.1.
+* Upgrade to Mockito 4.7.0.
+* Upgrade to JUnit 5.9.1.
+* Upgrade to Gradle 7.5.1.
+* Upgrade to Agrona 1.17.1.
+
+### 1.26.0 (11 Jul 2022)
 * [Java] Provide raw access to type for bitset. Issue #893.
 * [C++] Generate `skip` function with loop rather than lambda to avoid compilation errors on some compilers. Issue #903.
 * Check `sinceVersion` is valid on elements against schema version. Issue #902.
