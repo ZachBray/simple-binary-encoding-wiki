@@ -1,3 +1,6 @@
+### vNext
+* [Java, C++, C#] Add support to [check the safe usage of flyweights (w.r.t. field access order)](./Safe-Flyweight-Usage). [PR #948](https://github.com/real-logic/simple-binary-encoding/pull/948).
+
 ### 1.27.0 (11 Oct 2022)
 * [Java] Add preview support for package override on types from SBE 2.0. [PR #904](https://github.com/real-logic/simple-binary-encoding/pull/904), [PR #915](https://github.com/real-logic/simple-binary-encoding/pull/915).
 * Add support for transforming a schema to generate code for older versions when checking compatibility.

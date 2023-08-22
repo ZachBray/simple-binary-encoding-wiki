@@ -13,6 +13,7 @@ The SBE tool can be used as a library enabling on-the-fly decoding of messages, 
 1. [C++ Users Guide](wiki/Cpp-User-Guide)
 1. [CSharp Users Guide](wiki/CSharp-User-Guide)
 1. [Golang Users Guide](wiki/Golang-User-Guide)
+1. [Safe Flyweight Usage](wiki/Safe-Flyweight-Usage)
 1. [FIX/SBE XML Primer](wiki/FIX-SBE-XML-Primer)
 1. [Message Extension/Versioning](wiki/Message-Versioning)
 1. [Intermediate Representation](wiki/Intermediate-Representation)

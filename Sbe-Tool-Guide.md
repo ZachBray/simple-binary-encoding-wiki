@@ -25,6 +25,8 @@ The tool supports the following options:
  * `sbe.keyword.append.token`: String to append to schema tokens that collide with reserved words in the target language.
  * `sbe.decode.unknown.enum.values`: Support unknown decoded enum values.
  * `sbe.csharp.generate.namespace.dir`: Should a directory be created for the namespace under the output directory? Defaults to `true`.
+ * `sbe.generate.access.order.checks`: Generate code to check flyweight methods are accessed in a valid order? Defaults to `false`. This option is supported by the Java, C#, and C++ generators. Requires platform-specific configuration to enable the checks at runtime, e.g., setting a system property or constant symbol. Find out more in [Safe Flyweight Usage](./Safe-Flyweight-Usage).
+ * `sbe.cpp.disable.implicit.copying`: Disable generation of copy constructors and copy assignment operators? Defaults to `false`. 
 
 The SBE tool can be used with Maven
 [see](https://github.com/real-logic/simple-binary-encoding/wiki/Sbe-Tool-Maven)
