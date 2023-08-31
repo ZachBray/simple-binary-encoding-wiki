@@ -14,7 +14,7 @@ SBE can generate runtime checks that ensure the correct usage of flyweight encod
 
 To generate these runtime checks, pass `-Dsbe.generate.access.order.checks=true` when running the SBE tool.
 
-By default, the generated checks are disabled, using conditional compilation, as they have a significant performance overhead. When running our car benchmarks, we see approximately 50% fewer encodes/decodes per second.
+By default, the generated checks are disabled, using conditional compilation, as they have a significant performance overhead.
 We expect that teams will enable these runtime checks in non-production environments and in their tests.
 
 To enable the runtime checks:
