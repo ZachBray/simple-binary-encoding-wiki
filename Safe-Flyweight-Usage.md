@@ -12,16 +12,27 @@ When decoding, failure to follow the contract can result in the misinterpretatio
 
 SBE can generate runtime checks that ensure the correct usage of flyweight encoders/decoders/codecs (w.r.t. field access order) in Java, C++ and C#.
 
-To generate these runtime checks, pass `-Dsbe.generate.sequencing.checks=true` when running the SBE tool.
+To generate these runtime checks, pass `-Dsbe.generate.precedence.checks=true` when running the SBE tool.
 
 By default, the generated checks are disabled, using conditional compilation, as they have a significant performance overhead.
 We expect that teams will enable these runtime checks in non-production environments and in their tests.
 
 To enable the runtime checks:
 
-* In Java, set the `sbe.enable.sequencing.checks` system property to `true`.
-* In C++, define the `SBE_ENABLE_SEQUENCING_CHECKS` symbol when compiling.
-* In C#, define the `SBE_ENABLE_SEQUENCING_CHECKS` symbol when building.
+* In Java, set the `sbe.enable.precedence.checks` system property to `true`.
+* In C++, define the `SBE_ENABLE_PRECEDENCE_CHECKS` symbol when compiling.
+* In C#, define the `SBE_ENABLE_PRECEDENCE_CHECKS` symbol when building.
+
+
+#### Finer-grained enablement flags, e.g., per schema
+
+The names of the symbols/macros/properties that enable checks may be adjusted by supplying the following system properties to `SbeTool`:
+
+- `sbe.precedence.checks.flagName` controls the symbol/macro used to enable precedence checks at build time in the generated C#/C++ code.
+It defaults to `"SBE_ENABLE_PRECEDENCE_CHECKS"`.
+
+- `sbe.precedence.checks.propName` controls the property name used to enable precedence checks at runtime in the generated Java code.
+It defaults to `"sbe.enable.precedence.checks"`.
 
 ### Checking complete encoding
 
